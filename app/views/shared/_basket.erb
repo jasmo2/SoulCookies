@@ -1,6 +1,2 @@
-<% if current_order %>
-    <p id='basket-modal' style="border:1px solid black;padding:10px;">
-      Usted Tiene <%= pluralize current_order.total_items, 'galleta'%> en tu canasta. Valor:
-      <%= number_to_currency current_order.total %> COP.
-    </p>
-<% end %>
+Usted Tiene <%= pluralize @ajax_current_order.total_items, 'galleta'%> en tu canasta.
+Valor: <%= number_to_currency @ajax_current_order.total %> COP.

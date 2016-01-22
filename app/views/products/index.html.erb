@@ -1,10 +1,12 @@
-<% active_nav_item :home %>
 <% @full_header = true %>
 <% @page_title = 'Welcome' %>
 <div class="home">
   <p class="browse">
-    <%= link_to "Browse our whole catalogue", catalogue_path %>
+    <%= link_to "Browse our whole catalogue", nil %>
   </p>
   <h2>Introducing our featured products</h2>
 </div>
-<%= render 'shared/product_list', :products => @products %>
+<p id="basket-modal" style="border:1px solid black;padding:10px;">
+<%= render 'shared/basket', :products => @products %>
+</p>
+<%= render 'shared/products_list', :products => @products %>

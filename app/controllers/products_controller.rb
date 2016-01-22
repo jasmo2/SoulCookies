@@ -10,6 +10,7 @@ class ProductsController < ApplicationController
   end
 
   def index
+    @ajax_current_order = current_order
     @products = ColombianProduct.active.includes(:product_categories, :variants).root
   end
 
@@ -19,7 +20,8 @@ class ProductsController < ApplicationController
 
   def add_to_basket
     product_to_order = params[:variant] ? @product.variants.find(params[:variant].to_i) : @product
-    @ajax_current_order = current_order.order_items.add_item(product_to_order, params[:quantity].to_i)
+    current_item = current_order.order_items.add_item(product_to_order, params[:quantity].to_i)
+    current_item && @ajax_current_order =  Shoppe::Order.includes(:order_items => :ordered_item).find_by_id(session[:order_id])
     respond_to do |wants|
       # wants.html { redirect_to request.referer }
       wants.js { render 'products/add_to_basket'}
