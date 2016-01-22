@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
+  mount Shoppe::Engine => "/shoppe"
   root 'products#index'
 
+  get 'products/:category_id/:product_id' => 'products#show', :as => 'product'
   get 'products/add_to_basket'
+  post 'products/:category_id/:product_id/buy' => 'products#add_to_basket', :as => 'buy_product'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
