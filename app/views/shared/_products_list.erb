@@ -1,0 +1,28 @@
+<ul class="products">
+  <% for product in products %>
+      <li >
+        <div style=<%= product.default_image ? "background-image:url(#{product.default_image.path})" : ''%>>
+
+        </div>
+        <h4>
+          <%= product.name %>
+        </h4>
+        <p class="info">
+          <%= truncate product.short_description, :length => 90 %>
+        </p>
+        <p class="price">
+          <%= number_to_currency product.price_with_tax %>
+        </p>
+        <p class="buttons">
+          <span>Cantidad: </span>
+          <%= number_field_tag 'quantity', '0', min: '1' ,class: 'special_input' %>
+        </p>
+        <% #link_to "New Product", new_product_path, remote: true, class: "btn btn-primary" %>
+
+
+        <%= link_to "Agregrar", buy_product_path(product.product_category.permalink, product.permalink), :class => 'add', :remote => true ,:method => :post %>
+      </li>
+  <% end %>
+</ul>
+
+<%= link_to "Ordenar" %>
