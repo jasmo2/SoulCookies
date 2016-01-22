@@ -3,7 +3,8 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   # Returns the active order for this session
-  # private
+  private
+
   def current_order
     @current_order ||= begin
       if has_order?
