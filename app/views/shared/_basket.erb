@@ -1,2 +1,4 @@
 Usted Tiene <%= pluralize @ajax_current_order.total_items, 'galleta'%> en tu canasta.
 Valor: <%= number_to_currency @ajax_current_order.total %> COP.
+<br>
+<%= link_to "Ordenar", checkout_path %>

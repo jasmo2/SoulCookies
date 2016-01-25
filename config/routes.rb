@@ -6,6 +6,18 @@ Rails.application.routes.draw do
   get 'products/add_to_basket'
   post 'products/:category_id/:product_id/buy' => 'products#add_to_basket', :as => 'buy_product'
 
+
+
+  # Orders & checkout
+
+  match "checkout", to: "orders#checkout", as: "checkout", via: [:get, :patch]
+  match "checkout/pay", to: "orders#payment", as: "checkout_payment", via: [:get, :post]
+  match "checkout/confirm", to: "orders#confirmation", as: "checkout_confirmation", via: [:get, :post]
+
+  post 'basket/:order_item_id' => 'orders#change_item_quantity', :as => 'adjust_basket_item_quantity'
+  delete 'basket/:order_item_id' => 'orders#change_item_quantity'
+  delete 'basket/delete/:order_item_id' => 'orders#remove_item', :as => 'remove_basket_item'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
