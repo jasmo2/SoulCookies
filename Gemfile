@@ -47,6 +47,7 @@ group :development do
 end
 
 gem 'puma'
+# gem 'omniauth-facebook'
 gem 'redcarpet'
-gem 'shoppe', :git => 'https://github.com/jasmo2/shoppe.git'
+gem 'shoppe'#, :git => 'https://github.com/jasmo2/shoppe.git'
 gem 'thin'
