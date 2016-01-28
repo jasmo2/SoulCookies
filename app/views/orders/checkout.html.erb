@@ -14,41 +14,6 @@
         <%= field_set_tag do %>
             <dl>
               <dt>
-                <%= f.label :first_name, "Name", :class => 'req' %>
-              </dt>
-              <dd class="name">
-                <%= f.text_field :first_name, :placeholder => 'First Name' %>
-                <%= f.text_field :last_name, :placeholder => 'Last Name' %>
-              </dd>
-            </dl>
-            <dl>
-              <dt>
-                <%= f.label :company, "Company Name (optional)" %>
-              </dt>
-              <dd>
-                <%= f.text_field :company %>
-              </dd>
-            </dl>
-            <dl>
-              <dt>
-                <%= f.label :email_address, 'Your E-Mail Address', :class => 'req' %>
-              </dt>
-              <dd>
-                <%= f.text_field :email_address %>
-              </dd>
-            </dl>
-            <dl>
-              <dt>
-                <%= f.label :phone_number, 'Your Contact Phone Number', :class => 'req' %>
-              </dt>
-              <dd>
-                <%= f.text_field :phone_number %>
-              </dd>
-            </dl>
-        <% end %>
-        <%= field_set_tag do %>
-            <dl>
-              <dt>
                 <%= f.label :billing_address1, "Billing Address", :class => 'req' %>
               </dt>
               <dd>
@@ -71,33 +36,16 @@
                 <%= f.label :separate_delivery_address, "Deliver to a different address?" %>
               </dd>
             </dl>
-            <dl class="delivery">
-              <dt>
-                <%= f.label :delivery_address1, "Delivery Address", :class => 'req' %>
-              </dt>
-              <dd>
-                <%= f.text_field :delivery_name, :placeholder => "Deliver to (name/company)" %>
-              </dd>
-              <dd>
-                <%= f.text_field :delivery_address1, :placeholder => "Line 1" %>
-              </dd>
-              <dd>
-                <%= f.text_field :delivery_address3, :placeholder => "Town/City" %>
-              </dd>
-              <dd>
-                <%= f.text_field :delivery_address4, :placeholder => "County" %>
-              </dd>
-              <dd>
-                <%= f.text_field :delivery_postcode, :placeholder => "Postcode", :class => 'postcode' %>
-              </dd>
-              <dd>
-                <%= f.collection_select :delivery_country_id, Shoppe::Country.ordered, :id, :name %>
-              </dd>
-            </dl>
         <% end %>
       </div>
-      <p class="submit">
-        <%= f.submit "Continue to payment" %>
-      </p>
+      <h5>
+        <%= (link_to 'New Customers user', new_customers_user_path, :remote => true)%>
+      </h5>
   <% end %>
+  <% unless current_customer %>
+      <%= link_to "Ingresar con Facebook", auth_facebook_callback_path , id: "login-fb" %>
+  <% end %>
+
+  <div id="customer-user"></div>
 </div>
+

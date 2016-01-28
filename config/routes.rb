@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
+  resources :customers_users
   mount Shoppe::Engine => "/shoppe"
   root 'products#index'
 
@@ -6,7 +8,10 @@ Rails.application.routes.draw do
   get 'products/add_to_basket'
   post 'products/:category_id/:product_id/buy' => 'products#add_to_basket', :as => 'buy_product'
 
-
+  # Facebook
+  post 'auth/facebook/callback', to: 'sessions#create_f'
+  get 'auth/failure', to: redirect('/')
+  get 'signout', to: 'sessions#destroy', as: 'signout'
 
   # Orders & checkout
 
