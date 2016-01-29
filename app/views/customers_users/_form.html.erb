@@ -1,4 +1,4 @@
-<%= form_for @customers_user do |f| %>
+<%= form_for @customers_user, remote: true,  :html => { :id => "customer-submit" } do |f| %>
     <%= f.error_messages %>
     <div class="splitContainer">
       <dl class="third">
@@ -37,7 +37,7 @@
       </dl>
     </div>
     <div class="actions">
-      <input type="submit" name="commit" value="Ingresar Datos">
+      <input  type="submit" name="commit" value="Ingresar Datos">
     </div>
 <% end %>
 

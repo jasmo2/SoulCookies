@@ -25,7 +25,7 @@
         <td class="product">
           <%= item.ordered_item.full_name %>
           <% unless defined?(readonly) %>
-              <%= link_to "Delete", remove_basket_item_path(item), :method => :delete, :class => 'ajax' %>
+              <%= link_to "Delete", remove_basket_item_path(item), :method => :delete, :class => '  ajax' %>
           <% end %>
         </td>
         <td class="money price">
@@ -44,13 +44,7 @@
   <% if order.delivery_service %>
       <tr class="delivery">
         <td class="method" colspan="4">
-          <% if defined?(readonly) %>
-              <%= order.delivery_service.name %>
-          <% else %>
-              <%= form_tag change_delivery_service_path do  %>
-                  <%= select_tag 'delivery_service', options_from_collection_for_select(order.available_delivery_services, :id, :name, order.delivery_service.id) %>
-              <% end %>
-          <% end %>
+          <%= order.delivery_service.name %>
         </td>
         <td class="money">
           <%= number_to_currency order.delivery_price %>
@@ -58,7 +52,7 @@
       </tr>
   <% end %>
   <tr class="subtotal">
-    <td colspan="4">Total (excluding #{Shoppe.settings.tax_name})</td>
+    <td colspan="4">Total (excluding <%= Shoppe.settings.tax_name %>)</td>
     <td class="money">
       <%= number_to_currency order.total_before_tax %>
     </td>
@@ -79,3 +73,4 @@
   </tr>
   </tfoot>
 </table>
+

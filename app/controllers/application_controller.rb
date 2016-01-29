@@ -4,7 +4,9 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   # Returns the active order for this session
   protected
-
+  def current_customer
+    @current_user ||= CustomersUser.find(session[:user_id]) if session[:user_id] && !session[:id].nil?
+  end
   def current_order
     @current_order ||= begin
       if has_order?
@@ -24,6 +26,6 @@ class ApplicationController < ActionController::Base
     )
   end
 
-  helper_method :current_order, :has_order?
+  helper_method :current_order, :has_order?,:current_customer
 
 end

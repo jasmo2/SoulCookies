@@ -2,15 +2,30 @@ ready = ->
   `var loginFb = $("#login-fb"),
        uid ,
        accessToken`
+
   fetchUserInformation = (me,urlPath)->
     $.ajax(
       url: urlPath,
       data: me,
+      dataType: "html",
       method: "POST")
     .success (response)->
       loginFb.hide()
       toTrim = $("#customer-user").html(response)
       $("#customer-user").html(toTrim.children("#form-container")[0].innerHTML)
+      $('#customer-submit').submit ->
+        valuesToSubmit = $(this).serialize()
+        $.ajax(
+          url: $(this).attr('action'),
+          data: valuesToSubmit,
+          dataType: "html"
+        )
+        .success (response)->
+          toTrim = $("#customer-user").html('"'+response+'"')
+          $("#customer-user").html(toTrim.children("#form-container")[0].innerHTML)
+        .error (err)->
+          console.log("error "+err)
+        return false
     .fail (err)->
       console.log("error "+err)
 #    $("#order_phone_number").val me.mobile_number

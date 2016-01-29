@@ -38,10 +38,10 @@
             </dl>
         <% end %>
       </div>
-      <h5>
-        <%= (link_to 'New Customers user', new_customers_user_path, :remote => true)%>
-      </h5>
   <% end %>
+  <h5>
+    <%= (link_to 'New Customers user', new_customers_user_path, :remote => true)%>
+  </h5>
   <% unless current_customer %>
       <%= link_to "Ingresar con Facebook", auth_facebook_callback_path , id: "login-fb" %>
   <% end %>
