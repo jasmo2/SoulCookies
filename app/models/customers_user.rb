@@ -23,22 +23,14 @@
 class CustomersUser < Shoppe::Customer
   # include ActiveModel::MassAssignmentSecurity
 
-  attr_accessor :email, :password, :password_confirmation
+  attr_accessor  :password, :password_confirmation
 
   attr_accessor :password
   before_save :encrypt_password
 
   validates_confirmation_of :password
-  validates_presence_of :password, :on => :create
+  validate :password_or_uid
 
-  def self.authenticate(email, password)
-    user = find_by_email(email)
-    if user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)
-      user
-    else
-      nil
-    end
-  end
 
   def encrypt_password
     if password.present?
@@ -46,6 +38,11 @@ class CustomersUser < Shoppe::Customer
       self.password_hash = BCrypt::Engine.hash_secret(password, password_salt)
     end
   end
-
+  private
+  def password_or_uid
+    if uid.blank? && password.blank?
+      errors[:base] << "registrarse por facebook ó ingresar contraseña"
+    end
+  end
 
 end

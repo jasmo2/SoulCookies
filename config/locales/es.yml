@@ -687,7 +687,7 @@ es:
           new_customer: Nuevo Cliente
           search_customer: Buscar Cliente
           name: Nombre
-          company: Compañia
+          company: Dirección
           email: E-Mail
           phone: telefono
           mobile_phone: Celular

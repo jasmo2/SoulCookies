@@ -1,29 +1,43 @@
 ready = ->
-  `var loginFb = $("#login-fb"),
-       uid ,
-       accessToken`
-
-  fetchUserInformation = (me,urlPath)->
+  `var loginFb = $("#login-fb")
+       newCustomerUser = $(".customer-user-record"),
+       uid= null,
+       accessToken = null`
+  fillResponse = (response,customerUser,uid)->
+    toTrim = customerUser.html(response)
+    customerUser.html(toTrim.children("#form-container")[0].innerHTML)
+    hidden = $(document.createElement('input')).attr(
+      type: 'hidden',
+      id: 'customers_user_uid',
+      name: "customers_user[uid]",
+      value: uid
+    )
+    customerUser.children("form").append(hidden)
+    null
+  fetchUserInformation = (me,urlPath,uid)->
+    customerUser = $("#customer-user")
     $.ajax(
       url: urlPath,
       data: me,
       dataType: "html",
       method: "POST")
     .success (response)->
-      loginFb.hide()
-      toTrim = $("#customer-user").html(response)
-      $("#customer-user").html(toTrim.children("#form-container")[0].innerHTML)
+      newCustomerUser.hide()
+      fillResponse(response,customerUser,uid)
       $('#customer-submit').submit ->
         valuesToSubmit = $(this).serialize()
+        console.log(valuesToSubmit)
         $.ajax(
           url: $(this).attr('action'),
           data: valuesToSubmit,
-          dataType: "html"
+          dataType: "html",
+          type: this.method.toUpperCase()
         )
         .success (response)->
-          toTrim = $("#customer-user").html('"'+response+'"')
-          $("#customer-user").html(toTrim.children("#form-container")[0].innerHTML)
-        .error (err)->
+          customerUser.hide()
+        .fail (err)->
+          if err.status == 400
+            fillResponse(err.responseText,customerUser,uid)
           console.log("error "+err)
         return false
     .fail (err)->
@@ -35,24 +49,6 @@ ready = ->
       FB.init
         appId: "182897058733210"
         version: "v2.5" # or v2.0, v2.1, v2.2, v2.3
-    statusChangeCallback = (response) ->
-      console.log "statusChangeCallback"
-      console.log response
-      # The response object is returned with a status field that lets the
-      # app know the current login status of the person.
-      # Full docs on the response object can be found in the documentation
-      # for FB.getLoginStatus().
-        # Logged into your app and Facebook.
-      if response and response.status is "connected"
-        testAPI()
-      else if response.status is "not_authorized"
-        # The person is logged into Facebook, but not your app.
-        alert "Please log " + "into this app."
-      else
-        # The person is not logged into Facebook, so we're not sure if
-        # they are logged into this app or not.
-        alert "Please log " + "into Facebook."
-
 
     checkLoginStatus = (response, urlPath) ->
       if response and response.status is "connected"
@@ -62,7 +58,7 @@ ready = ->
         FB.api "/me", "GET",
           fields: "id,first_name,last_name,email"
         , (response) ->
-          fetchUserInformation response,urlPath
+          fetchUserInformation response,urlPath,uid
       else
         console.log('User cancelled login or did not fully authorize.')
 

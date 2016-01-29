@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   # Returns the active order for this session
   protected
   def current_customer
-    @current_user ||= CustomersUser.find(session[:user_id]) if session[:user_id] && !session[:id].nil?
+    @current_user ||= CustomersUser.find(session[:user_customer_id]) if session[:user_customer_id] && !session[:user_customer_id].nil?
   end
   def current_order
     @current_order ||= begin

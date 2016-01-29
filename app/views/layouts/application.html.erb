@@ -7,7 +7,9 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<% if current_customer %>
+    <h5>Bienvenido <%= current_customer.first_name %></h5>
+<%end%>
 <%= yield %>
 
 </body>

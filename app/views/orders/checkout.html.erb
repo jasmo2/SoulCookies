@@ -35,15 +35,16 @@
                 <%= f.check_box :separate_delivery_address %>
                 <%= f.label :separate_delivery_address, "Deliver to a different address?" %>
               </dd>
+
             </dl>
         <% end %>
       </div>
   <% end %>
-  <h5>
-    <%= (link_to 'New Customers user', new_customers_user_path, :remote => true)%>
-  </h5>
   <% unless current_customer %>
-      <%= link_to "Ingresar con Facebook", auth_facebook_callback_path , id: "login-fb" %>
+      <h5>
+        <%= (link_to 'New Customers user', new_customers_user_path, :remote => true, class: "customer-user-record")%>
+      </h5>
+      <%= link_to "Ingresar con Facebook", auth_facebook_callback_path , id: "login-fb",class: "customer-user-record"  %>
   <% end %>
 
   <div id="customer-user"></div>
