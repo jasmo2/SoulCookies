@@ -1,4 +1,4 @@
-// webfonts
+// -------------------------------  WEBFONTS
 @font-face {
     font-family: 'modeliaheavy';
     src: font-url('modelia-heavy-webfont.eot');
@@ -21,8 +21,82 @@
     font-weight: normal;
     font-style: normal;
 }
-
-body {
+// -------------------------------  MEDIA QUERIES
+@mixin breakpoint($point) {
+    @if $point == xl {
+        @media (max-width: 1365px) { @content; }
+    }
+    @else if $point == lrg {
+        @media (max-width: 1199px) { @content; }
+    }
+    @else if $point == md {
+        @media (max-width: 991px) { @content; }
+    }
+    @else if $point == sm {
+        @media (max-width: 850px)  { @content; }
+    }
+    @else if $point == xs {
+        @media (max-width: 550px)  { @content; }
+    }
+    @else if $point == xxs {
+        @media (max-width: 400px)  { @content; }
+    }
+}
+// -------------------------------  MAIN
+.custom {
   background: #27b1e2;
   font-family: 'lane_-_narrowregular', sans-serif;
+  .txt-fat {
+    font-family: 'modeliaheavy', sans-serif;
+  }
+  // navbar
+  .navbar {
+    padding-left: 75px;
+    padding-right: 75px;
+    padding-top: 30px;
+    a {
+      color: #fff;
+      text-transform: uppercase;
+      font-size: 1.2em;
+    }
+  }
+  .navbar-brand {
+    width: 150px;
+    img {
+      width: 100%;
+    }
+  }
+  .navbar-left {
+    .icon {
+      width: 60px;
+      display: block;
+    }
+  }
+  .navbar-right {
+    .icon {
+      width: 25px;
+      display: block;
+    }
+  }
+  // intro
+  .intro {
+    padding-top: 250px;
+    padding-bottom: 90px;
+    .logo-intro {
+      text-align: center;
+    }
+    .text-intro {
+      font-size: 1.500em;
+      width: 350px;
+      color: #fff;
+      line-height: 1.7em;
+    }
+    .txt-fat {
+      color: #363635;
+      font-size: 44px;
+      line-height: 0;
+      padding-right: 10px;
+    }
+  }
+  
 }
