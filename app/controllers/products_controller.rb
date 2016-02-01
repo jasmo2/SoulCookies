@@ -20,8 +20,8 @@ class ProductsController < ApplicationController
 
   def add_to_basket
     product_to_order = params[:variant] ? @product.variants.find(params[:variant].to_i) : @product
-    current_item = current_order.order_items.add_item(product_to_order, params[:quantity].to_i)
-    current_item && @ajax_current_order =  Shoppe::Order.includes(:order_items => :ordered_item).find_by_id(session[:order_id])
+   current_order.order_items.add_item(product_to_order, params[:quantity].to_i)
+    @ajax_current_order =  current_order.reload
     respond_to do |wants|
       # wants.html { redirect_to request.referer }
       wants.js { render 'products/add_to_basket'}
