@@ -49,6 +49,11 @@
   .txt-fat {
     font-family: 'modeliaheavy', sans-serif;
   }
+  .btn-default {
+    background: #f94406;
+    color: #fff;
+  }
+
   // navbar
   .navbar {
     padding-left: 75px;
@@ -102,6 +107,41 @@
   .products {
     background: #fff;
     color: #363635;
+  }
+  .product-item {
+    margin: 50px auto;
+    text-align: center;
+    width: 75%;
+  }
+  .product-name {
+    font-size: 2.857em;
+    height: 42px;
+    overflow: hidden;
+  }
+  .product-info {
+    font-size: 1.286em;
+  }
+  .product-quantity {
+    text-transform: uppercase;
+    color: #f94406;
+    font-size: 1.286em;
+  }
+  .product-add {
+    width: 50px;
+    border: 0;
+    background: transparent;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  .product-order {
+    font-size: 2em;
+    text-align: center;
+  }
+  .btn-order {
+    border-radius: 40px;
+    padding: 15px 30px;
+    display: inline-block;
   }
   
 }
