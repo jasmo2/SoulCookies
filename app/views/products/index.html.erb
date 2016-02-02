@@ -16,7 +16,23 @@
     </div>
   </div>
 </div>
-<p id="basket-modal" style="border:1px solid black;padding:10px;">
+<div id="basket-modal" style="border:1px solid black;padding:10px;">
 <%= render 'shared/basket', :products => @products %>
-</p>
+</div>
 <%= render 'shared/products_list', :products => @products %>
+
+
+<div class="gallery">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 slides">
+        <ul class="bxslider">
+          <li>Slide one content</li>
+          <li>Slide two content</li>
+          <li>Slide three content</li>
+          <li>And so on...</li>
+        </ul>
+      </div><!-- /col-md-12 -->
+    </div><!-- /row -->
+  </div><!-- /container-fluid -->
+</div><!-- /gallery -->
