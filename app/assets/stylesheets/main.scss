@@ -171,6 +171,13 @@
       border: 1px solid #f94406;
     }
   }
+  .product-image {
+    height: 250px;
+    width: 250px;
+    background-size: cover;
+    backround: no-repeat;
+    margin: 0 auto;
+  }
   .product-item {
     margin: 50px auto;
     text-align: center;
