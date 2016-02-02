@@ -21,6 +21,29 @@
     font-weight: normal;
     font-style: normal;
 }
+
+
+// -------------------------------  EFFECTS
+@mixin effect_color {
+    -webkit-transition: color 0.6s ease;
+    -moz-transition: color 0.6s ease;
+    -o-transition: color 0.6s ease;
+    transition: color 0.6s ease;
+}
+@mixin effect_opacity {
+    -webkit-transition: opacity 0.6s ease;
+    -moz-transition: opacity 0.6s ease;
+    -o-transition: opacity 0.6s ease;
+    transition: opacity 0.6s ease;
+}
+@mixin effect_bg {
+    -webkit-transition: background-color 0.6s ease;
+    -moz-transition: background-color 0.6s ease;
+    -o-transition: background-color 0.6s ease;
+    transition: background-color 0.6s ease;
+}
+
+
 // -------------------------------  MEDIA QUERIES
 @mixin breakpoint($point) {
     @if $point == xl {
@@ -42,16 +65,27 @@
         @media (max-width: 400px)  { @content; }
     }
 }
+
+
 // -------------------------------  MAIN
 .custom {
   background: #27b1e2;
   font-family: 'lane_-_narrowregular', sans-serif;
+  letter-spacing: 3px;
+  .nav > li > a:hover, .nav > li > a:focus {
+    background: transparent;
+  }
   .txt-fat {
     font-family: 'modeliaheavy', sans-serif;
   }
   .btn-default {
     background: #f94406;
     color: #fff;
+    @include effect_bg;
+    &:hover, :active {
+      @include effect_bg;
+      background: #27b1e2;
+    }
   }
 
   // navbar
@@ -63,6 +97,11 @@
       color: #fff;
       text-transform: uppercase;
       font-size: 1.2em;
+      @include effect_color;
+      &:hover, :active {
+        @include effect_color;
+        color: #f94406;
+      }
     }
   }
   .navbar-brand {
@@ -75,12 +114,30 @@
     .icon {
       width: 60px;
       display: block;
+      svg {
+        &:hover path, :active path {
+          -webkit-transition: fill .4s ease;
+          -moz-transition: fill .4s ease;
+          -o-transition: fill .4s ease;
+          transition: fill .4s ease;
+          fill:#f94406;
+        }
+      }
     }
   }
   .navbar-right {
     .icon {
       width: 25px;
       display: block;
+      svg {
+        &:hover path, :active path {
+          -webkit-transition: fill .4s ease;
+          -moz-transition: fill .4s ease;
+          -o-transition: fill .4s ease;
+          transition: fill .4s ease;
+          fill:#f94406;
+        }
+      }
     }
   }
   // intro
@@ -107,6 +164,12 @@
   .products {
     background: #fff;
     color: #363635;
+    input[type="number"] {
+      height: 40px;
+      padding-left: 10px;
+      width: 50px;
+      border: 1px solid #f94406;
+    }
   }
   .product-item {
     margin: 50px auto;
@@ -126,12 +189,28 @@
     color: #f94406;
     font-size: 1.286em;
   }
+  .product-buttons {
+    overflow: hidden;
+    .product-quantity-container {
+      display: inline-block;
+    }
+  }
+  .product-buttons > * {
+    vertical-align: middle;
+    line-height: normal;
+  }
   .product-add {
     width: 50px;
     border: 0;
     background: transparent;
-    &:hover {
+    display: inline-block;
+    &:hover path, :active path {
       cursor: pointer;
+      -webkit-transition: fill .4s ease;
+      -moz-transition: fill .4s ease;
+      -o-transition: fill .4s ease;
+      transition: fill .4s ease;
+      fill:#27b1e2;
     }
   }
   .product-order {
