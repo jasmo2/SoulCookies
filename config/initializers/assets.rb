@@ -9,4 +9,4 @@ Rails.application.config.assets.version = '1.0'
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
-Rails.application.config.assets.precompile += %w( logo-soul-cookies.png )
+Rails.application.config.assets.precompile += %w( logo-soul-cookies.png, slide01.png, slide02.png, slide03.png )
