@@ -1,0 +1,250 @@
+// -------------------------------  WEBFONTS
+@font-face {
+    font-family: 'modeliaheavy';
+    src: font-url('modelia-heavy-webfont.eot');
+    src: font-url('modelia-heavy-webfont.eot?#iefix') format('embedded-opentype'),
+         font-url('modelia-heavy-webfont.woff2') format('woff2'),
+         font-url('modelia-heavy-webfont.woff') format('woff'),
+         font-url('modelia-heavy-webfont.ttf') format('truetype'),
+         font-url('modelia-heavy-webfont.svg#modeliaheavy') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'lane_-_narrowregular';
+    src: font-url('LANENAR_-webfont.eot');
+    src: font-url('LANENAR_-webfont.eot?#iefix') format('embedded-opentype'),
+         font-url('LANENAR_-webfont.woff') format('woff'),
+         font-url('LANENAR_-webfont.ttf') format('truetype'),
+         font-url('LANENAR_-webfont.svg#lane_-_narrowregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+// -------------------------------  EFFECTS
+@mixin effect_color {
+    -webkit-transition: color 0.6s ease;
+    -moz-transition: color 0.6s ease;
+    -o-transition: color 0.6s ease;
+    transition: color 0.6s ease;
+}
+@mixin effect_opacity {
+    -webkit-transition: opacity 0.6s ease;
+    -moz-transition: opacity 0.6s ease;
+    -o-transition: opacity 0.6s ease;
+    transition: opacity 0.6s ease;
+}
+@mixin effect_bg {
+    -webkit-transition: background-color 0.6s ease;
+    -moz-transition: background-color 0.6s ease;
+    -o-transition: background-color 0.6s ease;
+    transition: background-color 0.6s ease;
+}
+
+
+// -------------------------------  MEDIA QUERIES
+@mixin breakpoint($point) {
+    @if $point == xl {
+        @media (max-width: 1365px) { @content; }
+    }
+    @else if $point == lrg {
+        @media (max-width: 1199px) { @content; }
+    }
+    @else if $point == md {
+        @media (max-width: 991px) { @content; }
+    }
+    @else if $point == sm {
+        @media (max-width: 850px)  { @content; }
+    }
+    @else if $point == xs {
+        @media (max-width: 550px)  { @content; }
+    }
+    @else if $point == xxs {
+        @media (max-width: 400px)  { @content; }
+    }
+}
+
+
+// -------------------------------  MAIN
+.custom {
+  background: #27b1e2;
+  font-family: 'lane_-_narrowregular', sans-serif;
+  letter-spacing: 3px;
+  .nav > li > a:hover, .nav > li > a:focus {
+    background: transparent;
+  }
+  .txt-fat {
+    font-family: 'modeliaheavy', sans-serif;
+  }
+  .btn-default {
+    background: #f94406;
+    color: #fff;
+    @include effect_bg;
+    &:hover, :active {
+      @include effect_bg;
+      background: #27b1e2;
+    }
+  }
+  a {
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  // navbar
+  .navbar {
+    padding-left: 75px;
+    padding-right: 75px;
+    padding-top: 30px;
+    a {
+      color: #fff;
+      text-transform: uppercase;
+      font-size: 1.2em;
+      @include effect_color;
+      &:hover, :active {
+        @include effect_color;
+        color: #f94406;
+      }
+    }
+  }
+  .navbar-brand {
+    width: 150px;
+    img {
+      width: 100%;
+    }
+  }
+  .navbar-left {
+    .icon {
+      width: 60px;
+      display: block;
+      svg {
+        &:hover path, :active path {
+          -webkit-transition: fill .4s ease;
+          -moz-transition: fill .4s ease;
+          -o-transition: fill .4s ease;
+          transition: fill .4s ease;
+          fill:#f94406;
+        }
+      }
+    }
+  }
+  .navbar-right {
+    .icon {
+      width: 25px;
+      display: block;
+      svg {
+        &:hover path, :active path {
+          -webkit-transition: fill .4s ease;
+          -moz-transition: fill .4s ease;
+          -o-transition: fill .4s ease;
+          transition: fill .4s ease;
+          fill:#f94406;
+        }
+      }
+    }
+  }
+  // intro
+  .intro {
+    padding-top: 200px;
+    padding-bottom: 90px;
+    .logo-intro {
+      text-align: center;
+    }
+    .text-intro {
+      font-size: 1.500em;
+      width: 350px;
+      color: #fff;
+      line-height: 1.7em;
+    }
+    .txt-fat {
+      color: #363635;
+      font-size: 44px;
+      line-height: 0;
+      padding-right: 10px;
+    }
+  }
+  // products
+  .products {
+    background: #fff;
+    color: #363635;
+    input[type="number"] {
+      height: 40px;
+      padding-left: 10px;
+      width: 50px;
+      border: 1px solid #f94406;
+    }
+  }
+  .product-image {
+    height: 250px;
+    width: 250px;
+    background-size: cover;
+    backround: no-repeat;
+    margin: 0 auto;
+  }
+  .product-item {
+    margin: 50px auto;
+    text-align: center;
+    width: 75%;
+  }
+  .product-name {
+    font-size: 2.857em;
+    height: 42px;
+    overflow: hidden;
+  }
+  .product-info {
+    font-size: 1.286em;
+  }
+  .product-quantity {
+    text-transform: uppercase;
+    color: #f94406;
+    font-size: 1.286em;
+  }
+  .product-buttons {
+    overflow: hidden;
+    .product-quantity-container {
+      display: inline-block;
+    }
+  }
+  .product-buttons > * {
+    vertical-align: middle;
+    line-height: normal;
+  }
+  .product-add {
+    width: 50px;
+    border: 0;
+    background: transparent;
+    display: inline-block;
+    &:hover path, :active path {
+      cursor: pointer;
+      -webkit-transition: fill .4s ease;
+      -moz-transition: fill .4s ease;
+      -o-transition: fill .4s ease;
+      transition: fill .4s ease;
+      fill:#27b1e2;
+    }
+  }
+  .product-order {
+    font-size: 2em;
+    text-align: center;
+  }
+  .btn-order {
+    border-radius: 40px;
+    padding: 15px 30px;
+    display: inline-block;
+  }
+  // gallery
+  .gallery {
+    background-image: image-url("bg-bogota.png");
+    background-size: cover;
+    background-repeat: no-repeat; 
+    padding-top: 60px;
+    background-color: #fff;
+  }
+  .slides {
+    background: #eae9e4;
+    padding-bottom: 60px;
+  }
+  
+}
