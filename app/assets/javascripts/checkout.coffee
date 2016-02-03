@@ -20,26 +20,30 @@ ready = ->
       url: urlPath,
       data: me,
       dataType: "html",
-      method: "POST")
-    .success (response)->
-      newCustomerUser.hide()
-      fillResponse(response,customerUser,uid)
-      $('#customer-submit').submit ->
-        valuesToSubmit = $(this).serialize()
-        console.log(valuesToSubmit)
-        $.ajax(
-          url: $(this).attr('action'),
-          data: valuesToSubmit,
-          dataType: "html",
-          type: this.method.toUpperCase()
-        )
-        .success (response)->
-          customerUser.hide()
-        .fail (err)->
-          if err.status == 400
-            fillResponse(err.responseText,customerUser,uid)
-          console.log("error "+err)
-        return false
+      method: "POST",
+      statusCode:
+        202: ->
+          window.location.reload()
+        200: (response)->
+          newCustomerUser.hide()
+          fillResponse(response,customerUser,uid)
+          $('#customer-submit').submit ->
+            valuesToSubmit = $(this).serialize()
+            console.log(valuesToSubmit)
+            $.ajax(
+              url: $(this).attr('action'),
+              data: valuesToSubmit,
+              dataType: "html",
+              type: this.method.toUpperCase()
+            )
+            .success (response)->
+              customerUser.hide()
+            .fail (err)->
+              if err.status == 400
+                fillResponse(err.responseText,customerUser,uid)
+              console.log("error "+err)
+            return false
+    )
     .fail (err)->
       console.log("error "+err)
 #    $("#order_phone_number").val me.mobile_number
