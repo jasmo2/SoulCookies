@@ -4,14 +4,15 @@ class SessionsController < ApplicationController
   end
 
   def create_f
-    @customers_user = CustomersUser.where(uid: fb_params['id'])
-    if @customers_user.empty?
+    @customers_user = CustomersUser.where(uid: fb_params['id']).first
+    if @customers_user.nil?
       @customers_user = CustomersUser.new(fb_params)
       session[:user_customer_id] = @customers_user.id
       render "/customers_users/new"
+    else
+      session[:user_customer_id] = @customers_user.id
+      render :nothing => true, status: :accepted, :content_type => 'text/html'
     end
-    session[:user_customer_id] = @customers_user.id
-    render :nothing, status: 201
   end
 
 

@@ -43,10 +43,19 @@
 
   <% end %>
   <% unless current_customer %>
-      <h5>
-        <%= (link_to 'New Customers user', new_customers_user_path, :remote => true, class: "customer-user-record")%>
-      </h5>
-      <%= link_to "Ingresar con Facebook", auth_facebook_callback_path , id: "login-fb",class: "customer-user-record"  %>
+      <div class="row">
+        <h5 class="col-sm-3">
+          <%= (link_to 'New Customers user', new_customers_user_path, :remote => true, class: "customer-user-record")%>
+        </h5>
+        <h5 class="col-sm-3">
+          <%= link_to "A mi Cuenta",  new_customers_user_path, id: "login-customer",class: "customer-user-record"  %>
+        </h5>
+      </div>
+      <div class="row">
+        <h5 class="col-sm-3">
+          <%= link_to "Ingresar con Facebook", auth_facebook_callback_path , id: "login-fb",class: "customer-user-record"  %>
+        </h5>
+      </div>
   <% end %>
 
   <div id="customer-user"></div>
