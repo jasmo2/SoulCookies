@@ -37,7 +37,7 @@ ready = ->
               type: this.method.toUpperCase()
             )
             .success (response)->
-              customerUser.hide()
+              window.location.reload()
             .fail (err)->
               if err.status == 400
                 fillResponse(err.responseText,customerUser,uid)

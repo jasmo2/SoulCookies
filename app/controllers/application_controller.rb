@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   protected
   def current_customer
     session_customer= session[:user_customer_id]
-    @current_user ||= CustomersUser.where('id = ? or uid = ?',session_customer,session_customer.to_s).first if session[:user_customer_id] && !session[:user_customer_id].nil?
+    @current_user ||= CustomersUser.where('id = ? or uid = ?',session_customer,session_customer.to_s).first if session[:user_customer_id] #&& !session[:user_customer_id].nil?
   end
   def current_order
     @current_order ||= begin

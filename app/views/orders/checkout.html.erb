@@ -1,47 +1,16 @@
 <% @page_title = 'Checkout' %>
 <div class="checkout">
-  <p class="secure">Secure connection</p>
+  <p class="secure">Conección segura</p>
   <h2>Confirme Su orden</h2>
   <p class="intro">
    Texto para introducción de orden
   </p>
-  <h3>Review the products in your shopping bag</h3>
+  <h3>Confirmación de orden</h3>
   <%= render 'shared/order_items', :order => @order %>
-  <h3>Complete your details below to complete your order</h3>
-  <%= form_for @order, :url => checkout_path, :html => {:class => 'checkout disableable'} do |f| %>
-      <%= f.error_messages %>
-      <div class="customer">
-        <%= field_set_tag do %>
-            <dl>
-              <dt>
-                <%= f.label :billing_address1, "Dirección de Entrega", :class => 'req' %>
-              </dt>
-              <dd>
-                <%= f.text_field :billing_address1, :placeholder => "Calle" %>
-              </dd>
-              <dd>
-                <%= f.text_field :billing_address3, :value=> "Bogotá",:placeholder => "Cuidad" %>
-              </dd>
-              <dd>
-                <%= f.text_field :billing_address4, :value=> "Bogotá D.C.", :placeholder => "Departamento" %>
-              </dd>
-              <dd>
-                <%= f.text_field :billing_postcode, :value=> "4-72",:placeholder => "Postcode", :class => 'postcode' %>
-              </dd>
-              <dd>
-                <%= f.collection_select :billing_country_id, Shoppe::Country.ordered, :id, :name , {:selected => "Colombia"}%>
-              </dd>
-              <dd>
-                <% unless current_customer %>
-                  <input  type="submit" name="commit" value="Continuar Proceso">
-                <% end %>
-              </dd>
+  <h3>Dirección de la orden</h3>
+  <%= render partial: 'address/new', :address => @addresses  %>
 
-            </dl>
-        <% end %>
-      </div>
 
-  <% end %>
   <% unless current_customer %>
       <div class="row">
         <h5 class="col-sm-3">

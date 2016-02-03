@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
-
+  before_filter :address_instance, only: :checkout
+  before_filter :address_all, only: :checkout
   def checkout
     @order = Shoppe::Order.find(current_order.id)
   end
@@ -51,5 +52,12 @@ class OrdersController < ApplicationController
         render :json => {:status => 'complete', :redirect => root_path}
       end
     end
+  end
+  private
+  def address_instance
+    @address = Shoppe::Address.new
+  end
+  def address_all
+    @addresses = Address.new(current_customer)
   end
 end
