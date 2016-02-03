@@ -51,8 +51,10 @@ gem 'rails-i18n', '~> 4.0.0'
 gem 'redcarpet'
 gem 'shoppe'#, :git => 'https://github.com/jasmo2/shoppe.git'
 gem 'thin'
-
-#windows specific
-gem 'tzinfo-data', platforms: [:mingw, :mswin]
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'bxslider-rails', '~> 4.2', '>= 4.2.5.1'
+
+=begin
+#windows specific
+gem 'tzinfo-data', platforms: [:mingw, :mswin]
+=end
