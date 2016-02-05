@@ -1,34 +1,10 @@
-<% if current_customer %>
-    <%= form_for @address, :url => address_index_path, :remote => true, :html => {:class => 'checkout disableable', :id=> 'address-form'} do |f| %>
-        <%= f.error_messages %>
-        <div class="customer">
-          <%= field_set_tag do %>
-              <dl>
-                <dt>
-                  <%= f.label :address1, "Dirección de Entrega", :class => 'req' %>
-                </dt>
-                <dd>
-                  <%= f.text_field :address1, :placeholder => "Calle" %>
-                </dd>
-                <dd>
-                  <%= f.text_field :address3, :value=> "Bogotá",:placeholder => "Cuidad" %>
-                </dd>
-                <dd>
-                  <%= f.text_field :address4, :value=> "Bogotá D.C.", :placeholder => "Departamento" %>
-                </dd>
-                <dd>
-                  <%= f.text_field :postcode, :value=> "4-72",:placeholder => "Postcode", :class => 'postcode' %>
-                </dd>
-                <dd>
-                  <%= f.collection_select :country_id, Shoppe::Country.ordered, :id, :name , {:selected => "Colombia"}%>
-                </dd>
-                <dd>
-                  <input  type="submit" name="commit" value="Agregar dirección">
+<%= form_for @address, :url => address_index_path, :remote => true, :html => {:class => 'checkout disableable', :id=> 'address-form'} do |f| %>
+    <%= f.error_messages %>
+    <div class="customer">
+      <%= field_set_tag do %>
+          <%= render partial: "shared/address_form"%>
+      <input  type="submit" name="commit" value="Agregar dirección">
 
-                </dd>
-
-              </dl>
-          <% end %>
-        </div>
-    <% end %>
+      <% end %>
+    </div>
 <% end %>

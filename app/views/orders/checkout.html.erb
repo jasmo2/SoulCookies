@@ -9,18 +9,23 @@
   <%= render 'shared/order_items', :order => @order %>
   <h3>Dirección de la orden</h3>
 
-  <div class="row">
-    <div class="col-sm-6">
-      <%= render partial: 'address/new', :address => @address  %>
-    </div>
-    <div class="col-sm-6">
-      <%= render partial: 'address/list', :address => @addresses  %>
-    </div>
+  <div id="checkout-information" class="row">
+    <% if current_customer %>
+      <div class="col-sm-6">
+        <%= render partial: 'address/new', :address => @address  %>
+      </div>
+      <div class="col-sm-6">
+        <%= render partial: 'address/list', :address => @addresses  %>
+      </div>
+    <%end%>
   </div>
 
 
   <% unless current_customer %>
       <div class="row">
+        <h5 class="col-sm-3">
+          <%= (link_to 'Express Checkout', checkout_express_path, :remote => true, class: "customer-user-record")%>
+        </h5>
         <h5 class="col-sm-3">
           <%= (link_to 'New Customers user', new_customers_user_path, :remote => true, class: "customer-user-record")%>
         </h5>

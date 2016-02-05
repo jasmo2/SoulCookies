@@ -1,0 +1,21 @@
+<dl>
+  <dt>
+    <%= f.label :address1, "Dirección de Entrega", :class => 'req' %>
+  </dt>
+  <dd>
+    <%= f.text_field :address1, :placeholder => "Calle" %>
+  </dd>
+  <dd>
+    <%= f.text_field :address3, :value=> "Bogotá",:placeholder => "Cuidad" %>
+  </dd>
+  <dd>
+    <%= f.text_field :address4, :value=> "Bogotá D.C.", :placeholder => "Departamento" %>
+  </dd>
+  <dd>
+    <%= f.text_field :postcode, :value=> "4-72",:placeholder => "Postcode", :class => 'postcode' %>
+  </dd>
+  <dd>
+    <%= f.collection_select :country_id, Shoppe::Country.ordered, :id, :name , {:selected => "Colombia"}%>
+  </dd>
+
+</dl>
