@@ -1,8 +1,17 @@
 class OrdersController < ApplicationController
   before_filter :address_instance, only: :checkout
   before_filter :address_all, only: :checkout
+  before_filter :get_order, only: [:checkout,:express]
+
   def checkout
-    @order = Shoppe::Order.find(current_order.id)
+  end
+
+  def express
+    respond_to do |format|
+      format.js do
+        render
+      end
+    end
   end
 
   def change_item_quantity
@@ -60,5 +69,8 @@ class OrdersController < ApplicationController
   def address_all
     @addresses = Address.new(current_customer)
     @addresses = @addresses.addresses
+  end
+  def get_order
+    @order = Shoppe::Order.find(current_order.id)
   end
 end
