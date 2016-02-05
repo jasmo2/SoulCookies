@@ -59,5 +59,6 @@ class OrdersController < ApplicationController
   end
   def address_all
     @addresses = Address.new(current_customer)
+    @addresses = @addresses.addresses
   end
 end

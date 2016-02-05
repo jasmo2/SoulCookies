@@ -1,5 +1,5 @@
 <% if current_customer %>
-    <%= form_for @address, :url => address_index_path, :html => {:class => 'checkout disableable', :id=> 'address-form'} do |f| %>
+    <%= form_for @address, :url => address_index_path, :remote => true, :html => {:class => 'checkout disableable', :id=> 'address-form'} do |f| %>
         <%= f.error_messages %>
         <div class="customer">
           <%= field_set_tag do %>
