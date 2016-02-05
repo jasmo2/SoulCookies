@@ -2,7 +2,7 @@
     <%= f.error_messages %>
     <div class="customer">
       <%= field_set_tag do %>
-          <%= render partial: "shared/address_form"%>
+          <%= render partial: "shared/address_form" , :locals => {:field => f } %>
       <input  type="submit" name="commit" value="Agregar dirección">
 
       <% end %>

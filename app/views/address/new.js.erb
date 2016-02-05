@@ -1,11 +1,12 @@
 var $addressListInputItems = $("#addresses-list input");
+var addressListInputItemslength = $addressListInputItems.length+1;
 var inputRadio = $(document.createElement('input')).attr({
   type: "radio",
   name: "addresses",
   value:"<%= @address.id %>",
-  id: "radio"+$addressListInputItems.length
+  id: "radio"+addressListInputItemslength
 });
 var labelRadio = $(document.createElement('label')).attr({
-  for: "radio"+$addressListInputItems.length
+  for: "radio"+addressListInputItemslength
 }).text("<%= @address.full_address%>");
 $("#addresses-list").append(inputRadio).append(labelRadio).append(document.createElement('</br'));
