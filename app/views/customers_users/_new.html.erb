@@ -1,4 +1,5 @@
+<% p_field ||= false%>
 <div id="form-container">
   <h3>bienvenido <%= @customers_user.first_name %></h3>
-  <%= render partial: 'customers_users/form' %>
+  <%= render partial: 'customers_users/form', locals: {p_field: p_field} %>
 </div>

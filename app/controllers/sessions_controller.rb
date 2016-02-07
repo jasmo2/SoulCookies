@@ -3,27 +3,37 @@ class SessionsController < ApplicationController
   def new
   end
 
-  def create_f
+  def create
+    if CustomersUser.where(uid: fb_params['id']).first.nil?
+      create_customer
+    else
+      create_fb
+    end
+  end
+
+  def create_fb
     @customers_user = CustomersUser.where(uid: fb_params['id']).first
     if @customers_user.nil?
       @customers_user = CustomersUser.new(fb_params)
       session[:user_customer_id] = @customers_user.id
       render "/customers_users/new"
     else
-      session[:user_customer_id] = @customers_user.id
-      render :nothing => true, status: :accepted, :content_type => 'text/html'
+     session_accepted (@customers_user)
+     render :nothing => true, status: :accepted, :content_type => 'text/html'
     end
   end
 
 
-  def create
-    user = User.authenticate(params[:email], params[:password])
-    if user
-      session[:user_customer_id] = user.id
-      redirect_to root_url, :notice => "Logged in!"
+  def create_customer
+    customers_user = CustomersUser.authenticate(manual_params)
+    if customers_user
+      session_accepted (customers_user)
+      respond_to do |format|
+        format.js {render js: 'window.location.reload();'}
+      end
+
     else
-      flash.now.alert = "Invalid email or password"
-      render "new"
+       render "/customers_users/new" ,status:  :bad_request
     end
   end
 
@@ -31,8 +41,16 @@ class SessionsController < ApplicationController
     session[:user_customer_id] = nil
     redirect_to root_url, :notice => "Logged out!"
   end
+
   private
+  def session_accepted customers_user
+    session[:user_customer_id] = customers_user.id
+  end
+
   def fb_params
     params.permit("first_name", "last_name","id","email")
+    end
+  def manual_params
+    params.permit(:email, :password)
   end
 end

@@ -9,11 +9,11 @@ Rails.application.routes.draw do
   post 'products/:category_id/:product_id/buy' => 'products#add_to_basket', :as => 'buy_product'
 
   # Facebook
-  post 'auth/facebook/callback', to: 'sessions#create_f'
-  get 'auth/facebook/callback', to: 'sessions#create_f'
+  post 'auth/facebook/callback', to: 'sessions#create_fb'
   get 'auth/failure', to: redirect('/')
 
   # Sessions
+  get 'sessions/create', to: 'sessions#create'
   get 'signout', to: 'sessions#destroy', as: 'signout'
 
   # Orders & checkout

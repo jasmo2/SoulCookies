@@ -52,8 +52,10 @@ class CustomersUsersController < ApplicationController
       if @customers_user.save
         format.js do
           redirect_to controller: 'sessions',
-                      action: 'create_f',
-                      id: @customers_user.id
+                      action: 'create',
+                      id: @customers_user.id,
+                      email: @customers_user.email,
+                      password: @customers_user.password
         end
         format.json { render :show, status: :created, location: @customers_user }
       else
@@ -94,7 +96,7 @@ class CustomersUsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def customers_user_params
-      params[:customers_user].permit(:first_name, :last_name,:email,:phone,:uid)
+      params[:customers_user].permit(:first_name, :last_name,:email,:phone,:uid,:password,:password_confirmation)
 
     end
 end

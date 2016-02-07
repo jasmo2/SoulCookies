@@ -36,6 +36,24 @@
         </dd>
       </dl>
     </div>
+    <% if p_field%>
+        <dl class="third">
+            <dt>
+              <%= f.label :password, "contraseña" %>
+            </dt>
+            <dd>
+              <%= f.password_field :password, :class => "text" %>
+            </dd>
+        </dl>
+        <dl class="third">
+            <dt>
+              <%= f.label :password_confirmation, "Confirmación de contraseña" %>
+            </dt>
+            <dd>
+              <%= f.password_field :password_confirmation, :class => "text" %>
+            </dd>
+        </dl>
+    <% end %>
     <div class="actions">
       <input  type="submit" name="commit" value="Ingresar Datos">
     </div>
