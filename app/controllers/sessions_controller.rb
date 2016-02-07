@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
     if @customers_user.nil?
       @customers_user = CustomersUser.new(fb_params)
       session[:user_customer_id] = @customers_user.id
-      render "/customers_users/new"
+      render "/customers_users/fb"
     else
      session_accepted (@customers_user)
      render :nothing => true, status: :accepted, :content_type => 'text/html'
