@@ -3,6 +3,15 @@ class OrdersController < ApplicationController
   before_filter :address_all, only: :checkout
   before_filter :get_order, only: [:checkout,:express]
 
+  def successful
+    @order_number = params[:order_number]
+    respond_to do |format|
+      format.js {
+        render 'successful'
+      }
+    end
+  end
+
   def checkout
   end
 
@@ -49,6 +58,33 @@ class OrdersController < ApplicationController
         end
       end
     end
+  end
+
+  def confirmation
+    respond_to do |format|
+      format.js do
+        if request.patch?
+          confirmation_express ? nil : return
+        else
+          confirmation_user
+        end
+
+        redirect_to action: 'successful',
+                    order_number: @order.number
+      end
+    end
+  end
+
+  def confirmation_express
+    @order = Shoppe::Order.find(current_order.id)
+    @order.attributes = params[:order].permit(:first_name, :last_name, :company, :billing_address1, :billing_address2, :billing_address3, :billing_address4, :billing_country_id, :billing_postcode, :email_address, :phone_number, :delivery_name, :delivery_address1, :delivery_address2, :delivery_address3, :delivery_address4, :delivery_postcode, :delivery_country_id, :separate_delivery_address)
+    @order.last_name = "."
+    @order.ip_address = request.ip
+    unless @order.proceed_to_confirm
+      render 'express'
+      return false
+    end
+    true
   end
 
   def destroy
