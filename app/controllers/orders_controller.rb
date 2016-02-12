@@ -5,6 +5,8 @@ class OrdersController < ApplicationController
 
   def successful
     @order_number = params[:order_number]
+    @order = nil
+    session[:order_id] = nil
     respond_to do |format|
       format.js {
         render 'successful'
@@ -61,18 +63,31 @@ class OrdersController < ApplicationController
   end
 
   def confirmation
+    puts ""
+    puts params
     respond_to do |format|
       format.js do
         if request.patch?
           confirmation_express ? nil : return
-        else
-          confirmation_user
         end
 
-        redirect_to action: 'successful',
-                    order_number: @order.number
+      end
+      format.json do
+        confirmation_customer_user
       end
     end
+    begin
+      @order.confirm!
+      redirect_to action: 'successful',
+                  order_number: @order.number
+    rescue Shoppe::Errors::PaymentDeclined => e
+      flash[:alert] = "Payment was declined by the bank. #{e.message}"
+    rescue Shoppe::Errors::InsufficientStockToFulfil
+      flash[:alert] = "We're terribly sorry but while you were checking out we ran out of stock of some of the items in your basket. Your basket has been updated with the maximum we can currently supply. If you wish to continue just use the button below."
+    rescue Exception => e
+      puts e
+    end
+
   end
 
   def confirmation_express
@@ -87,6 +102,21 @@ class OrdersController < ApplicationController
     true
   end
 
+  def confirmation_customer_user
+    @order = Shoppe::Order.find(current_order.id)
+    @order.delivery_service = Shoppe::DeliveryService.first
+    @order.save
+    address = Address.new(current_customer, params_confirmation_customer["direction"])
+    @order.attributes = address.set_shoppe_address
+    @order.ip_address = request.ip
+
+    # @order.update_attributes(s_params)
+    unless @order.proceed_to_confirm
+      render partial: "orders/express.html.erb"
+    end
+    @order
+  end
+
   def destroy
     current_order.destroy
     session[:order_id] = nil
@@ -98,6 +128,7 @@ class OrdersController < ApplicationController
       end
     end
   end
+
   private
   def address_instance
     @address = Shoppe::Address.new
@@ -108,5 +139,8 @@ class OrdersController < ApplicationController
   end
   def get_order
     @order = Shoppe::Order.find(current_order.id)
+    end
+  def params_confirmation_customer
+    params.require("confirmation").permit("direction","customer")
   end
 end

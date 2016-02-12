@@ -3,22 +3,31 @@
   <p class="secure">Conección segura</p>
   <h2>Confirme Su orden</h2>
   <p class="intro">
-   Texto para introducción de orden
+    Texto para introducción de orden
   </p>
   <h3>Confirmación de orden</h3>
   <%= render 'shared/order_items', :order => @order %>
   <h3>Dirección de la orden</h3>
 
-  <div id="checkout-information" class="row">
-    <% if current_customer %>
-      <div class="col-sm-6">
-        <%= render partial: 'address/new', :address => @address  %>
+  <% if current_customer %>
+      <%= csrf_meta_tag %>
+      <div id="checkout-information" class="row">
+        <div class="col-sm-6">
+          <%= render partial: 'address/new', :address => @address  %>
+        </div>
+        <div class="col-sm-6">
+          <%= render partial: 'address/list', :address => @addresses  %>
+        </div>
       </div>
-      <div class="col-sm-6">
-        <%= render partial: 'address/list', :address => @addresses  %>
+      <%= hidden_field_tag "current-customer", current_customer.id %>
+      <div class="row">
+        <div class="col-xs-12">
+          <button id="confirmation-customer" class="btn">
+            Realizar pedido
+          </button>
+        </div>
       </div>
-    <%end%>
-  </div>
+  <%end%>
 
 
   <% unless current_customer %>
@@ -42,7 +51,6 @@
 
   <div id="customer-user"></div>
 
-  <div id="pay-on-deliver"></div>
 
 </div>
 
