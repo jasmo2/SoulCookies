@@ -7,10 +7,11 @@ class OrdersController < ApplicationController
 
   def successful
     @order_number = params[:order_number]
-    @order = nil
-    session[:order_id] = nil
     respond_to do |f|
       f.js {
+        @order = nil
+        session[:order_id] = nil
+
         render 'successful'
       }
     end
@@ -65,7 +66,6 @@ class OrdersController < ApplicationController
   end
 
   def confirmation
-
     respond_to do |format|
       format.js do
         if request.patch?
@@ -81,6 +81,7 @@ class OrdersController < ApplicationController
       @order.confirm!
       redirect_to action: 'successful',
                   order_number: @order.number
+
     rescue Shoppe::Errors::PaymentDeclined => e
       flash[:alert] = "Payment was declined by the bank. #{e.message}"
     rescue Shoppe::Errors::InsufficientStockToFulfil

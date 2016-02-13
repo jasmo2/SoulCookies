@@ -1,9 +1,6 @@
-<h1>Coompraexitosa</h1>
+<h1>Compra Exitosa</h1>
 <h2>Tu orden #<%= order_number %> se realizó con exito. Te hemos enviado un email con la información. También puedes revizar el cookie tracker para ver el estado</h2>
 <br>
 
-<button id="toHome" class="btn btn-success" > Volver a al Home </button>
+<%= link_to "Volver al home", root_path %>
 
-<script type="application/javascript">
-  document.getElementById("clickMe").onclick = function () { document.location.href="/"; };
-</script>
