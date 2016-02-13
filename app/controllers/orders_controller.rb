@@ -3,12 +3,14 @@ class OrdersController < ApplicationController
   before_filter :address_all, only: :checkout
   before_filter :get_order, only: [:checkout,:express]
 
+  before_filter { redirect_to root_path unless has_order? }
+
   def successful
     @order_number = params[:order_number]
     @order = nil
     session[:order_id] = nil
-    respond_to do |format|
-      format.js {
+    respond_to do |f|
+      f.js {
         render 'successful'
       }
     end
@@ -63,8 +65,7 @@ class OrdersController < ApplicationController
   end
 
   def confirmation
-    puts ""
-    puts params
+
     respond_to do |format|
       format.js do
         if request.patch?
