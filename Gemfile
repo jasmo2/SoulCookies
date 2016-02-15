@@ -54,7 +54,7 @@ gem 'thin'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'bxslider-rails', '~> 4.2', '>= 4.2.5.1'
 
-=begin
+
 #windows specific
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
-=end
+

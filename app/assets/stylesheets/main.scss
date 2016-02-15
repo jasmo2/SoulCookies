@@ -77,6 +77,10 @@
   }
   .txt-fat {
     font-family: 'modeliaheavy', sans-serif;
+    letter-spacing: 0;
+  }
+  .txt-orange {
+    color: #f94406;
   }
   .btn-default {
     background: #f94406;
@@ -95,22 +99,37 @@
 
   // navbar
   .navbar {
-    padding-left: 75px;
-    padding-right: 75px;
-    padding-top: 30px;
-    a {
-      color: #fff;
-      text-transform: uppercase;
-      font-size: 1.2em;
-      @include effect_color;
-      &:hover, :active {
-        @include effect_color;
-        color: #f94406;
+    padding: 20px 75px;
+    background: rgba(39, 177, 226, 0.9);
+    .active {
+      a {
+        background: #058baa;
+        border-radius: 25px;
+      }
+    }
+    .menu-link {
+      a {
+        color: #fff;
+        text-transform: uppercase;
+        font-size: 1.2em;
+        border-radius: 25px;
+        @include effect_bg;
+        &:hover, &:active, &:focus {
+          @include effect_bg;
+          background: #058baa;
+        }
       }
     }
   }
   .navbar-brand {
-    width: 150px;
+    height: 58px;
+    padding: 0;
+    width: 262px;
+    @include effect_opacity;
+      &:hover, &:active, &:focus {
+        @include effect_opacity;
+        opacity: 0.8;
+      }
     img {
       width: 100%;
     }
@@ -131,8 +150,10 @@
     }
   }
   .navbar-right {
+    border-bottom: 1px solid #fff;
+    padding-bottom: 10px;
     .icon {
-      width: 25px;
+      width: 32px;
       display: block;
       svg {
         &:hover path, :active path {
@@ -144,14 +165,15 @@
         }
       }
     }
+    .icon-link {
+      padding-top: 8px;
+      padding-bottom: 0;
+    }
   }
   // intro
   .intro {
     padding-top: 200px;
     padding-bottom: 90px;
-    .logo-intro {
-      text-align: center;
-    }
     .text-intro {
       font-size: 1.500em;
       width: 350px;
@@ -165,9 +187,66 @@
       padding-right: 10px;
     }
   }
+  // how to order
+  .how-to-order {
+    .col-md-3 {
+      border-right: solid 1px #F94406;
+      height: 200px;
+      &:last-child {
+        border: 0;
+      }
+    }
+    .txt-fat {
+      font-size: 2.857em;
+      display: block;
+    }
+    .txt-orange {
+      margin-top: 40px;
+    }
+    .img-container {
+      height: 100px;
+      margin: 0 auto;
+      img {
+        width: 100%;
+      }
+    }
+    .img-online {
+      width: 148px;
+    }
+    .img-arrow {
+      width: 44px;
+    }
+    .img-phone {
+      width: 79px;
+    }
+    .img-app {
+      width: 58px;
+    }
+    .os {
+      text-align: center;
+    }
+    .img-ios {
+      width: 35px;
+      display: inline-block;
+    }
+    .img-android {
+      width: 35px;
+      display: inline-block;
+    }
+    .icon {
+      @include effect_opacity;
+      &:hover, &:active, &:focus {
+        @include effect_opacity;
+        opacity: 0.8;
+      }
+    }
+  }
   // products
-  .products {
+  .container-products {
+    padding-top: 100px;
     background: #fff;
+  }
+  .products {
     color: #363635;
     input[type="number"] {
       height: 40px;
@@ -189,12 +268,14 @@
     width: 75%;
   }
   .product-name {
-    font-size: 2.857em;
+    font-size: 2.5em;
     height: 42px;
     overflow: hidden;
   }
   .product-info {
     font-size: 1.286em;
+    height: 100px;
+    overflow: hidden;
   }
   .product-quantity {
     text-transform: uppercase;
@@ -235,16 +316,49 @@
     display: inline-block;
   }
   // gallery
+  .bg-gallery {
+    background: #fff;
+    img {
+      width: 100%;
+    }
+  }
   .gallery {
-    background-image: image-url("bg-bogota.png");
-    background-size: cover;
-    background-repeat: no-repeat; 
-    padding-top: 60px;
     background-color: #fff;
+    overflow: hidden;
+    .container-fluid {
+      padding-left: 0;
+      padding-right: 0;
+    }
+    .bx-wrapper {
+      background: transparent;
+      border: 0;
+      box-shadow: none;
+      margin-bottom: 0;
+    }
+    .bx-prev {
+      background-image: image-url("controls.png")
+    }
+    .bx-next {
+      background-image: image-url("controls.png")
+    }
   }
   .slides {
     background: #eae9e4;
-    padding-bottom: 60px;
+    padding-top: 100px;
+  }
+
+  // footer
+  footer {
+    background: #363635;
+    color: #FDFCF4;
+    padding: 20px 0;
+    .logo-footer {
+      width: 181px;
+      margin: 20px auto;
+      img {
+        width: 100%;
+      }
+    }
   }
   
 }

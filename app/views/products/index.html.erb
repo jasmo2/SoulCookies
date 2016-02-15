@@ -1,16 +1,11 @@
 <% @full_header = true %>
 <% @page_title = 'Welcome' %>
-<div class="intro">
+<div id="" class="intro">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-md-4 col-md-offset-4">
-        <div class="logo-intro">
-          <%= image_tag("logo-soul-cookies.png", class: "") %>
-        </div>
-      </div>
-      <div class="col-md-4">
+      <div class="col-md-4 col-md-offset-8">
         <div class="text-intro">
-          <p><span class="txt-fat">Somos</span> una fábrica de galletas. Nos dedicamos diariamente a hornear frescos y suavecitos pedazos de felicidad, hechos con el alma y los mejores ingredientes, entregados en la puerta de tu casa o tu empresa.</p>
+          <p><span class="txt-fat">Somos</span> una fábrica de galletas. De galletas grandes. Nos dedicamos diariamente a hornear frescos y suavecitos pedazos de felicidad, hechos con el alma y los mejores ingredientes, entregados en la puerta de tu casa o empresa.</p>
         </div>
       </div>
     </div>
@@ -19,19 +14,14 @@
 <div id="basket-modal" style="border:1px solid black;padding:10px;">
 <%= render 'shared/basket', :products => @products %>
 </div>
-<%= render 'shared/products_list', :products => @products %>
+<div id="section1" class="container-products">
+  <%= render "layouts/how_to_order" %>
+  <%= render 'shared/products_list', :products => @products %>
+</div>
+<div class="bg-gallery">
+  <%= image_tag("bg-bogota.png") %>
+</div>
+<%= render "layouts/gallery" %>
+<%= render "layouts/footer" %>
 
 
-<div class="gallery">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-12 slides">
-        <ul class="bxslider">
-          <li><%= image_tag("slide01.png", class: "") %></li>
-          <li><%= image_tag("slide02.png", class: "") %></li>
-          <li><%= image_tag("slide03.png", class: "") %></li>
-        </ul>
-      </div><!-- /col-md-12 -->
-    </div><!-- /row -->
-  </div><!-- /container-fluid -->
-</div><!-- /gallery -->
