@@ -89,6 +89,7 @@ GEM
       execjs
     coffee-script-source (1.10.0)
     concurrent-ruby (1.0.0)
+    connection_pool (2.2.0)
     daemons (1.2.3)
     debug_inspector (0.0.2)
     dynamic_form (1.1.4)
@@ -288,6 +289,7 @@ GEM
     rdoc (4.2.2)
       json (~> 1.4)
     redcarpet (3.3.4)
+    redis (3.2.2)
     roo (1.13.2)
       nokogiri
       rubyzip
@@ -304,6 +306,10 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    sidekiq (4.1.0)
+      concurrent-ruby (~> 1.0)
+      connection_pool (~> 2.2, >= 2.2.0)
+      redis (~> 3.2, >= 3.2.1)
     spreadsheet (1.1.1)
       ruby-ole (>= 1.0)
     spring (1.6.3)
@@ -356,6 +362,7 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   shoppe!
+  sidekiq (~> 4.1.0)
   spring
   table_print
   thin
