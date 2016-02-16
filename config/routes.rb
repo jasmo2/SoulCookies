@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'sessions/new'
   resources :customers_users
   mount Shoppe::Engine => "/shoppe"
   root 'products#index'
@@ -9,79 +8,35 @@ Rails.application.routes.draw do
   post 'products/:category_id/:product_id/buy' => 'products#add_to_basket', :as => 'buy_product'
 
   # Facebook
-  post 'auth/facebook/callback', to: 'sessions#create_fb'
-  get 'auth/failure', to: redirect('/')
+  post 'auth/facebook/callback'=> 'sessions#create_fb'
+  get 'auth/failure'=> redirect('/')
 
   # Sessions
-  get 'sessions/create', to: 'sessions#create'
-  get 'signout', to: 'sessions#destroy', as: 'signout'
+  get 'sessions/new' => 'sessions#new'
+  match 'sessions/create'=> 'sessions#create', via: [:get,:post]
+  get 'signout'=> 'sessions#destroy', as: 'signout'
 
   # Orders & checkout
   resources :address, except: [:index,:show]
 
 
-  match "checkout", to: "orders#checkout", as: "checkout", via: [:get, :patch]
-  match "checkout/express", to: "orders#express", via: [:get, :post]
-  match "checkout/pay", to: "orders#payment", as: "checkout_payment", via: [:get, :post]
-  match "checkout/confirm", to: "orders#confirmation", as: "checkout_confirmation", via: [:get, :post]
+  match "checkout"=> "orders#checkout", as: "checkout", via: [:get, :patch]
+  match "checkout/express"=> "orders#express", via: [:get, :post]
+  match "checkout/pay"=> "orders#payment", as: "checkout_payment", via: [:get, :post]
+  match "checkout/confirm"=> "orders#confirmation", as: "checkout_confirmation", via: [:patch, :post]
 
-  post 'basket/:order_item_id' => 'orders#change_item_quantity', :as => 'adjust_basket_item_quantity'
+  post 'basket/:order_item_id' => 'orders#change_item_quantity', as: 'adjust_basket_item_quantity'
   delete 'basket/:order_item_id' => 'orders#change_item_quantity'
-  delete 'basket/delete/:order_item_id' => 'orders#remove_item', :as => 'remove_basket_item'
+  delete 'basket/delete/:order_item_id' => 'orders#remove_item', as: 'remove_basket_item'
+
+  get 'compra_exitosa/:order_number' => 'orders#successful'
+
+  # Cookie Tracker
+  get "cookie_tracker" => "cookie_tracker#index"
+  post "cookie_tracker" => "cookie_tracker#search"
+  get 'cookie_tracker/steps' => 'cookie_tracker#steps'
 
 
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
 
-  # You can have the root of your site routed with "root"
-  # root 'welcome#index'
 
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
-
-  # Example of named route that can be invoked with purchase_url(id: product.id)
-  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
-
-  # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
-
-  # Example resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
-
-  # Example resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
-
-  # Example resource route with more complex sub-resources:
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', on: :collection
-  #     end
-  #   end
-
-  # Example resource route with concerns:
-  #   concern :toggleable do
-  #     post 'toggle'
-  #   end
-  #   resources :posts, concerns: :toggleable
-  #   resources :photos, concerns: :toggleable
-
-  # Example resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
 end

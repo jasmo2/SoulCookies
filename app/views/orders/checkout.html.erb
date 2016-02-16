@@ -3,34 +3,51 @@
   <p class="secure">Conección segura</p>
   <h2>Confirme Su orden</h2>
   <p class="intro">
-   Texto para introducción de orden
+    Texto para introducción de orden
   </p>
   <h3>Confirmación de orden</h3>
   <%= render 'shared/order_items', :order => @order %>
   <h3>Dirección de la orden</h3>
 
-  <div id="checkout-information" class="row">
-    <% if current_customer %>
-      <div class="col-sm-6">
-        <%= render partial: 'address/new', :address => @address  %>
+  <% if current_customer %>
+      <%= csrf_meta_tag %>
+      <div id="checkout-information" class="row">
+        <div class="col-sm-6">
+          <%= render partial: 'address/new', :address => @address  %>
+        </div>
+        <div class="col-sm-6">
+          <%= render partial: 'address/list', :address => @addresses  %>
+        </div>
       </div>
-      <div class="col-sm-6">
-        <%= render partial: 'address/list', :address => @addresses  %>
+      <%= hidden_field_tag "current-customer", current_customer.id %>
+      <div class="row">
+        <div class="col-xs-12">
+          <button id="confirmation-customer" class="btn">
+            Realizar pedido
+          </button>
+        </div>
       </div>
-    <%end%>
-  </div>
+<%end%>
 
 
   <% unless current_customer %>
       <div class="row">
         <h5 class="col-sm-3">
-          <%= (link_to 'Express Checkout', checkout_express_path, :remote => true, class: "customer-user-record")%>
+          <%= form_tag checkout_express_path, :remote => true, method: :get do%>
+            <%= submit_tag 'Express Checkout',  class: "customer-user-record" %>
+          <% end %>
+
         </h5>
         <h5 class="col-sm-3">
-          <%= (link_to 'New Customers user', new_customers_user_path, :remote => true, class: "customer-user-record")%>
+          <%= form_tag  new_customers_user_path, :remote => true, method: :get do%>
+            <%= submit_tag 'Crear una cuenta nueva', class: "customer-user-record"%>
+
+          <% end %>
         </h5>
         <h5 class="col-sm-3">
-          <%= link_to "A mi Cuenta",  new_customers_user_path, id: "login-customer",class: "customer-user-record"  %>
+          <%= form_tag  sessions_new_path, :remote => true, method: :get do%>
+            <%= submit_tag "A mi Cuenta", id: "login-customer", class: "customer-user-record"  %>
+          <% end %>
         </h5>
       </div>
       <div class="row">
@@ -41,8 +58,6 @@
   <% end %>
 
   <div id="customer-user"></div>
-
-  <div id="pay-on-deliver"></div>
 
 </div>
 

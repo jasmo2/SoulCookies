@@ -49,10 +49,12 @@ end
 gem 'puma'
 gem 'rails-i18n', '~> 4.0.0'
 gem 'redcarpet'
-gem 'shoppe'#, :git => 'https://github.com/jasmo2/shoppe.git'
+gem 'shoppe', :git => 'https://github.com/jasmo2/shoppe.git'
 gem 'thin'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'bxslider-rails', '~> 4.2', '>= 4.2.5.1'
+
+gem 'sidekiq', '~> 4.1.0'
 
 
 #windows specific

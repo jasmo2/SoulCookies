@@ -1,0 +1,59 @@
+<div class="container">
+
+  <div class="jumbotron">
+    <h2>¿En qué andan mis galletas?</h2>
+    <p class="lead">
+      ¡Hola <%= "#{order.first_name} #{order.last_name}" %> ! Pronto tendras tus galletas en tus manos. Mientras eso, te sugerimos que llames a
+      un ser querido para saludarlo. ¿Por qué? No lo sabemos ¿Por qué no?
+    </p>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-3 col-xs-12 steps">
+      <div  class="thumbnail">
+        <%= image_tag "step-1.png", height: '32', width: '32'%>
+        <div class="caption">
+          <h3>1</h3>
+          <p>Tu orden ha sido recibida.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-3 col-xs-12 steps">
+      <div class="thumbnail">
+        <%= image_tag "step-2.png", height: '32', width: '32'%>
+        <div class="caption">
+          <h3>2</h3>
+          <p>Tus galletas estan siendo elaboradas.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-3 col-xs-12 steps">
+      <div class="thumbnail">
+        <%= image_tag "step-3.png", height: '32', width: '32'%>
+        <div class="caption">
+          <h3>3</h3>
+          <p>Tus galletas estan en el horno.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-3 col-xs-12 steps">
+      <div class="thumbnail">
+        <%= image_tag "step-4.png", height: '32', width: '32'%>
+        <div class="caption">
+          <h3>4</h3>
+          <p>Tus galletas van en camino.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

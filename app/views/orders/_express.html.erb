@@ -1,4 +1,4 @@
-<%= form_for @order, :url => checkout_path, :html => {:class => 'col-sm-push-1 col-sm-10'} do |f| %>
+<%= form_for @order, url: checkout_confirmation_path, method: :patch,remote: true, html: {class: 'col-sm-push-1 col-sm-10'} do |f| %>
     <%= f.error_messages %>
     <div class="customer">
       <%= field_set_tag do %>
@@ -20,7 +20,7 @@
           </dl>
           <dl>
             <dt>
-              <%= f.label :phone_number, 'Tu numero telefonico o celulaar', :class => 'req' %>
+              <%= f.label :phone_number, 'Tu numero telefonico o celular', :class => 'req' %>
             </dt>
             <dd>
               <%= f.text_field :phone_number %>

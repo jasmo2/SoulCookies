@@ -37,7 +37,12 @@ class CustomersUsersController < ApplicationController
 
   # GET /customers_users/new
   def new
-    @customers_user = CustomersUser.new
+    respond_to do |f|
+      f.js do
+        @customers_user = CustomersUser.new
+        render 'new'
+      end
+    end
   end
 
   # GET /customers_users/1/edit

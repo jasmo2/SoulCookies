@@ -73,3 +73,9 @@ pro.default_image_file = get_file('roberta.png')
 if pro.save
   pro.stock_level_adjustments.create(description: 'Stock inicial', adjustment: 50)
 end
+
+State.create(name: "orden recibida", seq: 1)
+State.create(name: "Tus Galletas estan siendo elaboradas", seq: 2)
+State.create(name: "Tus galletas estan en el horno",seq: 3)
+State.create(name: "¡ Tus galletas van en camino !", seq: 4)
+
