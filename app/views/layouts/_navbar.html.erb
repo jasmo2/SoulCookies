@@ -19,7 +19,7 @@
             <li class="menu-link"><a href="#section2">Galería</a></li>
             <li>
               <% if current_customer %>
-                Hola, <%= current_customer.first_name %> <%= current_customer.last_name %>.
+                Hola, <%= current_customer.first_name %>.
                 <%= link_to "Log out", signout_path %>
               <% end %>
             </li>
@@ -42,23 +42,7 @@
                 </span>
               </a>
             </li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li>
-              <a href="">  
-                <span class="icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30.3 29.8" enable-background="new 0 0 30.3 29.8"><style type="text/css">.st4{fill:#393838;}</style><path class="st4" d="M29.9 11.3l-.8-.5-13.9-10.8-14 10.8-.7.5-.5.4v2.8h3.7v15.3h8.5v-6.5h5.9v6.5h8.5v-15.3h3.7v-2.8z"/></svg>
-                </span>
-              </a>
-            </li>
-            <li><a href="">Pedidos</a></li>
-            <li><%= link_to "Cookie Tracker", cookie_tracker_path %></li>
-            <li><a href="">Galería</a></li>
-            <% if current_customer %>
-                Hola <%= current_customer.first_name %>.
-                <%= link_to "Log out", signout_path %>
-            <% end %>
-            <li><a href="">
+            <li class="dropdown"><a href="" class="icon-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                   <span class="icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29.8 29.8" enable-background="new 0 0 29.8 29.8"><style type="text/css">.st5{fill:#393838;}</style><path class="st5" d="M8.9 23.8c-1.6 0-3 1.3-3 3 0 1.6 1.3 3 3 3s3-1.3 3-3-1.3-3-3-3zm-8.9-23.8v3h3l5.4 11.3-2.1 3.6c-.1.4-.3 1-.3 1.5 0 1.6 1.3 3 3 3h17.8v-3h-17.3c-.2 0-.3-.1-.3-.3v-.1l1.3-2.5h11c1.2 0 2.1-.6 2.5-1.5l5.4-9.7c.3-.3.3-.5.3-.7 0-.9-.6-1.5-1.5-1.5h-22l-1.3-3.1h-4.9zm23.8 23.8c-1.6 0-3 1.3-3 3 0 1.6 1.3 3 3 3s3-1.3 3-3-1.4-3-3-3zm0 0"/></svg>
                   </span>
