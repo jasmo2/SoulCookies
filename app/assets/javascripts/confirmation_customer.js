@@ -5,7 +5,7 @@ confirmtationReady = function() {
     $confirmationCustomer = $("#confirmation-customer"),
     $directionRadioGroup = $("input[name='addresses']"),
     customerUser = document.getElementById("current-customer");
-    if (customerUser !== undefined) {
+    if (customerUser != null) {
         customerUser = customerUser.value;
         return $confirmationCustomer.click(function() {
             var confirmation, direction, directionRadioButton, i, len;
@@ -51,5 +51,5 @@ confirmtationReady = function() {
 
 };
 
-
-$(document).on('page:ready', confirmtationReady);
+$(document).ready(confirmtationReady);
+$(document).on('page:load', confirmtationReady);
