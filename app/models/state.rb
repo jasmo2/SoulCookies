@@ -21,6 +21,7 @@ class State < ActiveRecord::Base
     end
   end
   def begin_tracker
+    #Fixme seq begins in 5...
     CookieTrackerJob.perform_now(self)
   end
 end

@@ -46,8 +46,11 @@
             <li><%= link_to "Cookie Tracker", cookie_tracker_path %></li>
             <li><a href="">Galería</a></li>
             <% if current_customer %>
-                Logged in as <%= current_customer.first_name %> <%= current_customer.last_name %>.
-                <%= link_to "Log out", signout_path %>
+                <li> Logged in as <%= current_customer.first_name %> <%= current_customer.last_name %>.
+                <%= link_to "Log out", signout_path %></li>
+                <li>
+                  <%= link_to "Mi cuenta", edit_customers_user_path(current_customer) %>
+                </li>
             <% else %>
                 <%= link_to "Inicar Sesión", new_customers_user_path   %>
             <% end %>
