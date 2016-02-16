@@ -1,10 +1,15 @@
 class SessionsController < ApplicationController
   #
   def new
+    respond_to do |f|
+      f.js{
+        render 'new'
+      }
+    end
   end
 
   def create
-    if CustomersUser.where(uid: fb_params['id']).first.nil?
+    if fb_params['id'].nil?
       create_customer
     else
       create_fb

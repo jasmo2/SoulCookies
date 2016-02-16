@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'sessions/new'
   resources :customers_users
   mount Shoppe::Engine => "/shoppe"
   root 'products#index'
@@ -13,7 +12,8 @@ Rails.application.routes.draw do
   get 'auth/failure'=> redirect('/')
 
   # Sessions
-  get 'sessions/create'=> 'sessions#create'
+  get 'sessions/new' => 'sessions#new'
+  match 'sessions/create'=> 'sessions#create', via: [:get,:post]
   get 'signout'=> 'sessions#destroy', as: 'signout'
 
   # Orders & checkout

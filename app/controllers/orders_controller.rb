@@ -11,7 +11,6 @@ class OrdersController < ApplicationController
       f.js {
         @order = nil
         session[:order_id] = nil
-
         render 'successful'
       }
     end
@@ -75,11 +74,12 @@ class OrdersController < ApplicationController
       end
       format.json do
         confirmation_customer_user
+        # render :nothing => true
       end
     end
     begin
       @order.confirm!
-      State.create(order_tracker_id: @order.id)
+      state = State.create(order_tracker_id: @order.id)
       redirect_to action: 'successful',
                   order_number: @order.number
 
@@ -113,10 +113,8 @@ class OrdersController < ApplicationController
     @order.attributes = address.set_shoppe_address
     @order.ip_address = request.ip
 
-    # @order.update_attributes(s_params)
-    unless @order.proceed_to_confirm
-      render partial: "orders/express.html.erb"
-    end
+    @order.proceed_to_confirm
+
     @order
   end
 

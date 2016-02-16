@@ -27,19 +27,27 @@
           </button>
         </div>
       </div>
-  <%end%>
+<%end%>
 
 
   <% unless current_customer %>
       <div class="row">
         <h5 class="col-sm-3">
-          <%= (link_to 'Express Checkout', checkout_express_path, :remote => true, class: "customer-user-record")%>
+          <%= form_tag checkout_express_path, :remote => true, method: :get do%>
+            <%= submit_tag 'Express Checkout',  class: "customer-user-record" %>
+          <% end %>
+
         </h5>
         <h5 class="col-sm-3">
-          <%= (link_to 'New Customers user', new_customers_user_path, :remote => true, class: "customer-user-record")%>
+          <%= form_tag  new_customers_user_path, :remote => true, method: :get do%>
+            <%= submit_tag 'Crear una cuenta nueva', class: "customer-user-record"%>
+
+          <% end %>
         </h5>
         <h5 class="col-sm-3">
-          <%= link_to "A mi Cuenta",  new_customers_user_path, id: "login-customer",class: "customer-user-record"  %>
+          <%= form_tag  sessions_new_path, :remote => true, method: :get do%>
+            <%= submit_tag "A mi Cuenta", id: "login-customer", class: "customer-user-record"  %>
+          <% end %>
         </h5>
       </div>
       <div class="row">
@@ -50,7 +58,6 @@
   <% end %>
 
   <div id="customer-user"></div>
-
 
 </div>
 

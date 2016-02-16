@@ -1,0 +1,28 @@
+<%= form_tag sessions_create_path, remote: true,  :html => { :id => "customer-submit" } do |f| %>
+    <div class="splitContainer">
+      <dl class="third">
+        <dt>
+          <%= label_tag :email, t('shoppe.customers.email') %>
+        </dt>
+        <dd>
+          <%= text_field_tag :email, nil, :class => "text" %>
+        </dd>
+      </dl>
+    </div>
+        <dl class="third">
+          <dt>
+            <%= label_tag :password, "contraseña" %>
+          </dt>
+          <dd>
+            <%= password_field_tag :password, nil, :class => "text" %>
+          </dd>
+        </dl>
+    <div class="actions">
+      <input  type="submit" name="commit" value="Ingresar Datos">
+    </div>
+<% end %>
+
+
+
+
+
