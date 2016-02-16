@@ -1,4 +1,28 @@
-Usted Tiene <%= pluralize @ajax_current_order.total_items, 'galleta'%> en tu canasta.
-Valor: <%= number_to_currency @ajax_current_order.total %> COP.
-<br>
-<%= link_to "Ordenar", checkout_path %>
+<div class="basket-number-items">
+    Vas a ordenar <%= pluralize @ajax_current_order.total_items, 'galletas'%>:
+</div>
+<div class="basket-items-info">
+	<% for item in @ajax_current_order.order_items %>
+		<div class="basket-item">
+			<div class="basket-item-info">
+				<%= item.ordered_item.full_name %>(x<%= item.quantity %>)
+	            <% unless defined?(readonly) %>
+	              <%= link_to "quitar", remove_basket_item_path(item), :method => :delete, :class => 'ajax txt-link' %>
+	            <% end %>
+			</div><!-- /basket-item-info -->
+
+			<div class="basket-item-total">
+				<%= number_to_currency item.total %>
+			</div><!-- /basket-item-total -->
+		</div><!-- /basket-item -->
+	<% end %>
+</div><!-- /basket-items-info -->
+<div class="basket-checkout">
+	<div class="basket-total-value">
+		Total: <%= number_to_currency @ajax_current_order.total %> COP.
+    </div><!-- /basket-total-value -->
+
+    <div class="basket-order">
+        <%= link_to "Ordenar", checkout_path, class:'btn-default btn-order txt-fat' %>
+    </div><!-- /basket-order -->
+</div><!-- /basket-checkout -->
