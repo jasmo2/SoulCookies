@@ -3,13 +3,18 @@ class CookieTrackerController < ApplicationController
   end
 
   def search
-    cookies_params
+    respond_to do |f|
+      f.js do
+        order = Shoppe::Order.where(id: cookies_params).first
+        @order = OrderTracker.new(order)
+        render 'steps'
+      end
+    end
   end
 
-  def steps
-  end
+
   private
   def cookies_params
-    params.permit(params["cookie-number"])
+    params.permit("cookie-number")['cookie-number'].to_s
   end
 end

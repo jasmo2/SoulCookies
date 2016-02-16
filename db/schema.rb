@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160216044009) do
+ActiveRecord::Schema.define(version: 20160216151929) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -332,9 +332,9 @@ ActiveRecord::Schema.define(version: 20160216044009) do
   create_table "states", force: :cascade do |t|
     t.string   "name"
     t.integer  "order_tracker_id"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-    t.integer  "seq"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.integer  "seq",              default: 0
   end
 
 end

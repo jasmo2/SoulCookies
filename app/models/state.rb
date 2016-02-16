@@ -11,6 +11,12 @@
 #
 
 class State < ActiveRecord::Base
-  belongs_to :order_tracker
-  
+  belongs_to :shoppe_order
+  def increment_seq
+    seq = self.seq
+    if seq < 5
+      self.seq = seq + 1
+      self.save!
+    end
+  end
 end

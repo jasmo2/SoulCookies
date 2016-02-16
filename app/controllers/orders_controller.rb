@@ -79,6 +79,7 @@ class OrdersController < ApplicationController
     end
     begin
       @order.confirm!
+      State.create(order_tracker_id: @order.id)
       redirect_to action: 'successful',
                   order_number: @order.number
 
