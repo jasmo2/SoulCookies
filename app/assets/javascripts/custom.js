@@ -1,6 +1,6 @@
 var ready;
 ready = function() {
-  // scrollspy
+  // SCROLLSPY
   $('.navbar-nav li a[href^=\'#\']').on('click', function(e) {
     var hash;
     e.preventDefault();
@@ -12,7 +12,17 @@ ready = function() {
     });
   });
 
-  // cookie slider
+  // ADD SLIDEDOWN ANIMATION TO DROPDOWN //
+  $('.dropdown').on('show.bs.dropdown', function(e){
+    $(this).find('.dropdown-menu').first().stop(true, true).slideDown();
+  });
+
+  // ADD SLIDEUP ANIMATION TO DROPDOWN //
+  $('.dropdown').on('hide.bs.dropdown', function(e){
+    $(this).find('.dropdown-menu').first().stop(true, true).slideUp();
+  });
+
+  // COOKIE SLIDER
   $('.bxslider').bxSlider({
     randomStart: true,
     pager: false
