@@ -43,7 +43,7 @@
               </a>
             </li>
             <li><a href="">Pedidos</a></li>
-            <li><a href="">Cookie Tracker</a></li>
+            <li><%= link_to "Cookie Tracker", cookie_tracker_path %></li>
             <li><a href="">Galería</a></li>
             <% if current_customer %>
                 Logged in as <%= current_customer.first_name %> <%= current_customer.last_name %>.

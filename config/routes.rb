@@ -29,8 +29,12 @@ Rails.application.routes.draw do
   delete 'basket/:order_item_id' => 'orders#change_item_quantity'
   delete 'basket/delete/:order_item_id' => 'orders#remove_item', :as => 'remove_basket_item'
 
-
   get 'compra_exitosa/:order_number' => 'orders#successful'
+
+  # Cookie Tracker
+  get "cookie_tracker' => "cookie_tracker#index"
+  post "cookie_tracker" => "cookie_tracker#search"
+  get 'cookie_tracker/steps' => 'cookie_tracker#steps'
 
 
 

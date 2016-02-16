@@ -15,6 +15,7 @@ module Shoppecookies
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
     # config.time_zone = 'Central Time (US & Canada)'
+    config.active_job.queue_adapter = :sidekiq
 
     config.i18n.default_locale = :es
 
@@ -23,5 +24,15 @@ module Shoppecookies
 
     #add webfonts
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
+
+    config.action_mailer.smtp_settings = {
+        :address              => "smtp.gmail.com",
+        :port                 => 587,
+        :domain               => "gmail.com",
+        :user_name            => ENV["SOULCOOKIES_EMAIL_U"],
+        :password             => ENV["SOULCOOKIES_EMAIL_P"],
+        :authentication       => :plain,
+        :enable_starttls_auto => true
+    }
   end
 end
