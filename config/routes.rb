@@ -9,30 +9,30 @@ Rails.application.routes.draw do
   post 'products/:category_id/:product_id/buy' => 'products#add_to_basket', :as => 'buy_product'
 
   # Facebook
-  post 'auth/facebook/callback', to: 'sessions#create_fb'
-  get 'auth/failure', to: redirect('/')
+  post 'auth/facebook/callback'=> 'sessions#create_fb'
+  get 'auth/failure'=> redirect('/')
 
   # Sessions
-  get 'sessions/create', to: 'sessions#create'
-  get 'signout', to: 'sessions#destroy', as: 'signout'
+  get 'sessions/create'=> 'sessions#create'
+  get 'signout'=> 'sessions#destroy', as: 'signout'
 
   # Orders & checkout
   resources :address, except: [:index,:show]
 
 
-  match "checkout", to: "orders#checkout", as: "checkout", via: [:get, :patch]
-  match "checkout/express", to: "orders#express", via: [:get, :post]
-  match "checkout/pay", to: "orders#payment", as: "checkout_payment", via: [:get, :post]
-  match "checkout/confirm", to: "orders#confirmation", as: "checkout_confirmation", via: [:patch, :post]
+  match "checkout"=> "orders#checkout", as: "checkout", via: [:get, :patch]
+  match "checkout/express"=> "orders#express", via: [:get, :post]
+  match "checkout/pay"=> "orders#payment", as: "checkout_payment", via: [:get, :post]
+  match "checkout/confirm"=> "orders#confirmation", as: "checkout_confirmation", via: [:patch, :post]
 
-  post 'basket/:order_item_id' => 'orders#change_item_quantity', :as => 'adjust_basket_item_quantity'
+  post 'basket/:order_item_id' => 'orders#change_item_quantity', as: 'adjust_basket_item_quantity'
   delete 'basket/:order_item_id' => 'orders#change_item_quantity'
-  delete 'basket/delete/:order_item_id' => 'orders#remove_item', :as => 'remove_basket_item'
+  delete 'basket/delete/:order_item_id' => 'orders#remove_item', as: 'remove_basket_item'
 
   get 'compra_exitosa/:order_number' => 'orders#successful'
 
   # Cookie Tracker
-  get "cookie_tracker' => "cookie_tracker#index"
+  get "cookie_tracker" => "cookie_tracker#index"
   post "cookie_tracker" => "cookie_tracker#search"
   get 'cookie_tracker/steps' => 'cookie_tracker#steps'
 
