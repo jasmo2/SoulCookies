@@ -2,22 +2,24 @@
 #
 # Table name: shoppe_customers
 #
-#  id               :integer          not null, primary key
-#  first_name       :string
-#  last_name        :string
-#  company          :string
-#  email            :string
-#  phone            :string
-#  mobile           :string
-#  created_at       :datetime
-#  updated_at       :datetime
-#  password_hash    :string
-#  password_salt    :string
-#  provider         :string
-#  uid              :string
-#  name             :string
-#  oauth_token      :string
-#  oauth_expires_at :datetime
+#  id                     :integer          not null, primary key
+#  first_name             :string
+#  last_name              :string
+#  company                :string
+#  email                  :string
+#  phone                  :string
+#  mobile                 :string
+#  created_at             :datetime
+#  updated_at             :datetime
+#  password_hash          :string
+#  password_salt          :string
+#  provider               :string
+#  uid                    :string
+#  name                   :string
+#  oauth_token            :string
+#  oauth_expires_at       :datetime
+#  password_reset_token   :string
+#  password_reset_sent_at :datetime
 #
 
 class CustomersUsersController < ApplicationController
