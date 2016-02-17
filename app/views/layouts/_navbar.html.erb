@@ -55,7 +55,7 @@
                 </a>
                 <ul class="dropdown-menu">
                   <div id="basket-modal" class="basket-container">
-                    <%= render 'shared/basket', :products => @products %>
+                    <%= render partial: 'shared/basket', locals: { "@ajax_current_order": current_order } %>
                   </div><!-- /#basket-modal -->
                 </ul>
             </li>
