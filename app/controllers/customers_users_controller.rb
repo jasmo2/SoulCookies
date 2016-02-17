@@ -47,6 +47,11 @@ class CustomersUsersController < ApplicationController
 
   # GET /customers_users/1/edit
   def edit
+    unless current_customer
+      @customers_user = CustomersUser.find(params[:id])
+      render 'new'
+    end
+    render nothing: true, status: :unauthorized
   end
 
   # POST /customers_users
@@ -72,25 +77,33 @@ class CustomersUsersController < ApplicationController
   # PATCH/PUT /customers_users/1
   # PATCH/PUT /customers_users/1.json
   def update
-    respond_to do |format|
-      if @customers_user.update(customers_user_params)
-        format.html { redirect_to @customers_user, notice: 'Customers user was successfully updated.' }
-        format.json { render :show, status: :ok, location: @customers_user }
-      else
-        format.html { render :edit }
-        format.json { render json: @customers_user.errors, status: :unprocessable_entity }
+    unless current_customer
+      respond_to do |format|
+        if @customers_user.update(customers_user_params)
+          format.html { redirect_to @customers_user, notice: 'Customers user was successfully updated.' }
+          format.json { render :show, status: :ok, location: @customers_user }
+        else
+          format.html { render :edit }
+          format.json { render json: @customers_user.errors, status: :unprocessable_entity }
+        end
       end
     end
+    render nothing: true, status: :unauthorized
+
   end
 
   # DELETE /customers_users/1
   # DELETE /customers_users/1.json
   def destroy
-    @customers_user.destroy
-    respond_to do |format|
-      format.html { redirect_to customers_users_url, notice: 'Customers user was successfully destroyed.' }
-      format.json { head :no_content }
+    unless current_customer
+      @customers_user.destroy
+      respond_to do |format|
+        format.html { redirect_to customers_users_url, notice: 'Customers user was successfully destroyed.' }
+        format.json { head :no_content }
+      end
     end
+    render nothing: true, status: :unauthorized
+
   end
 
   private
