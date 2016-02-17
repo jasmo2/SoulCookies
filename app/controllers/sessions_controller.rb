@@ -38,7 +38,7 @@ class SessionsController < ApplicationController
       end
 
     else
-       render "/customers_users/new" ,status:  :bad_request
+       render "/customers_users/edit", status:  :bad_request
     end
   end
 

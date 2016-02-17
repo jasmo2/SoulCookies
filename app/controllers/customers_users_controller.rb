@@ -47,11 +47,12 @@ class CustomersUsersController < ApplicationController
 
   # GET /customers_users/1/edit
   def edit
-    unless current_customer
+    if access_private
       @customers_user = CustomersUser.find(params[:id])
-      render 'new'
+      render :edit
+    else
+      redirect_to_root_unauthorized
     end
-    render nothing: true, status: :unauthorized
   end
 
   # POST /customers_users
@@ -69,7 +70,7 @@ class CustomersUsersController < ApplicationController
         end
         format.json { render :show, status: :created, location: @customers_user }
       else
-        format.js { render "/customers_users/new" ,status:  :bad_request}
+        format.js { render "/customers_users/edit", status:  :bad_request}
       end
     end
   end
@@ -77,44 +78,58 @@ class CustomersUsersController < ApplicationController
   # PATCH/PUT /customers_users/1
   # PATCH/PUT /customers_users/1.json
   def update
-    unless current_customer
+    if access_private
       respond_to do |format|
-        if @customers_user.update(customers_user_params)
-          format.html { redirect_to @customers_user, notice: 'Customers user was successfully updated.' }
+        @customers_user.attributes = customers_user_params
+        if @customers_user.save
+          format.html { redirect_to :index, notice: 'El usuario se actualizó correctamente' }
+          format.js {   }
           format.json { render :show, status: :ok, location: @customers_user }
         else
-          format.html { render :edit }
+          format.js { render "/customers_users/edit", status:  :bad_request}
           format.json { render json: @customers_user.errors, status: :unprocessable_entity }
         end
       end
+    else
+      redirect_to_root_unauthorized
     end
-    render nothing: true, status: :unauthorized
 
   end
 
   # DELETE /customers_users/1
   # DELETE /customers_users/1.json
   def destroy
-    unless current_customer
+    if access_private
       @customers_user.destroy
       respond_to do |format|
         format.html { redirect_to customers_users_url, notice: 'Customers user was successfully destroyed.' }
         format.json { head :no_content }
       end
+    else
+      redirect_to_root_unauthorized
     end
-    render nothing: true, status: :unauthorized
 
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_customers_user
-      @customers_user = CustomersUser.find(params[:id])
+    def access_private
+      current_customer.id.to_s == params[:id].to_s
     end
-
+    def set_customers_user
+      begin
+        @customers_user = CustomersUser.find(params[:id])
+      rescue ActiveRecord::RecordNotFound
+        redirect_to_root_unauthorized
+      end
+      @customers_user
+    end
+    def redirect_to_root_unauthorized
+      redirect_to controller: 'products',
+                  action: 'index' , status: :unauthorized
+    end
     # Never trust parameters from the scary internet, only allow the white list through.
     def customers_user_params
       params[:customers_user].permit(:first_name, :last_name,:email,:phone,:uid,:password,:password_confirmation)
-
     end
 end
