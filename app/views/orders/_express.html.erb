@@ -1,56 +1,30 @@
-<%= form_for @order, url: checkout_confirmation_path, method: :patch,remote: true, html: {class: 'col-sm-push-1 col-sm-10'} do |f| %>
+<%= form_for @order, url: checkout_confirmation_path, method: :patch,remote: true, html: {class: ''} do |f| %>
     <%= f.error_messages %>
     <div class="customer">
       <%= field_set_tag do %>
-          <dl>
-            <dt>
-              <%= f.label :first_name, "Name", :class => 'req' %>
-            </dt>
-            <dd class="name">
-              <%= f.text_field :first_name, :placeholder => 'Nombre' %>
-            </dd>
-          </dl>
-          <dl>
-            <dt>
-              <%= f.label :email_address, 'Tu Correo Electronico', :class => 'req' %>
-            </dt>
-            <dd>
-              <%= f.text_field :email_address %>
-            </dd>
-          </dl>
-          <dl>
-            <dt>
-              <%= f.label :phone_number, 'Tu numero telefonico o celular', :class => 'req' %>
-            </dt>
-            <dd>
-              <%= f.text_field :phone_number %>
-            </dd>
-          </dl>
+        <div class="form-group">
+          <%= f.label :first_name, "Name", :class => 'req' %>
+          <%= f.text_field :first_name, :placeholder => 'Nombre', :class => 'form-control'  %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :email_address, 'Tu Correo Electronico', :class => 'req' %>
+          <%= f.text_field :email_address, :placeholder => 'ejemplo@mail.com', :class => 'form-control'  %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :phone_number, 'Tu numero telefonico o celular', :class => 'req' %>
+          <%= f.text_field :phone_number, :placeholder => '3103124528', :class => 'form-control'  %>
+        </div>
       <% end %>
       <%= field_set_tag do %>
-          <dl>
-            <dt>
-              <%= f.label :billing_address1, "Dirección", :class => 'req' %>
-            </dt>
-            <dd>
-              <%= f.text_field :billing_address1, :placeholder => "Calle" %>
-            </dd>
-            <dd>
-              <%= f.text_field :billing_address3, :value => "Bogotá" %>
-            </dd>
-            <dd>
-              <%= f.text_field :billing_address4, :value => "Bogotá D.C." %>
-            </dd>
-            <dd>
-              <%= f.text_field :billing_postcode, :value => "4-72", :placeholder => "Postcode", :class => 'postcode' %>
-            </dd>
-            <dd>
-              <%= f.collection_select :billing_country_id, Shoppe::Country.ordered, :id, :name , {:selected => "Colombia"}%>
-            </dd>
-          </dl>
+          <div class="form-group">
+            <%= f.label :billing_address1, "Dirección (solamente en bogotá)", :class => 'req' %>
+            <%= f.text_field :billing_address1, :placeholder => "Calle", :class => "form-control"  %>
+          </div>
       <% end %>
     </div>
     <p class="submit">
-      <%= f.submit "Continue to payment" %>
+      <%= f.submit "Continuar con el pago", class:'btn-default' %>
     </p>
 <% end %>
