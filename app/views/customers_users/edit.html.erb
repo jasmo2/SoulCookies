@@ -1,3 +1,19 @@
 <div id="customer-user" class="intro">
-  <%= render partial: 'customers_users/new', locals: {p_field: true} %>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <%= render partial: 'customers_users/new', locals: {p_field: true} %>
+      </div>
+      <div class="col-sm-6">
+        <div class="row">
+          <div class="col-sm-12">
+            <%= render partial: 'address/new', locals: { :@address =>  @address ,:my_remote => false }  %>
+          </div>
+          <div class="col-sm-12">
+            <%= render partial: 'address/list', locals: { :@addresses => @customers_user.addresses, :delete => true}  %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

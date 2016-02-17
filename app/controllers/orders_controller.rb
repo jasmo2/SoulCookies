@@ -131,9 +131,7 @@ class OrdersController < ApplicationController
   end
 
   private
-  def address_instance
-    @address = Shoppe::Address.new
-  end
+
   def address_all
     @addresses = Address.new(current_customer)
     @addresses = @addresses.addresses

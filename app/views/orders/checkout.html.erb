@@ -13,7 +13,7 @@
       <%= csrf_meta_tag %>
       <div id="checkout-information" class="row">
         <div class="col-sm-6">
-          <%= render partial: 'address/new', :address => @address  %>
+          <%= render partial: 'address/new', :address => @address, locals: {:my_remote => true}  %>
         </div>
         <div class="col-sm-6">
           <%= render partial: 'address/list', :address => @addresses  %>

@@ -23,6 +23,8 @@
 class CustomersUsersController < ApplicationController
 
   before_action :set_customers_user, only: [:show, :edit, :update, :destroy]
+  before_filter :address_instance, only: :edit
+
 
   # GET /customers_users
   # GET /customers_users.json

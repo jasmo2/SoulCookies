@@ -29,4 +29,10 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_order, :has_order?,:current_customer
 
+  protected
+  def address_instance
+    @address = Shoppe::Address.new
+  end
+
+
 end
