@@ -7,13 +7,20 @@
       <div class="col-sm-6">
         <div class="row">
           <div class="col-sm-12">
-            <%= render partial: 'address/new', locals: { :@address =>  @address ,:my_remote => false }  %>
+            <%= render partial: 'address/new', locals: { :@address =>  @address }  %>
           </div>
           <div class="col-sm-12">
             <%= render partial: 'address/list', locals: { :@addresses => @customers_user.addresses, :delete => true}  %>
           </div>
         </div>
       </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-3"></div>
+      <div class="col-sm-3">
+        <%= button_to "Eliminarme", @customers_user,  method: :delete,  data: { confirm: " ¿Eliminar tu cuenta?" }, class: "btn btg-lg btn-block btn-danger" %>
+      </div>
+      <div class="col-sm-3"></div>
     </div>
   </div>
 </div>

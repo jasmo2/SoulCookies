@@ -32,7 +32,7 @@ class AddressController < ApplicationController
   def destroy
     @address.destroy
     respond_to do |format|
-      format.html { render "customers_users/edit", notice: 'Post was successfully destroyed.' }
+      format.html { redirect_to controller: "customers_users", action: "edit", id: current_customer ,notice: 'Post was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

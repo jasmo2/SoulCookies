@@ -102,10 +102,14 @@ class CustomersUsersController < ApplicationController
   # DELETE /customers_users/1.json
   def destroy
     if access_private
-      @customers_user.destroy
-      respond_to do |format|
-        format.html { redirect_to customers_users_url, notice: 'Customers user was successfully destroyed.' }
-        format.json { head :no_content }
+      if Shoppe::Address.where(customer_id: @customers_user.id).destroy_all
+        @customers_user.destroy
+        respond_to do |format|
+          format.html { redirect_to root_url, notice: 'Customers user was successfully destroyed.' }
+          format.json { head :no_content }
+        end
+      else
+        redirect_to :edit, :id => @customers_user
       end
     else
       redirect_to_root_unauthorized
