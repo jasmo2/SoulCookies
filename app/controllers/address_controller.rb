@@ -4,14 +4,14 @@ class AddressController < ApplicationController
 
   def create
     respond_to do |f|
+      @address = Shoppe::Address.new(address_params)
+      @address.attributes = {
+        customer: current_customer,
+        country: get_country,
+        address_type: "delivery",
+        default: false
+      }
       f.js do
-        @address = Shoppe::Address.new(address_params)
-        @address.attributes = {
-          customer: current_customer,
-          country: get_country,
-          address_type: "delivery",
-          default: false
-        }
         if @address.save
           render "address/new"
         else
@@ -19,7 +19,8 @@ class AddressController < ApplicationController
         end
       end
       f.html do
-        redirect_to controller: "customers_users", action: :edit
+        @address.save
+        redirect_to controller: "customers_users", action: "edit", id: current_customer
       end
 
     end
