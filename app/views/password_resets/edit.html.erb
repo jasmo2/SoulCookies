@@ -1,0 +1,23 @@
+<div class="container intro">
+  <%= form_for @customer_user, :url => password_reset_path(params[:id]), html:{class: "form-signin"} do |f| %>
+      <% if @customer_user.errors.any? %>
+          <div class="error_messages">
+            <h2>Formulario invalido</h2>
+            <ul>
+              <% for message in @customer_user.errors.full_messages %>
+                  <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+      <% end %>
+      <div class="field">
+        <%= f.label :password, nil, class: "sr-only" %>
+        <%= f.password_field :password, class: "form-control", placeholder: "contraseña" %>
+      </div>
+      <div class="field">
+        <%= f.label :password_confirmation, nil ,class: "sr-only" %>
+        <%= f.password_field :password_confirmation,class: "form-control", placeholder: "Confirmación contraseña" %>
+      </div>
+      <div class="actions"><%= f.submit "Actualizar contraseña", class: "btn btn-lg btn-warning btn-block"  %></div>
+  <% end %>
+</div>

@@ -7,7 +7,7 @@
 #  order_tracker_id :integer
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
-#  seq              :integer
+#  seq              :integer          default(0)
 #
 
 class State < ActiveRecord::Base

@@ -1,63 +1,81 @@
 <% @page_title = 'Checkout' %>
 <div class="checkout">
-  <p class="secure">Conección segura</p>
-  <h2>Confirme Su orden</h2>
-  <p class="intro">
-    Texto para introducción de orden
-  </p>
-  <h3>Confirmación de orden</h3>
-  <%= render 'shared/order_items', :order => @order %>
-  <h3>Dirección de la orden</h3>
-
-  <% if current_customer %>
-      <%= csrf_meta_tag %>
-      <div id="checkout-information" class="row">
-        <div class="col-sm-6">
-          <%= render partial: 'address/new', :address => @address  %>
-        </div>
-        <div class="col-sm-6">
-          <%= render partial: 'address/list', :address => @addresses  %>
-        </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2 text-center order-notice">
+        <p class="txt-orange">Falta poco para terminar tu orden. Recuerda que todos los pedidos se pagan a contraentrega (en efectivo).</p>
       </div>
-      <%= hidden_field_tag "current-customer", current_customer.id %>
-      <div class="row">
-        <div class="col-xs-12">
-          <button id="confirmation-customer" class="btn">
-            Realizar pedido
-          </button>
-        </div>
-      </div>
-<%end%>
+      <div class="col-md-7">
+        <div class="order-confirmation-container">
+          <h1 class="txt-fat">1. Confirmación de orden</h1>
+          <%= render 'shared/order_items', :order => @order %>
+          <div class="modify-order">
+            <a href="" class="txt-link">modificar orden</a>
+          </div>
+        </div><!-- /order-confirmation-container -->
+      </div><!-- /col-md-7 -->
+
+      <div class="col-md-5">
+        <div class="order-address-container">
+          <h1 class="txt-fat">2. Dirección de envío</h1>
+          <% if current_customer %>
+            <%= csrf_meta_tag %>
+            <div id="checkout-information" class="row">
+              <div class="col-sm-6">
+                <%= render partial: 'address/new', :address => @address, locals: {:my_remote => true}  %>
+              </div>
+              <div class="col-sm-6">
+                <%= render partial: 'address/list', :address => @addresses  %>
+              </div>
+            </div>
+            <%= hidden_field_tag "current-customer", current_customer.id %>
+            <div class="row">
+              <div class="col-xs-12">
+                <button id="confirmation-customer" class="btn">
+                  Realizar pedido
+                </button>
+              </div>
+            </div>
+          <%end%>
+          <% unless current_customer %>
+            <div class="order-address">
+              <div class="order-express-checkout">
+                <p>Con express checkout sólo tienes que ingresar tu email, tu celular y tu dirección de envío.</p>
+                <%= form_tag checkout_express_path, :remote => true, method: :get do%>
+                  <%= submit_tag 'Express Checkout',  class: "customer-user-record btn-default" %>
+                <% end %>
+              </div><!-- /order-express-checkout -->
+              <div class="order-create-account">
+                <p>Al registrarte tienes la ventaja de guardar tu cuenta y tus direcciones. La próxima vez que pidas a Soul Cookies será mucho más rápido el proceso para ordenar.</p>
+                <%= form_tag  new_customers_user_path, :remote => true, method: :get do%>
+                  <%= submit_tag 'Crear cuenta', class: "customer-user-record btn-default"%>
+                <% end %>
+              </div><!-- /order-create-account -->
+              <div class="order-login-container">
+                <p>Ingresa con tu cuenta.</p>
+                <div class="order-regular-login">
+                  <%= form_tag  sessions_new_path, :remote => true, method: :get do%>
+                    <%= submit_tag "Ingreso", id: "login-customer", class: "customer-user-record btn-default"  %>
+                  <% end %>
+                </div><!-- /order-regular-login -->
+
+                <div class="order-facebook-login">
+                  <%= link_to "Ingreso vía Facebook", auth_facebook_callback_path , id: "login-fb",class: "customer-user-record btn-default btn-facebook"  %>
+                </div><!-- /order-facebook-login -->
+              </div><!-- /order-login-container -->
 
 
-  <% unless current_customer %>
-      <div class="row">
-        <h5 class="col-sm-3">
-          <%= form_tag checkout_express_path, :remote => true, method: :get do%>
-            <%= submit_tag 'Express Checkout',  class: "customer-user-record" %>
+            </div><!-- /order-address -->
+
           <% end %>
-
-        </h5>
-        <h5 class="col-sm-3">
-          <%= form_tag  new_customers_user_path, :remote => true, method: :get do%>
-            <%= submit_tag 'Crear una cuenta nueva', class: "customer-user-record"%>
-
+          <div id="customer-user"></div>
+          <% unless current_customer %>
+              <div id="checkout-information"></div>
           <% end %>
-        </h5>
-        <h5 class="col-sm-3">
-          <%= form_tag  sessions_new_path, :remote => true, method: :get do%>
-            <%= submit_tag "A mi Cuenta", id: "login-customer", class: "customer-user-record"  %>
-          <% end %>
-        </h5>
-      </div>
-      <div class="row">
-        <h5 class="col-sm-3">
-          <%= link_to "Ingresar con Facebook", auth_facebook_callback_path , id: "login-fb",class: "customer-user-record"  %>
-        </h5>
-      </div>
-  <% end %>
+        </div><!-- /order-address-container -->
+      </div><!-- /col-md-5 -->
 
-  <div id="customer-user"></div>
-
-</div>
+    </div><!-- row -->
+  </div><!-- container-fluid -->
+</div><!-- /checkout -->
 

@@ -2,30 +2,32 @@
 #
 # Table name: shoppe_customers
 #
-#  id               :integer          not null, primary key
-#  first_name       :string
-#  last_name        :string
-#  company          :string
-#  email            :string
-#  phone            :string
-#  mobile           :string
-#  created_at       :datetime
-#  updated_at       :datetime
-#  password_hash    :string
-#  password_salt    :string
-#  provider         :string
-#  uid              :string
-#  name             :string
-#  oauth_token      :string
-#  oauth_expires_at :datetime
+#  id                     :integer          not null, primary key
+#  first_name             :string
+#  last_name              :string
+#  company                :string
+#  email                  :string
+#  phone                  :string
+#  mobile                 :string
+#  created_at             :datetime
+#  updated_at             :datetime
+#  password_hash          :string
+#  password_salt          :string
+#  provider               :string
+#  uid                    :string
+#  name                   :string
+#  oauth_token            :string
+#  oauth_expires_at       :datetime
+#  password_reset_token   :string
+#  password_reset_sent_at :datetime
 #
 
 class CustomersUser < Shoppe::Customer
   # include ActiveModel::MassAssignmentSecurity
 
-
   attr_accessor :password
   before_save :encrypt_password
+  before_create { generate_token(:oauth_token) }
 
   validates_confirmation_of :password
   validate :password_or_uid
@@ -45,7 +47,24 @@ class CustomersUser < Shoppe::Customer
       nil
     end
   end
+
+
+  def send_password_reset
+    generate_token(:password_reset_token)
+    self.password_reset_sent_at = Time.zone.now
+    save!(:validate => false)
+    CustomerUserMailer.password_reset(self).deliver_now
+  end
+
+  def generate_token(column)
+    begin
+      self[column] = SecureRandom.urlsafe_base64
+    end while CustomersUser.exists?(column => self[column])
+  end
+
   private
+
+
   def password_or_uid
     if uid.blank? && password.blank?
       errors[:base] << "registrarse por facebook ó ingresar contraseña"
