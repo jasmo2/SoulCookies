@@ -92,9 +92,13 @@
       text-decoration: underline;
     }
   }
+  .txt-right {
+    text-align: right;
+  }
   .btn-default {
     background: #f94406;
     color: #fff;
+    border: 0;
     @include effect_bg;
     &:hover, :active {
       @include effect_bg;
@@ -105,6 +109,19 @@
     &:hover {
       text-decoration: none;
     }
+  }
+  label {
+    font-weight: normal;
+  }
+  input {
+    background: #ddd;
+    border: 0;
+    border-radius: 5px;
+  }
+  textarea {
+    background: #ddd;
+    border: 0;
+    border-radius: 5px;
   }
 
   // navbar
@@ -209,7 +226,7 @@
       border-bottom: 1px solid #ebeaea;
       margin-bottom: 15px;
       font-size: 1.286em;
-      color: #f94406;
+      color: #27B1E2;
     }
     .basket-order {
       .btn-order {
@@ -420,6 +437,104 @@
       }
     }
   }
+
+  // checkout
+  .checkout {
+    background: #fff;
+    padding-top: 150px;
+    padding-bottom: 100px;
+    h1 {
+      color: #27B1E2;
+      font-size: 2.5em;
+      margin-top: 0;
+      margin-bottom: 25px;
+    }
+    .order-notice {
+      margin-bottom: 20px;
+      p {
+        font-size: 1.286em;
+      }
+    }
+    .order-confirmation-container {
+      border: solid 1px #27b1e2;
+      padding: 30px;
+      background: rgba(255,255,255,0.8);
+    }
+    .the-total {
+      font-size: 1.286em;
+      color: #27B1E2;
+    }
+    .quantity {
+      text-align: center;
+      overflow: hidden;
+    }
+    .modify-order {
+      text-align: right;
+    }
+    .operators {
+      float: right;
+    }
+    .icon-operation {
+      border: 1px solid #f94406;
+      border-radius: 50%;
+      color: #f94406;
+      display: inline-block;
+      font-size: 1em;
+      height: 16px;
+      letter-spacing: 0;
+      line-height: 1em;
+      margin-right: 5px;
+      text-align: center;
+      width: 16px;
+      background: #fff;
+      @include effect_bg;
+      &:hover {
+        @include effect_bg;
+        background: #f94406;
+        color: #fff;
+      }
+    }
+    .order-address-container {
+      border: solid 1px #27b1e2;
+      padding: 30px;
+      background: rgba(255,255,255,0.8);
+    }
+    .order-express-checkout {
+      border-bottom: solid 1px #ddd;
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+    }
+    .order-create-account {
+      border-bottom: solid 1px #ddd;
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+    }
+    .order-login-container {
+      overflow: hidden;
+    }
+    .order-regular-login {
+      float: left;
+    }
+    .order-facebook-login {
+      float: left;
+    }
+    .btn-default {
+      border-radius: 40px;
+      padding: 10px 20px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      display: inline-block;
+    }
+    .btn-facebook {
+      background: #3b5998;
+      margin-left: 20px;
+    }
+  }
+
+
+ 
   
 }
 

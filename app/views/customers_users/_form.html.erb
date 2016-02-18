@@ -1,61 +1,38 @@
 <%= form_for @customers_user, remote: true,  :html => { :id => "customer-submit" } do |f| %>
     <%= f.error_messages %>
-    <div class="splitContainer">
-      <dl class="third">
-        <dt>
-          <%= f.label :Nombre, t('shoppe.customers.first_name') %>
-        </dt>
-        <dd>
-          <%= f.text_field :first_name, :class => "text focus" %>
-        </dd>
-      </dl>
-      <dl class="third">
-        <dt>
-          <%= f.label :apellido, t('shoppe.customers.last_name') %>
-        </dt>
-        <dd>
-          <%= f.text_field :last_name, :class => "text" %>
-        </dd>
-      </dl>
+    <div class="form-group">
+      <%= f.label :Nombre, t('shoppe.customers.first_name') %>
+      <%= f.text_field :first_name, :class => "form-control" %>
     </div>
-    <div class="splitContainer">
-      <dl class="third">
-        <dt>
-          <%= f.label :email, t('shoppe.customers.email') %>
-        </dt>
-        <dd>
-          <%= f.text_field :email, :class => "text" %>
-        </dd>
-      </dl>
-      <dl class="third">
-        <dt>
-          <%= f.label :celular, t('shoppe.customers.phone') %>
-        </dt>
-        <dd>
-          <%= f.text_field :phone, :class => "text" %>
-        </dd>
-      </dl>
+
+    <div class="form-group">
+      <%= f.label :apellido, t('shoppe.customers.last_name') %>
+      <%= f.text_field :last_name, :class => "form-control" %>
     </div>
+
+    <div class="form-group">
+      <%= f.label :email, t('shoppe.customers.email') %>
+      <%= f.text_field :email, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :celular, t('shoppe.customers.phone') %>
+      <%= f.text_field :phone, :class => "form-control" %>
+    </div>
+
     <% if p_field%>
-        <dl class="third">
-            <dt>
-              <%= f.label :password, "contraseña" %>
-            </dt>
-            <dd>
-              <%= f.password_field :password, :class => "text" %>
-            </dd>
-        </dl>
-        <dl class="third">
-            <dt>
-              <%= f.label :password_confirmation, "Confirmación de contraseña" %>
-            </dt>
-            <dd>
-              <%= f.password_field :password_confirmation, :class => "text" %>
-            </dd>
-        </dl>
+        <div class="form-group">
+          <%= f.label :password, "contraseña" %>
+          <%= f.text_field :password, :class => "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :password_confirmation, "Confirmación de contraseña" %>
+          <%= f.text_field :password_confirmation, :class => "form-control" %>
+        </div>
     <% end %>
     <div class="actions">
-      <input  type="submit" name="commit" value="Ingresar Datos">
+      <input  type="submit" name="commit" value="Listo" class="btn-default">
     </div>
 <% end %>
 
