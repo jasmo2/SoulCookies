@@ -48,6 +48,11 @@
           <%= form_tag  sessions_new_path, :remote => true, method: :get do%>
             <%= submit_tag "A mi Cuenta", id: "login-customer", class: "customer-user-record"  %>
           <% end %>
+          <p>
+            <small>
+              <%= link_to "¿Olvidó su contraseña?", new_password_reset_path %>
+            </small>
+          </p>
         </h5>
       </div>
       <div class="row">

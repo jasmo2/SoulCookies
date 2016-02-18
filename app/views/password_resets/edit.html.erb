@@ -1,0 +1,21 @@
+<%= form_for @customer_user, :url => password_reset_path(params[:id]) do |f| %>
+    <% if @customer_user.errors.any? %>
+        <div class="error_messages">
+          <h2>Formulario invalido</h2>
+          <ul>
+            <% for message in @customer_user.errors.full_messages %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <div class="field">
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+    </div>
+    <div class="field">
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation %>
+    </div>
+    <div class="actions"><%= f.submit "Actualizar contraseña" %></div>
+<% end %>

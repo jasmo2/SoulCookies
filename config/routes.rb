@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+
   resources :customers_users
   mount Shoppe::Engine => "/shoppe"
   root 'products#index'
@@ -15,6 +17,8 @@ Rails.application.routes.draw do
   get 'sessions/new' => 'sessions#new'
   match 'sessions/create'=> 'sessions#create', via: [:get,:post]
   get 'signout'=> 'sessions#destroy', as: 'signout'
+  # reset password
+  resources :password_resets
 
   # Orders & checkout
   resources :address, except: [:index,:show]
