@@ -1,26 +1,37 @@
-<div id="customer-user" class="intro">
+<div id="customer-user" class="account-edit">
   <div class="container">
     <div class="row">
-      <div class="col-sm-6">
-        <%= render partial: 'customers_users/new', locals: {p_field: true} %>
-      </div>
-      <div class="col-sm-6">
+      <div class="col-md-8 col-md-offset-2 text-center account-welcome">
+        <h1 class="txt-fat">Bienvenido <%= @customers_user.first_name %></h1>
+        <p class="txt-orange">Acá puedes editar tus datos personales y direcciones. Recuerda que debes ingresar tu contraseña para que los cambios se hagan efectivos. Al final dale clic al botón que dice "listo" y ya está.</p>
+      </div><!-- /account-welcome -->
+
+      <div class="col-md-5 col-md-offset-1">
+        <div class="account-edit-info">
+          <%= render partial: 'customers_users/new', locals: {p_field: true} %>
+        </div><!-- /account-edit-info -->
+      </div><!-- /col-md-4 -->
+
+      <div class="col-md-5">
         <div class="row">
-          <div class="col-sm-12">
-            <%= render partial: 'address/new', locals: { :@address =>  @address }  %>
-          </div>
-          <div class="col-sm-12">
-            <%= render partial: 'address/list', locals: { :@addresses => @customers_user.addresses, :delete => true}  %>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-3"></div>
-      <div class="col-sm-3">
-        <%= button_to "Eliminarme", @customers_user,  method: :delete,  data: { confirm: " ¿Eliminar tu cuenta?" }, class: "btn btg-lg btn-block btn-danger" %>
-      </div>
-      <div class="col-sm-3"></div>
-    </div>
-  </div>
-</div>
+          <div class="account-edit-addresses">
+            <div class="col-md-12">
+              <%= render partial: 'address/new', locals: { :@address =>  @address }  %>
+            </div>
+            <div class="col-md-12">
+              <%= render partial: 'address/list', locals: { :@addresses => @customers_user.addresses, :delete => true}  %>
+            </div>
+          </div><!-- /account-edit-addresses -->
+        </div><!-- /row -->
+      </div><!-- /col-md-4 -->
+
+      <div class="col-md-6 col-md-offset-3 text-center">
+        <div class="account-delete">
+          <%= button_to "Eliminar cuenta", @customers_user,  method: :delete,  data: { confirm: " ¿Estás seguro que quieres eliminar tu cuenta?" }, class: "btn-default" %>
+        </div><!-- /account-delete -->
+      </div><!-- /col-md-12 -->
+
+    </div><!-- /row -->
+  </div><!-- /container -->
+</div><!-- /account-edit -->
+<%= render "layouts/footer" %>

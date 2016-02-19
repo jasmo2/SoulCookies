@@ -130,6 +130,7 @@
     border-radius: 5px;
   }
 
+
   // navbar
   .navbar {
     padding: 20px 75px;
@@ -593,6 +594,54 @@
       display: inline-block;
       font-size: 1.6em;
       margin-top: 30px;
+    }
+  }
+  // account edit
+  .account-edit {
+    background: #fff none repeat scroll 0 0;
+    padding-bottom: 100px;
+    padding-top: 150px;
+    .account-welcome {
+      margin-bottom: 30px;
+      p {
+        font-size: 1.286em;
+      }
+    }
+    .account-edit-info {
+      background: rgba(255, 255, 255, 0.8);
+      border: 1px solid #27b1e2;
+      padding: 30px;
+      .actions {
+        text-align: right;
+      }
+      .btn-default {
+        border-radius: 40px;
+        display: inline-block;
+        letter-spacing: 3px;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        padding: 10px 20px;
+        text-transform: uppercase;
+      }
+    }
+    .account-edit-addresses {
+      background: rgba(255, 255, 255, 0.8);
+      border: 1px solid #27b1e2;
+      padding: 30px;
+      overflow: hidden;
+    }
+    .account-delete {
+      margin-top: 50px;
+      .btn-default {
+        border-radius: 40px;
+        display: inline-block;
+        letter-spacing: 3px;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        padding: 10px 20px;
+        text-transform: uppercase;
+        background: #bf271f;
+      }
     }
   }
 
