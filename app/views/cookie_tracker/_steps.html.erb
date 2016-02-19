@@ -1,59 +1,66 @@
-<div class="container">
+<%= render partial: "layouts/navbar" %>
+<div class="cookie-tracker-steps">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3 intro-steps text-center">
+        <h1 class="txt-fat">¿En qué andan mis galletas?</h1>
+        <p>
+          ¡Hola <%= "#{order.first_name} #{order.last_name}" %> ! Pronto tendrás nuestras galletas en tus manos. Mientras eso, te sugerimos que llames a un ser querido para saludarlo. ¿Por qué? No lo sabemos ¿Por qué no?
+        </p>
+      </div><!-- /intro-steps -->
 
-  <div class="jumbotron">
-    <h2>¿En qué andan mis galletas?</h2>
-    <p class="lead">
-      ¡Hola <%= "#{order.first_name} #{order.last_name}" %> ! Pronto tendras tus galletas en tus manos. Mientras eso, te sugerimos que llames a
-      un ser querido para saludarlo. ¿Por qué? No lo sabemos ¿Por qué no?
-    </p>
-  </div>
+      <div class="col-md-12 steps-container text-center">
+        <div class="row">
 
-  <div class="row">
-    <div class="col-lg-3 col-xs-12 steps">
-      <div  class="thumbnail">
-        <%= image_tag "step-1.png", height: '32', width: '32'%>
-        <div class="caption">
-          <h3>1</h3>
-          <p>Tu orden ha sido recibida.</p>
-        </div>
-      </div>
-    </div>
-  </div>
+          <div class="col-md-3 steps">
+            <h2 class="txt-fat text-center">Paso 1</h2>
+            <div  class="img-steps">
+              <%= image_tag "step-1.png", height: '32', width: '32'%>
+            </div>
+            <div class="caption-steps">
+              <p>Tu orden de galletas ha sido recibida.</p>
+            </div>
+          </div><!-- /steps -->
 
-  <div class="row">
-    <div class="col-lg-3 col-xs-12 steps">
-      <div class="thumbnail">
-        <%= image_tag "step-2.png", height: '32', width: '32'%>
-        <div class="caption">
-          <h3>2</h3>
-          <p>Tus galletas estan siendo elaboradas.</p>
-        </div>
-      </div>
-    </div>
-  </div>
+          <div class="col-md-3 steps">
+            <h2 class="txt-fat text-center">Paso 2</h2>
+            <div class="img-steps">
+              <%= image_tag "step-2.png", height: '32', width: '32'%>
+            </div>
+            <div class="caption-steps">
+              <p>Tus galletas están siendo elaboradas.</p>
+            </div>
+          </div><!-- /steps -->
 
-  <div class="row">
-    <div class="col-lg-3 col-xs-12 steps">
-      <div class="thumbnail">
-        <%= image_tag "step-3.png", height: '32', width: '32'%>
-        <div class="caption">
-          <h3>3</h3>
-          <p>Tus galletas estan en el horno.</p>
-        </div>
-      </div>
-    </div>
-  </div>
+          <div class="col-md-3 steps">
+            <h2 class="txt-fat text-center">Paso 3</h2>
+            <div class="img-steps">
+              <%= image_tag "step-3.png", height: '32', width: '32'%>
+            </div>
+            <div class="caption-steps">
+              <p>Tus galletas están en el horno.</p>
+            </div> 
+          </div><!-- /steps -->
 
-  <div class="row">
-    <div class="col-lg-3 col-xs-12 steps">
-      <div class="thumbnail">
-        <%= image_tag "step-4.png", height: '32', width: '32'%>
-        <div class="caption">
-          <h3>4</h3>
-          <p>Tus galletas van en camino.</p>
-        </div>
-      </div>
-    </div>
-  </div>
+          <div class="col-md-3 steps">
+            <h2 class="txt-fat text-center">Paso 4</h2>
+            <div class="img-steps">
+              <%= image_tag "step-4.png", height: '32', width: '32'%>
+            </div>
+            <div class="caption-steps">
+              <p>Tus galletas van en camino.</p>
+            </div>
+          </div><!-- /steps -->
 
-</div>
+          <div class="col-md-12 text-center">
+            <%= link_to "Volver al home", root_path, class:"btn-default txt-fat" %>
+          </div>
+          
+        </div><!-- /row -->
+      </div><!-- /steps-container -->
+
+    </div><!-- /row -->
+  </div><!-- /container -->
+</div><!-- /cookie-tracker-steps -->
+
+<%= render partial: "layouts/footer" %>

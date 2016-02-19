@@ -2,31 +2,31 @@
     <%= f.error_messages %>
     <div class="customer">
       <%= field_set_tag do %>
-          <dl>
-            <dt>
-              <%= f.label :address1, "Dirección de Entrega", :class => 'req' %>
-            </dt>
-            <dd>
-              <%= f.text_field :address1, :placeholder => "Calle" %>
-            </dd>
-            <dd>
-              <%= f.text_field :address3, :value=> "Bogotá",:placeholder => "Cuidad" %>
-            </dd>
-            <dd>
-              <%= f.text_field :address4, :value=> "Bogotá D.C.", :placeholder => "Departamento" %>
-            </dd>
-            <dd>
-              <%= f.text_field :postcode, :value=> "4-72",:placeholder => "Postcode", :class => 'postcode' %>
-            </dd>
-            <dd>
-              <%= f.collection_select :country_id, Shoppe::Country.ordered, :id, :name , {:selected => "Colombia"}%>
-            </dd>
-            <dd>
+        <div class="form-group">
+          <%= f.label :address1, "Dirección de Entrega (Bogotá)", :class => 'req' %>
+          <%= f.text_field :address1, :placeholder => "Calle abc #35-22 apto.02", :class => "form-control" %>
+        </div>
 
-              <input class="btn" type="submit" name="commit" value="Agregar dirección">
-            </dd>
+        <div class="form-group hidden">
+          <%= f.text_field :address3, :value=> "Bogotá",:placeholder => "Cuidad" %>
+        </div>
 
-          </dl>
+        <div class="form-group hidden">
+          <%= f.text_field :address4, :value=> "Bogotá D.C.", :placeholder => "Departamento" %>
+        </div>
+
+        <div class="form-group hidden">
+          <%= f.text_field :postcode, :value=> "4-72",:placeholder => "Postcode", :class => 'postcode' %>
+        </div>
+
+        <div class="form-group hidden">
+          <%= f.collection_select :country_id, Shoppe::Country.ordered, :id, :name , {:selected => "Colombia"}%>
+        </div>
+        
+        <div class="add-address">
+          <input class="txt-link" type="submit" name="commit" value="Agregar dirección">
+        </div>
+
       <% end %>
     </div>
 <% end %>

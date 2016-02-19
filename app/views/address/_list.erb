@@ -1,12 +1,21 @@
-<div id="addresses-list">
+<div id="addresses-list" class="addresses-list">
+  <p>Por favor, escoje una dirección de envío.</p>
   <% @addresses.each_with_index do |address,idx|
     index = idx +1
     if index == 1 %>
+      <div class="address-each radio">
+        <label for="radio<%= index %>">
           <input type="radio" name="addresses" value="<%= address.id %>" id="radio<%= index %>" checked="checked" />
-          <label for="radio<%= index %>"><%= address.full_address%></label> <br>
+          <%= address.full_address%>
+        </label>
+      </div>
     <% else %>
-          <input type="radio" name="addresses" value="<%= address.id %>" id="radio<%= index %>"  />
-          <label for="radio<%= index %>"><%= address.full_address%></label> <br>
+      <div class="address-each radio">
+        <label for="radio<%= index %>">
+          <input type="radio" name="addresses" value="<%= address.id %>" id="radio<%= index %>" />
+          <%= address.full_address%>
+        </label>
+      </div>
     <%end%>
   <% end %>
 </div>

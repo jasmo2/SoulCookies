@@ -2,5 +2,5 @@ $("body").html(' <%= j render partial: "cookie_tracker/steps" ,locals: {order: @
 
 var child = $(".steps").children()[<%= @order.state.seq - 1 %>];
 if (child !== undefined){
-  child.style = "background-color: #F9EEEE; border: red solid;"
+  child.style = "border: solid 1px #27B1E2;"
 }

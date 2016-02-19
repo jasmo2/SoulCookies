@@ -1,5 +1,5 @@
 <% @page_title = 'Checkout' %>
-<div class="checkout">
+<div class="checkout-">
   <div class="container">
     <div class="row">
       <div class="col-md-8 col-md-offset-2 text-center order-notice">
@@ -21,17 +21,17 @@
           <% if current_customer %>
             <%= csrf_meta_tag %>
             <div id="checkout-information" class="row">
-              <div class="col-sm-6">
+              <div class="col-sm-12">
                 <%= render partial: 'address/new', :address => @address  %>
               </div>
-              <div class="col-sm-6">
+              <div class="col-sm-12">
                 <%= render partial: 'address/list', :address => @addresses  %>
               </div>
             </div>
             <%= hidden_field_tag "current-customer", current_customer.id %>
             <div class="row">
-              <div class="col-xs-12">
-                <button id="confirmation-customer" class="btn">
+              <div class="col-sm-12 btn-order-container">
+                <button id="confirmation-customer" class="btn-default btn-checkout">
                   Realizar pedido
                 </button>
               </div>
@@ -76,4 +76,4 @@
     </div><!-- row -->
   </div><!-- container-fluid -->
 </div><!-- /checkout -->
-
+<%= render "layouts/footer" %>
