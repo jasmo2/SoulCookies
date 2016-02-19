@@ -32,6 +32,9 @@ confirmtationReady = function() {
                     },
                     500: function(err) {
                         return alert("Ha ocurrido un error cominiquese con nosotros");
+                    },
+                    404: function(err) {
+                        return alert("Ingrese una dirección.");
                     }
                 },
                 url: '/checkout/confirm',

@@ -74,6 +74,8 @@ if pro.save
   pro.stock_level_adjustments.create(description: 'Stock inicial', adjustment: 50)
 end
 
+Shoppe::Country.create(name: "Colombia", code2: "CO", code3: "CO", continent: "America", tld: "SA", currency: "COP", eu_member: false)
+
 State.create(name: "orden recibida", seq: 1)
 State.create(name: "Tus Galletas estan siendo elaboradas", seq: 2)
 State.create(name: "Tus galletas estan en el horno",seq: 3)

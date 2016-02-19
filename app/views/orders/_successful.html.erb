@@ -1,6 +1,14 @@
-<h1>Compra Exitosa</h1>
-<h2>Tu orden #<%= order_number %> se realizó con exito. Te hemos enviado un email con la información. También puedes revizar el cookie tracker para ver el estado</h2>
-<br>
-
-<%= link_to "Volver al home", root_path %>
+<%= render partial: "layouts/navbar" %>
+<div class="checkout-successful">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3 success-info text-center">
+			    <h1 class="txt-fat">Compra Exitosa</h1>
+				<p>Tu orden <span class="txt-blue">#<%= order_number %></span> se realizó con éxito. Hemos enviado un email con la información de tu pedido. También puedes revisar nuestro <a href="" class="txt-link">cookie tracker</a> para ver el estado de tu pedido.</p>
+				<%= link_to "Volver al home", root_path, class:"btn-default txt-fat" %>
+			</div><!-- /success-info -->
+		</div><!-- /row -->
+	</div><!-- /container -->
+</div><!-- /checkout-successful -->
+<%= render partial: "layouts/footer" %>
 

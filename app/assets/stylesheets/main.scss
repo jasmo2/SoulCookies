@@ -82,6 +82,9 @@
   .txt-orange {
     color: #f94406;
   }
+  .txt-blue {
+    color: #27B1E2;
+  }
   .txt-link {
     color: #f94406;
     text-decoration: underline;
@@ -104,6 +107,9 @@
       @include effect_bg;
       background: #27b1e2;
     }
+  }
+  .btn-checkout {
+    background: #bf271f;
   }
   a {
     &:hover {
@@ -439,7 +445,7 @@
   }
 
   // checkout
-  .checkout {
+  .checkout- {
     background: #fff;
     padding-top: 150px;
     padding-bottom: 100px;
@@ -531,16 +537,130 @@
       background: #3b5998;
       margin-left: 20px;
     }
+    .btn-order-container {
+      text-align: right;
+    }
+    .btn-checkout {
+      margin-top: 30px;
+    }
+    .customer {
+      .txt-link {
+        margin: 10px 0;
+        padding: 0;
+      }
+    }
+    .add-address {
+      text-align: right;
+    }
+    .addresses-list {
+      border-top: 1px solid #ddd;
+      margin-top: 20px;
+      padding-top: 20px;
+    }
+    .address-each {
+      background: #f9f9f9;
+      margin-bottom: 1px;
+      padding: 15px;
+      border: 1px solid #ddd;
+      font-size: 0.9em;
+      .radio {
+        margin-bottom: 0;
+      }
+    }
+  }
+  .checkout {
+    .txt-link {
+      letter-spacing: 3px;
+      background: transparent;
+    }
+  }
+  .checkout-successful {
+    background: #fff;
+    .success-info {
+      padding-top: 150px;
+      padding-bottom: 100px;
+    }
+    h1 {
+      font-size: 2.5em;
+    }
+    p {
+      font-size: 1.286em;
+      margin: 20px 0;
+    }
+    .btn-default {
+      border-radius: 40px;
+      padding: 15px 30px;
+      display: inline-block;
+      font-size: 1.6em;
+      margin-top: 30px;
+    }
   }
 
-
- 
-  
+  // cookie tracker
+  .cookie-tracker {
+    background: rgba(255,255,255,0.9);
+    border-radius: 5px;
+    padding: 30px;
+    margin-top: 150px;
+    .form-control {
+      width: 200px;
+      margin: 0 auto;
+    }
+    .btn-default {
+      border-radius: 40px;
+      padding: 15px 30px;
+      display: inline-block;
+      font-size: 1.6em;
+      margin-top: 30px;
+    }
+  }
+  .cookie-tracker-steps {
+    background: #fff;
+    padding-top: 150px;
+    padding-bottom: 100px;
+    .intro-steps {
+      margin-bottom: 30px;
+      .txt-fat {
+        font-size: 2.5em;
+      }
+      p {
+        font-size: 1.286em;
+      }
+    }
+    .steps {
+      border-right: solid 1px #ebeaea;
+      &:last-child {
+        border-right: 0;
+      }
+      .txt-fat {
+        padding-bottom: 30px;
+        font-size: 2.5em;
+      }
+    }
+    .caption-steps {
+      padding: 20px 0;
+      font-size: 1.286em;
+    }
+    .img-steps {
+      img {
+        border: solid 1px #fff;
+      }
+    }
+    .btn-default {
+      border-radius: 40px;
+      padding: 15px 30px;
+      display: inline-block;
+      font-size: 1.6em;
+      margin-top: 50px;
+    }
+  }
 }
 
 a {
   color: whitesmoke;
+  @include effect_color;
   :hover {
     color: #eeeeee;
+    @include effect_color;
   }
 }

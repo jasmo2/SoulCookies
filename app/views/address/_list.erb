@@ -1,18 +1,21 @@
-<% delete ||= false %>
-<div id="addresses-list">
+<div id="addresses-list" class="addresses-list">
+  <p>Por favor, escoje una dirección de envío.</p>
   <% @addresses.each_with_index do |address,idx|
-    index = idx +1 %>
-    <%= button_to "borrar", address,  method: :delete,  data: {comfirm: "¿Está seguro de borrar esta dirección?"} %>
-    <% if index == 1 %>
-          <% unless delete %>
-            <input type="radio" name="addresses" value="<%= address.id %>" id="radio<%= index %>" checked="checked" />
-          <% end %>
-          <label for="radio<%= index %>"><%= address.full_address%></label> <br>
+    index = idx +1
+    if index == 1 %>
+      <div class="address-each radio">
+        <label for="radio<%= index %>">
+          <input type="radio" name="addresses" value="<%= address.id %>" id="radio<%= index %>" checked="checked" />
+          <%= address.full_address%>
+        </label>
+      </div>
     <% else %>
-          <% unless delete %>
-            <input type="radio" name="addresses" value="<%= address.id %>" id="radio<%= index %>"  />
-          <% end %>
-          <label for="radio<%= index %>"><%= address.full_address%></label> <br>
+      <div class="address-each radio">
+        <label for="radio<%= index %>">
+          <input type="radio" name="addresses" value="<%= address.id %>" id="radio<%= index %>" />
+          <%= address.full_address%>
+        </label>
+      </div>
     <%end%>
   <% end %>
 </div>

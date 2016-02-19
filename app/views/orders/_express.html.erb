@@ -22,6 +22,22 @@
             <%= f.label :billing_address1, "Dirección (solamente en bogotá)", :class => 'req' %>
             <%= f.text_field :billing_address1, :placeholder => "Calle", :class => "form-control"  %>
           </div>
+          
+          <div class="form-group hidden">
+            <%= f.text_field :address3, :value=> "Bogotá",:placeholder => "Cuidad" %>
+          </div>
+
+          <div class="form-group hidden">
+            <%= f.text_field :address4, :value=> "Bogotá D.C.", :placeholder => "Departamento" %>
+          </div>
+
+          <div class="form-group hidden">
+            <%= f.text_field :postcode, :value=> "4-72",:placeholder => "Postcode", :class => 'postcode' %>
+          </div>
+
+          <div class="form-group hidden">
+            <%= f.collection_select :country_id, Shoppe::Country.ordered, :id, :name , {:selected => "Colombia"}%>
+          </div>
       <% end %>
     </div>
     <p class="submit">

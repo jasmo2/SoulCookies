@@ -1,23 +1,18 @@
 <div class="container-fluid">
-  <div class="row intro">
-    <div class="col-sm-4"></div>
-    <div class="col-sm-4 col-xs-12">
-      <h2></h2>
-
-      <div id="cookie-tracker">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3 text-center">
+      <div id="cookie-tracker" class="cookie-tracker">
+        <h1 class="txt-fat">¿En qué andan mis galletas?</h1>
         <p>
-          Igrese su número de orden para ver averiguar el
+          Por favor, ingresa tu número de orden:
         </p>
-        <p>
-          estado de sus galletas
-        </p>
-
         <%= form_tag cookie_tracker_path, method: :post, remote: true  do %>
-            <%= label_tag 'cookie-number', 'Número de orden' %>   <br>
-            <%=  number_field_tag 'cookie-number', '0', class: 'special_input'  %><br><br>
-            <%= submit_tag "Buscar" ,class: "btn btn-warning"%>
+          <div class="form-group">
+            <%= label_tag 'cookie-number', 'Número de orden', class:'sr-only' %>
+            <%=  number_field_tag 'cookie-number', '0', class: 'form-control'  %>
+          </div>
+          <%= submit_tag "Buscar" ,class: "btn-default txt-fat"%>
         <% end %>
-
       </div>
     </div>
   </div>
