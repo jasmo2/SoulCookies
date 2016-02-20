@@ -8,5 +8,20 @@ var inputRadio = $(document.createElement('input')).attr({
 });
 var labelRadio = $(document.createElement('label')).attr({
   for: "radio"+addressListInputItemslength
-}).text("<%= @address.full_address%>");
-$("#addresses-list").append(inputRadio).append(labelRadio).append(document.createElement('</br'));
+}).append(inputRadio).append("<%= @address.full_address%>");
+
+var divAddressEach = $(document.createElement('div')).addClass("address-each radio")
+    .append(labelRadio);
+
+$("#addresses-list").append(divAddressEach);
+
+
+/*
+*  Structure
+* <div class="address-each radio">
+ <label for="radio1">
+ <input type="radio" name="addresses" value="32" id="radio1" checked="checked">
+ Calle1, , Bogotá, Bogotá D.C., 4-72, Colombia
+ </label>
+ </div>
+* */

@@ -19,7 +19,7 @@
             <%= render partial: 'address/new', locals: { :@address =>  @address }  %>
           </div>
           <div class="col-sm-12">
-            <%= render partial: 'address/delete' %>
+            <%= render partial: 'address/delete',locals: { :@addresses => @customers_user.addresses} %>
           </div>
           </div> <!-- /account-edit-addresses -->
         </div><!-- /row -->
