@@ -95,8 +95,16 @@ class OrdersController < ApplicationController
 
   def confirmation_express
     @order = Shoppe::Order.find(current_order.id)
-    @order.attributes = params[:order].permit(:first_name, :last_name, :company, :billing_address1, :billing_address2, :billing_address3, :billing_address4, :billing_country_id, :billing_postcode, :email_address, :phone_number, :delivery_name, :delivery_address1, :delivery_address2, :delivery_address3, :delivery_address4, :delivery_postcode, :delivery_country_id, :separate_delivery_address)
-    @order.last_name = "."
+    @order.separate_delivery_address = "0"
+    @order.attributes = params[:order].permit(:first_name, :last_name, :email_address, :phone_number,:billing_address1, )
+    @order.attributes = {
+         billing_address2: "Colombia",
+         billing_address3: "Bogotá",
+         billing_address4: "Bogotá D.C.",
+         billing_country_id: Shoppe::Country.where(name: "Colombia").first.id,
+         billing_postcode: "4-72",
+         last_name: "."
+    }
     @order.ip_address = request.ip
     unless @order.proceed_to_confirm
       render 'express'
