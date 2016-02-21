@@ -1,2 +1,5 @@
 $("#checkout-information").html('<%= j render partial: "orders/express" %>');
+<%unless @order.errors.empty? %>
+  sweetAlert("Dirección Faltante", "ingrese una dirección por favor", "warning");;
+<% end %>
 $(".customer-user-record").hide();

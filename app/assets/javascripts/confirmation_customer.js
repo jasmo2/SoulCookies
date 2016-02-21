@@ -31,10 +31,13 @@ confirmtationReady = function() {
                         return eval(response.responseText);
                     },
                     500: function(err) {
-                        return alert("Ha ocurrido un error cominiquese con nosotros");
+                        return sweetAlert("Ohh No!", "Ha ocurrido un error", "error");;
+
                     },
                     404: function(err) {
-                        return alert("Ingrese una dirección.");
+                        return sweetAlert("Dirección Faltante", "ingrese una dirección por favor", "warning");;
+
+
                     }
                 },
                 url: '/checkout/confirm',
