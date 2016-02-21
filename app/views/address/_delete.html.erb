@@ -1,6 +1,8 @@
 <div id="addresses-list">
   <% @addresses.each do |address,idx| %>
-      <%= button_to "borrar", address,  method: :delete,  data: {comfirm: "¿Está seguro de borrar esta dirección?"} %>
-      <label><%= address.full_address%></label> <br>
+    <div class="each-address">
+      <label><%= address.full_address%></label>
+      <%= button_to "borrar", address,  class:'txt-link', method: :delete,  data: {comfirm: "¿Está seguro de borrar esta dirección?" } %>
+    </div>
   <% end %>
 </div>

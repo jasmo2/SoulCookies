@@ -8,6 +8,7 @@
 
       <div class="col-md-5 col-md-offset-1">
         <div class="account-edit-info">
+          <h2 class="txt-fat">Datos personales</h2>
           <%= render partial: 'customers_users/new', locals: {p_field: true} %>
         </div><!-- /account-edit-info -->
       </div><!-- /col-md-4 -->
@@ -15,12 +16,14 @@
       <div class="col-md-5">
         <div class="row">
           <div class="account-edit-addresses">
-          <div class="col-sm-12">
-            <%= render partial: 'address/new', locals: { :@address =>  @address }  %>
-          </div>
-          <div class="col-sm-12">
-            <%= render partial: 'address/delete',locals: { :@addresses => @customers_user.addresses} %>
-          </div>
+            <h2 class="txt-fat">Lista de direcciones</h2>
+            <div class="col-sm-12">
+              <%= render partial: 'address/delete',locals: { :@addresses => @customers_user.addresses} %>
+            </div>
+            <div class="col-sm-12">
+              <h3 class="txt-fat">Agrega otra dirección</h3>
+              <%= render partial: 'address/new', locals: { :@address =>  @address }  %>
+            </div>
           </div> <!-- /account-edit-addresses -->
         </div><!-- /row -->
       </div><!-- /col-md-4 -->

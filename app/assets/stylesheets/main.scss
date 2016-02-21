@@ -103,7 +103,7 @@
     color: #fff;
     border: 0;
     @include effect_bg;
-    &:hover, :active {
+    &:hover, &:active, &:focus {
       @include effect_bg;
       background: #27b1e2;
     }
@@ -641,6 +641,43 @@
         padding: 10px 20px;
         text-transform: uppercase;
         background: #bf271f;
+        &:hover, &:active, &:focus {
+          @include effect_bg;
+          background: #27b1e2;
+        }
+      }
+    }
+    h2 {
+      color: #27b1e2;
+      text-align: center;
+      margin-top: 0;
+      margin-bottom: 25px;
+    }
+    h3 {
+      color: #27b1e2;
+    }
+    .each-address {
+      overflow: hidden;
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+      border-bottom: solid 1px #ddd;
+      &:last-child {
+        border: 0;
+        margin-bottom: 0;
+        padding-bottom: 0;
+      }
+      .add-address {
+        overflow: hidden;
+      }
+      .button_to {
+        text-align: right;
+      }
+      .txt-link {
+         background: transparent;
+         letter-spacing: 3px;
+      }
+      .btn-default {
+        float: right;
       }
     }
   }
