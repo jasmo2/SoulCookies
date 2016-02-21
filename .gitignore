@@ -14,3 +14,4 @@
 .idea
 /test/*
 /public/attachment/*
+/node_modules
