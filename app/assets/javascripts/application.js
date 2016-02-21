@@ -15,3 +15,4 @@
 //= require bootstrap-sprockets
 //= require_tree .
 //= require bxslider
+//= require modernizr

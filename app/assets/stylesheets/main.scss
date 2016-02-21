@@ -258,17 +258,62 @@
   .intro {
     padding-top: 200px;
     padding-bottom: 90px;
+    position: relative;
+    min-height: 950px;
     .text-intro {
       font-size: 1.500em;
       width: 350px;
       color: #fff;
       line-height: 1.7em;
+      z-index: 7;
+      p {
+        top: 60px !important;
+        width: 30%;
+      }
     }
     .txt-fat {
       color: #363635;
       font-size: 44px;
       line-height: 0;
       padding-right: 10px;
+    }
+  }
+  .gimmicks {
+    .cloud-1 {
+      z-index: 7;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+    .cloud-2 {
+      z-index: 5;
+      position: absolute;
+      top: 225px !important;
+      left: 0;
+    }
+    .cookie-1 {
+      left: 100px;
+      position: absolute;
+      z-index: 6;
+      top: 415px !important;
+    }
+    .cloud-3 {
+      z-index: 3;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+    .cookie-2 {
+      position: absolute;
+      right: 180px;
+      z-index: 3;
+      top: 415px !important;
+    }
+    .cloud-4 {
+      z-index: 1;
+      position: absolute;
+      left: 0;
+      top: 100px !important;
     }
   }
   // how to order
@@ -328,7 +373,27 @@
   // products
   .container-products {
     padding-top: 100px;
-    background: #fff;
+    background: #FDFCF4;
+    .cloud-5 {
+      z-index: 0;
+      top: 900px !important;
+      left: -100px;
+    }
+    .cloud-6 {
+      z-index: 0;
+      top: 850px !important;
+      left: 100px;
+    }
+    .cloud-7 {
+      z-index: 0;
+      top: 900px !important;
+      right: -100px;
+    }
+    .cloud-8 {
+      z-index: 0;
+      top: 850px !important;
+      right: 100px;
+    }
   }
   .products {
     color: #363635;
@@ -401,7 +466,7 @@
   }
   // gallery
   .bg-gallery {
-    background: #fff;
+    background: #FDFCF4;
     img {
       width: 100%;
     }

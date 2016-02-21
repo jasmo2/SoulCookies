@@ -27,7 +27,11 @@ ready = function() {
     randomStart: true,
     pager: false
   });
+
+  // PARALLAX EFFECTS
+  andrzejdus.parallaxer.Parallaxer.start();
+  
     
 };
 $(document).ready(ready);
-$(document).on("page:load", ready);
+$(document).on('page:load', ready);
