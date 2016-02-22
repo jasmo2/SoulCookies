@@ -29,7 +29,7 @@ module Shoppecookies
         :address              => "smtp.gmail.com",
         :port                 => 587,
         :domain               => "gmail.com",
-        :user_name            => ENV["SOULCOOKIES_EMAIL_U",
+        :user_name            => ENV["SOULCOOKIES_EMAIL_U"],
         :password             => ENV["SOULCOOKIES_EMAIL_P"],
         :authentication       => :plain,
         :enable_starttls_auto => true

@@ -576,6 +576,7 @@ body {
       border: solid 1px #27b1e2;
       padding: 30px;
       background: rgba(255,255,255,0.8);
+      min-height: 585px;
     }
     .order-express-checkout {
       border-bottom: solid 1px #ddd;
@@ -638,6 +639,43 @@ body {
       .radio {
         margin-bottom: 0;
       }
+    }
+    .bigcloud-1 {
+      animation: bobble 2s infinite;
+      margin-left: 100px;
+      margin-top: -20px;
+      position: absolute;
+    }
+    .smallcloud-1 {
+        animation: bobble 4s infinite;
+        margin-top: 0px;
+        margin-left: -15px;
+        position: absolute;
+    }
+    .bigcloud-2 {
+        animation: bobble 2s infinite;
+        margin-left: 70%;
+        margin-top: -20px;
+        position: absolute;
+    }
+    .smallcloud-2 {
+        animation: bobble 4s infinite;
+        margin-top: 0px;
+        margin-left: 85%;
+        position: absolute;
+    }
+    @keyframes bobble {
+        0% {
+            transform: translate3d(50px, 40px, 0px);
+            animation-timing-function: ease-in;
+        }
+        50% {
+            transform: translate3d(50px, 50px, 0px);
+            animation-timing-function: ease-out;
+        }
+        100% {
+            transform: translate3d(50px, 40px, 0px);
+        }
     }
   }
   .checkout {
