@@ -4,3 +4,5 @@ var child = $(".steps").children()[<%= @order.state.seq - 1 %>];
 if (child !== undefined){
   child.style = "border: solid 1px #27B1E2;"
 }
+// RECALCULATE HEIGHT OF BODY AFTER AJAX LOAD
+document.body.style.height = document.getElementById('limiter').style.height;

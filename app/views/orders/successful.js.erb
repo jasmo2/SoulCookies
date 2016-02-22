@@ -1,1 +1,3 @@
 $("body").html(' <%= j render partial: "orders/successful" ,locals: {order_number: @order_number}%>');
+// RECALCULATE HEIGHT OF BODY AFTER AJAX LOAD
+document.body.style.height = document.getElementById('limit').style.height;

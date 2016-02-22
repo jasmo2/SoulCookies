@@ -30,6 +30,8 @@ ready = function() {
 
   // PARALLAX EFFECTS
   andrzejdus.parallaxer.Parallaxer.start();
+
+  
   
     
 };
