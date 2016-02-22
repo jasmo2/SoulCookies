@@ -5,6 +5,14 @@ class OrdersController < ApplicationController
 
   before_filter { redirect_to root_path unless has_order? }
 
+  def index
+    respond_to do |f|
+      f.js {
+        render
+      }
+    end
+  end
+
   def successful
     @order_number = params[:order_number]
     respond_to do |f|
