@@ -68,6 +68,9 @@
 
 
 // -------------------------------  MAIN
+body, html {
+  height: 100%;
+}
 .custom {
   background: #27b1e2;
   font-family: 'lane_-_narrowregular', sans-serif;
@@ -748,11 +751,16 @@
   }
 
   // cookie tracker
+  .container-cookie-tracker {
+    z-index: 2;
+    position: relative;
+  }
   .cookie-tracker {
     background: rgba(255,255,255,0.9);
     border-radius: 5px;
     padding: 30px;
     margin-top: 150px;
+    margin-bottom: 230px;
     .form-control {
       width: 200px;
       margin: 0 auto;
@@ -763,6 +771,35 @@
       display: inline-block;
       font-size: 1.6em;
       margin-top: 30px;
+    }
+  }
+  .cookie-tracker-gimmicks {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    .cookie-tracker-clouds {
+      z-index: 1;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      img {
+        width: 100%;
+      }
+    }
+    .cookie-1 {
+      left: 100px;
+      position: absolute;
+      z-index: 0;
+      top: 90px !important;
+    }
+    .cookie-2 {
+      position: absolute;
+      right: 180px;
+      z-index: 0;
+      top: 270px !important;
     }
   }
   .cookie-tracker-steps {
@@ -804,6 +841,43 @@
       font-size: 1.6em;
       margin-top: 50px;
     }
+  }
+  .bigcloud-1 {
+      animation: bobble 2s infinite;
+      margin-left: 100px;
+      margin-top: 15px;
+      position: absolute;
+  }
+  .smallcloud-1 {
+      animation: bobble 4s infinite;
+      margin-top: 65px;
+      margin-left: -15px;
+      position: absolute;
+  }
+  .bigcloud-2 {
+      animation: bobble 2s infinite;
+      margin-left: 70%;
+      margin-top: 15px;
+      position: absolute;
+  }
+  .smallcloud-2 {
+      animation: bobble 4s infinite;
+      margin-top: 65px;
+      margin-left: 85%;
+      position: absolute;
+  }
+  @keyframes bobble {
+      0% {
+          transform: translate3d(50px, 40px, 0px);
+          animation-timing-function: ease-in;
+      }
+      50% {
+          transform: translate3d(50px, 50px, 0px);
+          animation-timing-function: ease-out;
+      }
+      100% {
+          transform: translate3d(50px, 40px, 0px);
+      }
   }
 }
 
