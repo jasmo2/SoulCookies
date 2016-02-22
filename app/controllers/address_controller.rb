@@ -15,7 +15,7 @@ class AddressController < ApplicationController
         if @address.save
           render "address/new"
         else
-          render js: "alert('ha ocurrido un error al');", status: 400
+          render js: "sweetAlert('Dirección Faltante', 'Escriba una dirección por favor', 'warning');", status: 400
         end
       end
       f.html do

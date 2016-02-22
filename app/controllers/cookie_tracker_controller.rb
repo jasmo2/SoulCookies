@@ -5,9 +5,13 @@ class CookieTrackerController < ApplicationController
   def search
     respond_to do |f|
       f.js do
-        order = Shoppe::Order.where(id: cookies_params).first
-        @order = OrderTracker.new(order)
-        render 'steps'
+          order = Shoppe::Order.where(id: cookies_params).first
+          if order
+            @order = OrderTracker.new(order)
+            render 'steps'
+          else
+            render js: "sweetAlert('Número de tracker invalido', 'Escriba una orden valida', 'warning');", status: 400
+          end
       end
     end
   end
