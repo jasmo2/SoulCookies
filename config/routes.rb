@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   resources :address, except: [:index,:show]
 
 
+  get "checkout/index"=> "orders#index", as: "orders_index"
   match "checkout"=> "orders#checkout", as: "checkout", via: [:get, :patch]
   match "checkout/express"=> "orders#express", via: [:get, :post]
   match "checkout/pay"=> "orders#payment", as: "checkout_payment", via: [:get, :post]
