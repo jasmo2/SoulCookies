@@ -842,6 +842,43 @@ body, html {
       margin-top: 50px;
     }
   }
+  .bigcloud-1 {
+      animation: bobble 2s infinite;
+      margin-left: 100px;
+      margin-top: 15px;
+      position: absolute;
+  }
+  .smallcloud-1 {
+      animation: bobble 4s infinite;
+      margin-top: 65px;
+      margin-left: -15px;
+      position: absolute;
+  }
+  .bigcloud-2 {
+      animation: bobble 2s infinite;
+      margin-left: 70%;
+      margin-top: 15px;
+      position: absolute;
+  }
+  .smallcloud-2 {
+      animation: bobble 4s infinite;
+      margin-top: 65px;
+      margin-left: 85%;
+      position: absolute;
+  }
+  @keyframes bobble {
+      0% {
+          transform: translate3d(50px, 40px, 0px);
+          animation-timing-function: ease-in;
+      }
+      50% {
+          transform: translate3d(50px, 50px, 0px);
+          animation-timing-function: ease-out;
+      }
+      100% {
+          transform: translate3d(50px, 40px, 0px);
+      }
+  }
 }
 
 a {
