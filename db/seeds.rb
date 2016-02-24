@@ -76,4 +76,4 @@ end
 
 Shoppe::Country.create(name: "Colombia", code2: "CO", code3: "CO", continent: "America", tld: "SA", currency: "COP", eu_member: false)
 
-Shoppe::User(first_name: "Rafael",last_name: "_",email:"admin@soulcookies.co", password:" lAsMejoRes.2016!")
+Shoppe::User.create(first_name: "Rafael",last_name: "_",email:"admin@soulcookies.co", password:" lAsMejoRes.2016!")
