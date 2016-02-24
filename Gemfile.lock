@@ -235,6 +235,7 @@ GEM
     minitest (5.8.4)
     multi_json (1.11.2)
     net-ssh (3.0.2)
+    nifty-attachments (1.0.4)
     nifty-dialog (1.0.7)
     nifty-key-value-store (1.0.2)
     nifty-utils (1.0.9)
@@ -353,6 +354,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   jbuilder (~> 2.0)
   jquery-rails
+  nifty-attachments
   pg (~> 0.15)
   puma
   rails (= 4.2.5)
