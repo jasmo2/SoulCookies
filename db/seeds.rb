@@ -1,5 +1,11 @@
 # encoding: UTF-8
 
+Shoppe::TaxRate.destroy_all
+Shoppe::ProductCategory.destroy_all
+Shoppe::Product.destroy_all
+Shoppe::Country.destroy_all
+Shoppe::User.destroy_all
+
 # tax rates
 tax_rate = Shoppe::TaxRate.where(name: 'IVA', rate: 19).first_or_create
 
