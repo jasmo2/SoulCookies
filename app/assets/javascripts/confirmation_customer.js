@@ -31,11 +31,11 @@ confirmtationReady = function() {
                         return eval(response.responseText);
                     },
                     500: function(err) {
-                        return sweetAlert("Ohh No!", "Ha ocurrido un error", "error");;
+                        return sweetAlert("Ohh No!", "Ha ocurrido un error", "error");
 
                     },
                     404: function(err) {
-                        return sweetAlert("Dirección Faltante", "ingrese una dirección por favor", "warning");;
+                        return sweetAlert("Dirección Faltante", "ingrese una dirección por favor", "warning");
 
 
                     }
