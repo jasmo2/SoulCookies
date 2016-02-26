@@ -1,5 +1,7 @@
 $("#customer-user").html('<%= j render partial: "orders/express" %>');
 <%unless @order.errors.empty? %>
-  sweetAlert("Dirección Faltante", "ingrese una dirección por favor", "warning");;
+  sweetAlert("Error",
+      '<% @order.errors.messages.each do |k,v| %> <%= "*#{Shoppe::Order.human_attribute_name(k)}: #{v.first}; " %> <% end %>',
+      "warning");
 <% end %>
 $(".customer-user-record").hide();

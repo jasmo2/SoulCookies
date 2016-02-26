@@ -1,3 +1,8 @@
+#en:
+#   :
+#     attributes:
+#       user:
+#         fname: "First Name"
 es:
   activerecord:
     models:
@@ -13,6 +18,10 @@ es:
       shoppe/order:
         one: Pedido
         other: Pedidos
+        email_address: "Dirección de correo electrónico"
+        first_name: "Nombres"
+        last_name: "Apellidos"
+        phone_number: "Teléfono"
       shoppe/order_item:
         one: Línea de pedido
         other: Líneas de pedido
@@ -43,22 +52,22 @@ es:
 
     attributes:
       shoppe/order:
-        billing_address1: Dirección de facturación 1
+        billing_address1: Dirección
         billing_address3: Dirección de facturación 3
         billing_address4: Dirección de facturación 4
         billing_country: País de facturación
         billing_postcode: Código postal de facturación
-        delivery_address1: Dirección de envío 1
+        delivery_address1: Dirección
         delivery_address3: Dirección de envío 3
         delivery_address4: Dirección de envío 4
         delivery_country: País de envío
         delivery_name: Nombre del destinatario
         delivery_service_id: Servicio de envío
         delivery_postcode: Código postal de envío
-        email_address: Dirección de correo electrónico
-        first_name: Nombre
-        last_name: Apellidos
-        phone_number: Teléfono
+        email_address: Correo electrónico
+        first_name: "Nombres"
+        last_name: "Apellidos"
+        phone_number: "Teléfono"
         status: Estado
         token: Token
       shoppe/country:
@@ -130,6 +139,10 @@ es:
               not_suitable: no es adecuado para este pedido
         shoppe/order:
           attributes:
+            first_name: "Nombres"
+            last_name: "Apellidos"
+            phone_number: "Teléfono"
+            billing_address1: "Dirección"
             delivery_service_id:
               must_be_specified: Debe ser especificado
         shoppe/product:
