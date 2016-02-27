@@ -3,11 +3,11 @@ var confirmtationReady;
 confirmtationReady = function() {
     var $confirmationCustomer, $directionRadioGroup, customerUser,
     $confirmationCustomer = $("#confirmation-customer"),
-    $directionRadioGroup = $("input[name='addresses']"),
     customerUser = document.getElementById("current-customer");
     if (customerUser != null) {
         customerUser = customerUser.value;
         return $confirmationCustomer.click(function() {
+            var $directionRadioGroup = $("input[name='addresses']");
             var confirmation, direction, directionRadioButton, i, len;
             for (i = 0, len = $directionRadioGroup.length; i < len; i++) {
                 directionRadioButton = $directionRadioGroup[i];
