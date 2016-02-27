@@ -69,12 +69,13 @@ class CustomersUsersController < ApplicationController
           redirect_to controller: 'sessions',
                       action: 'create',
                       id: @customers_user.id,
+                      uid: @customers_user.uid,
                       email: @customers_user.email,
                       password: @customers_user.password
         end
         format.json { render :show, status: :created, location: @customers_user }
       else
-        format.js { render "/customers_users/edit", status:  :bad_request}
+        format.js { render "fb", status:  :bad_request}
       end
     end
   end
