@@ -30,6 +30,7 @@ class CustomersUser < Shoppe::Customer
   before_create { generate_token(:oauth_token) }
 
   validates_confirmation_of :password
+  validates_presence_of  [:first_name, :last_name]
   validate :password_or_uid
 
 
