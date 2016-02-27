@@ -18,10 +18,6 @@ es:
       shoppe/order:
         one: Pedido
         other: Pedidos
-        email_address: "Dirección de correo electrónico"
-        first_name: "Nombres"
-        last_name: "Apellidos"
-        phone_number: "Teléfono"
       shoppe/order_item:
         one: Línea de pedido
         other: Líneas de pedido
@@ -49,6 +45,15 @@ es:
       shoppe/user:
         one: Usuario
         other: Usuarios
+      customers_user:
+        one: Usuario
+        other: Usuarios
+        email: Correo electrónico
+        first_name: Nombre
+        phone: Teléfono
+        last_name: Apellidos
+        password: Contraseña
+        password_confirmation: Confirmación de contraseña
 
     attributes:
       shoppe/order:
@@ -120,6 +125,20 @@ es:
         last_name: Apellidos
         password: Contraseña
         password_confirmation: Confirmación de contraseña
+      shoppe/customer:
+        email: Correo electrónico
+        first_name: Nombre
+        phone: Teléfono
+        last_name: Apellidos
+        password: Contraseña
+        password_confirmation: Confirmación de contraseña
+#      customers_user:
+#        email: Correo electrónico
+#        first_name: Nombre
+#        phone: Teléfono
+#        last_name: Apellidos
+#        password: Contraseña
+#        password_confirmation: Confirmación de contraseña
     errors:
       template:
         body: ! 'Hay problemas en los siguientes campos:'
@@ -155,9 +174,17 @@ es:
           attributes:
             quantity:
               too_high_quantity: es demasiado alto para la cantidad en stock
+
         shoppe/payment:
           refund_failed: "Los reembolsos deben ser inferiores al pago (%{refundable_amount})"
-
+        customers_user:
+          attributes:
+            email: Correo electrónico
+            first_name: Nombre
+            phone: Teléfono
+            last_name: Apellidos
+            password: Contraseña
+            password_confirmation: Confirmación de contraseña
   will_paginate:
     next_label: "Siguiente &#8594;"
     page_gap: "&hellip;"

@@ -67,7 +67,7 @@ class CustomersUser < Shoppe::Customer
 
   def password_or_uid
     if uid.blank? && password.blank?
-      errors[:base] << "registrarse por facebook ó ingresar contraseña"
+      errors[:autenticacion] << "registrarse por facebook ó ingresar contraseña"
     end
   end
 

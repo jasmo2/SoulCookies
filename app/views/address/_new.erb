@@ -1,6 +1,6 @@
 <% my_remote ||= false %>
 <%= form_for @address, :url => address_index_path, :remote => my_remote, :html => {:class => 'checkout disableable', :id=> 'address-form'} do |f| %>
-    <%= f.error_messages %>
+    <% instance_errors(Shoppe::Customer, @customers_user)%>
     <div class="customer">
       <%= field_set_tag do %>
         <div class="form-group">

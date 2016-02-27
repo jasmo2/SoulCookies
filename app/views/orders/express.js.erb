@@ -1,7 +1,7 @@
 $("#customer-user").html('<%= j render partial: "orders/express" %>');
 <%unless @order.errors.empty? %>
   sweetAlert("Error",
-      '<% @order.errors.messages.each do |k,v| %> <%= "*#{Shoppe::Order.human_attribute_name(k)}: #{v.first}; " %> <% end %>',
+      '<% @order.errors.messages.each do |k,v| %> <%= "*#{Shoppe::Order.human_attribute_name(k)}: #{v.first}; \\n" %> <% end %>',
       "warning");
 <% end %>
 $(".customer-user-record").hide();
