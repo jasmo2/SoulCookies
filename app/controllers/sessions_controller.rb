@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    if fb_params['id'].nil?
+    if fb_params['uid'].nil?
       create_customer
     else
       create_fb
@@ -17,11 +17,11 @@ class SessionsController < ApplicationController
   end
 
   def create_fb
-    @customers_user = CustomersUser.where(uid: fb_params['id']).first
+    @customers_user = CustomersUser.where(uid: fb_params['uid']).first
     if @customers_user.nil?
       @customers_user = CustomersUser.new(fb_params)
       session[:user_customer_id] = @customers_user.id
-      render "/customers_users/fb"
+      render js: 'window.location.reload();'
     else
      session_accepted (@customers_user)
      render :nothing => true, status: :accepted, :content_type => 'text/html'
@@ -53,7 +53,7 @@ class SessionsController < ApplicationController
   end
 
   def fb_params
-    params.permit("first_name", "last_name","id","email")
+    params.permit("first_name", "last_name","uid","email")
     end
   def manual_params
     params.permit(:email, :password)
