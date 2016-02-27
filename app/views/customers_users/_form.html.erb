@@ -23,12 +23,12 @@
     <% if p_field%>
         <div class="form-group">
           <%= f.label :password, "contraseña" %>
-          <%= f.text_field :password, :class => "form-control" %>
+          <%= f.password_field :password, :class => "form-control" %>
         </div>
 
         <div class="form-group">
           <%= f.label :password_confirmation, "Confirmación de contraseña" %>
-          <%= f.text_field :password_confirmation, :class => "form-control" %>
+          <%= f.password_field :password_confirmation, :class => "form-control" %>
         </div>
     <% end %>
     <div class="actions">
