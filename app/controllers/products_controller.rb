@@ -20,6 +20,7 @@ class ProductsController < ApplicationController
 
   def add_to_basket
     product_to_order = params[:variant] ? @product.variants.find(params[:variant].to_i) : @product
+    raise ArgumentError if params[:quantity].to_i <= 0
     current_order.order_items.add_item(product_to_order, params[:quantity].to_i)
     @ajax_current_order =  current_order.reload
     respond_to do |wants|
@@ -30,6 +31,11 @@ class ProductsController < ApplicationController
   rescue Shoppe::Errors::NotEnoughStock => e
     respond_to do |wants|
       wants.js { render 'products/exception_stock' }
+      wants.json { render :json => {:error => 'NotEnoughStock', :available_stock => e.available_stock}}
+    end
+  rescue ArgumentError => e
+    respond_to do |wants|
+      wants.js { render  'at_least_1_product' }
       wants.json { render :json => {:error => 'NotEnoughStock', :available_stock => e.available_stock}}
     end
   end

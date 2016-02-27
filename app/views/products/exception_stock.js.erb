@@ -1,4 +1,10 @@
 /**
  * Created by jasmo2 on 1/22/16.
  */
-alert("No tenemos más de <%= escape_javascript(@product.name) %> en este momento")
+sweetAlert({
+  title: "Fuera de inventario",
+  text: "No tenemos más de <%= escape_javascript(@product.name) %> en este momento",
+  type: "warning",
+  timer: 5200,
+  showConfirmButton: true
+});
