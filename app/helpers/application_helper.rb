@@ -11,12 +11,14 @@ module ApplicationHelper
   end
   def instance_errors(klass, instance)
     unless instance.errors.empty?
+      errors = ''
+      instance.errors.messages.each do |k,v|
+        errors += "*#{klass.human_attribute_name(k)}: #{v.first}; \\n"
+      end
       return %Q[
-      <script type='text/javascript' charset='utf-8'>
         sweetAlert('Error',
-                   '#{instance.errors.messages.each { |k,v|  "*#{klass.human_attribute_name(k)}: #{v.first}; \\n"  } }',
+                   '#{ errors } ',
                    'warning');
-      </script>
      ]
     end
   end

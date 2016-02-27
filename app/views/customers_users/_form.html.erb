@@ -1,11 +1,5 @@
 <%= form_for @customers_user, remote: true,  :html => { :id => "customer-submit" } do |f| %>
-    <%unless @customers_user.errors.empty? %>
-        <script type="text/javascript" charset="utf-8">
-          sweetAlert("Error",
-          '<% @customers_user.errors.messages.each do |k,v| %> <%= "*#{Shoppe::Customer.human_attribute_name(k)}: #{v.first}; \\n" %> <% end %>',
-          "warning");
-        </script>
-    <% end %>
+    <%= javascript_tag instance_errors(Shoppe::Customer, @customers_user)%>
     <div class="form-group">
       <%= f.label :Nombre, t('shoppe.customers.first_name') %>
       <%= f.text_field :first_name, :class => "form-control" %>

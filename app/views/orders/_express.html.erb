@@ -1,5 +1,5 @@
 <%= form_for @order, url: checkout_confirmation_path, method: :patch,remote: true, html: {class: ''} do |f| %>
-    <% instance_errors(Shoppe::Order, @order)%>
+    <%= javascript_tag instance_errors(Shoppe::Order, @order)%>
     <div class="customer">
       <%= field_set_tag do %>
         <div class="form-group">
