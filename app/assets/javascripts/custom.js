@@ -31,6 +31,8 @@ ready = function() {
   // PARALLAX EFFECTS
   andrzejdus.parallaxer.Parallaxer.start();
 
+
 };
 
 $(document).on('ready page:load', ready);
+
