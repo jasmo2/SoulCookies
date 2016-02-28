@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Shoppecookies</title>
+  <title>Soulcookies</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag :modernizr %>
@@ -11,6 +11,12 @@
 <%= render "layouts/navbar" %>
 <div>
 <%= yield %>
+<div class="overlay">
+	<div class="spinner">
+		<div class="double-bounce1"></div>
+	  <div class="double-bounce2"></div>
+	</div>
+</div>
 </div>
 </body>
 </html>
