@@ -73,6 +73,7 @@ html {
 }
 body {
   min-height: 100%;
+  font-size: 12px;
 }
 .custom {
   background: #27b1e2;
@@ -162,7 +163,7 @@ body {
     }
   }
   .navbar-brand {
-    height: 58px;
+    height: 75px;
     padding: 0;
     width: 262px;
     @include effect_opacity;
@@ -171,7 +172,7 @@ body {
         opacity: 0.8;
       }
     img {
-      width: 100%;
+      width: 95px;
     }
   }
   .navbar-left {
@@ -557,7 +558,7 @@ body {
       border-radius: 50%;
       color: #f94406;
       display: inline-block;
-      font-size: 1em;
+      font-size: 1.2em;
       height: 16px;
       letter-spacing: 0;
       line-height: 1em;
