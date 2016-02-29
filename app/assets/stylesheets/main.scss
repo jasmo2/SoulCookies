@@ -142,6 +142,19 @@ body {
   .navbar {
     padding: 20px 75px;
     background: rgba(39, 177, 226, 0.9);
+    @include breakpoint(lrg) { 
+      padding: 20px;
+    } 
+    .navbar-toggle {
+      @include effect_bg;
+      &:hover, &:active, &:focus {
+        background: #058baa;
+        @include effect_bg;
+      }
+      .icon-bar {
+        background: #fff;
+      }
+    }
     .active {
       a {
         background: #058baa;
@@ -155,6 +168,9 @@ body {
         font-size: 1.2em;
         border-radius: 25px;
         @include effect_bg;
+        @include breakpoint(md) { 
+          display: inline-block;
+        } 
         &:hover, &:active, &:focus {
           @include effect_bg;
           background: #058baa;
@@ -189,9 +205,16 @@ body {
       }
     }
   }
+  .navbar-collapse {
+    margin-top: 15px;
+  }
   .navbar-right {
     border-bottom: 1px solid #fff;
     padding-bottom: 10px;
+    @include breakpoint(md) { 
+      position: relative;
+      border: 0;
+    } 
     .icon {
       width: 32px;
       display: inline-block;
@@ -208,6 +231,23 @@ body {
     .icon-link {
       padding-top: 8px;
       padding-bottom: 0;
+      @include breakpoint(md) { 
+        display: inline-block;
+        padding-right: 0;
+      } 
+    }
+    .icons-menu {
+      @include breakpoint(md) { 
+        display: inline-block;
+      } 
+    }
+    .cart {
+      @include breakpoint(md) { 
+        position: absolute;
+        top: 0;
+        right: 0;
+        text-align: right;
+      }
     }
   }
   // basket
@@ -218,6 +258,13 @@ body {
   .basket-container {
     padding: 15px;
     width: 300px;
+    @include breakpoint(md) { 
+      background: #fff;
+      border-radius: 20px;
+    }
+    @include breakpoint(xxs) { 
+      width: 250px;
+    }
   }
   .basket-item {
     border-top: 1px dashed #ebeaea;
