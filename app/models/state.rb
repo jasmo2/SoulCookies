@@ -11,11 +11,12 @@
 #
 
 class State < ActiveRecord::Base
+  validates_uniqueness_of :order_tracker_id
   belongs_to :shoppe_order
   after_commit :begin_tracker, :on => :create
   def increment_seq
     seq = self.seq
-    if seq < 5
+    if seq < 4
       self.seq = seq + 1
       self.save!
     end
