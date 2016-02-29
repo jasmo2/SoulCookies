@@ -328,6 +328,13 @@ body {
       p {
         top: 60px !important;
         width: 30%;
+        @include breakpoint(md) { 
+          width: 50%;
+        }
+        @include breakpoint(sm) { 
+          right: 10%;
+          width: 80%;
+        }
       }
     }
     .txt-fat {
@@ -349,6 +356,9 @@ body {
       position: absolute;
       top: 275px !important;
       left: 0;
+      @include breakpoint(sm) { 
+        top: 405px !important;
+      }
     }
     .cookie-1 {
       left: 100px;
@@ -368,6 +378,12 @@ body {
       right: 180px;
       z-index: 3;
       top: 415px !important;
+      @include breakpoint(md) { 
+        right: 10%;
+      }
+      @include breakpoint(xs) { 
+        display: none;
+      }
     }
     .cloud-4 {
       z-index: 1;
@@ -381,6 +397,13 @@ body {
     .col-md-3 {
       border-right: solid 1px #F94406;
       height: 200px;
+      @include breakpoint(md) { 
+        border: 0;
+      }
+      @include breakpoint(xxs) { 
+        width: 100%;
+        float: none;
+      }
       &:last-child {
         border: 0;
       }
@@ -477,6 +500,9 @@ body {
     margin: 50px auto;
     text-align: center;
     width: 75%;
+    @include breakpoint(sm) { 
+      margin-bottom: 75px;
+    }
   }
   .product-name {
     font-size: 2.5em;
@@ -487,6 +513,9 @@ body {
     font-size: 1.286em;
     height: 100px;
     overflow: hidden;
+    @include breakpoint(sm) { 
+      height: 70px;
+    }
   }
   .product-quantity {
     text-transform: uppercase;
