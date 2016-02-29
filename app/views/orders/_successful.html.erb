@@ -9,9 +9,9 @@
   </div>
 	<div class="container">
 		<div class="row">
-			<div class="col-md-6 col-md-offset-3 success-info text-center">
+			<div class="col-md-8 col-md-offset-2 success-info text-center">
 			    <h1 class="txt-fat">Compra Exitosa</h1>
-				<p>Tu orden <span class="txt-blue">#<%= order_number %></span> se realizó con éxito. Hemos enviado un email con la información de tu pedido. También puedes revisar nuestro <%= link_to "Cookie Tracker", cookie_tracker_path %>cookie tracker</a> para ver el estado de tu pedido.</p>
+				<p>Tu orden <span class="txt-blue">#<%= order_number %></span> se realizó con éxito. Hemos enviado un email con la información de tu pedido. También puedes revisar nuestro <%= link_to "Cookie Tracker", cookie_tracker_path, class="txt-orange" %> para ver el estado de tu pedido.</p>
 				<%= link_to "Volver al home", root_path, class:"btn-default txt-fat" %>
 			</div><!-- /success-info -->
 		</div><!-- /row -->

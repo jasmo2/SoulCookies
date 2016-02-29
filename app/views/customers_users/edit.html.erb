@@ -12,14 +12,14 @@
         <p class="txt-orange">Acá puedes editar tus datos personales y direcciones. Recuerda que debes ingresar tu contraseña para que los cambios se hagan efectivos. Al final dale clic al botón que dice "listo" y ya está.</p>
       </div><!-- /account-welcome -->
 
-      <div class="col-md-5 col-md-offset-1">
+      <div class="col-sm-6 col-sm-offset-0 col-md-5 col-md-offset-1">
         <div class="account-edit-info">
           <h2 class="txt-fat">Datos personales</h2>
           <%= render partial: 'customers_users/new', locals: {p_field: true} %>
         </div><!-- /account-edit-info -->
       </div><!-- /col-md-4 -->
 
-      <div class="col-md-5">
+      <div class="col-sm-6 col-md-5">
         <div class="row">
           <div class="account-edit-addresses">
             <h2 class="txt-fat">Lista de direcciones</h2>
@@ -34,7 +34,7 @@
         </div><!-- /row -->
       </div><!-- /col-md-4 -->
 
-      <div class="col-md-6 col-md-offset-3 text-center">
+      <div class="col-sm-12 col-sm-offset-0 col-md-6 col-md-offset-3 text-center">
         <div class="account-delete">
           <%= button_to "Eliminar cuenta", @customers_user,  method: :delete,  data: { confirm: " ¿Estás seguro que quieres eliminar tu cuenta?" }, class: "btn-default" %>
         </div><!-- /account-delete -->

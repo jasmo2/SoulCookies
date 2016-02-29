@@ -1,16 +1,21 @@
 <% @full_header = true %>
 <% @page_title = 'Welcome' %>
 <div id="" class="intro">
-  <div class="container-fluid">
+  <div class="container">
     <div class="row">
-      <div class="col-md-4 col-md-offset-6">
+      <div class="col-md-4 col-md-offset-4 visible-md visible-lg">
+        <div class="logo-container" data-parallaxer="enabled" data-parallaxer-speed="0.2">
+          <%= image_tag("logo-soul-cookies@2x.png") %>
+        </div>
+      </div>
+      <div class="col-sm-8 col-sm-offset-4 col-md-4 col-md-offset-0">
         <div class="text-intro">
           <p data-parallaxer="enabled" data-parallaxer-speed="0.5"><span class="txt-fat">Somos</span> una fábrica de galletas. De galletas grandes. Nos dedicamos diariamente a hornear frescos y suavecitos pedazos de felicidad, hechos con el alma y los mejores ingredientes, entregados en la puerta de tu casa o empresa.</p>
         </div><!-- /text-intro -->
       </div><!-- /col-md-4 -->
 
     </div><!-- /row -->
-  </div><!-- /container-fluid -->
+  </div><!-- /container -->
   <div class="gimmicks">
     <div class="cloud-1">
       <%= image_tag("nubes-capa-1.png") %>
@@ -18,13 +23,13 @@
     <div class="cookie-1" data-parallaxer="enabled" data-parallaxer-speed="0.1">
       <%= image_tag("cookie-1.png") %>
     </div><!-- /cookie-1 -->
-    <div class="cloud-2" data-parallaxer="enabled" data-parallaxer-speed="0.2">
+    <div class="cloud-2" data-parallaxer="enabled" data-parallaxer-speed="0">
       <%= image_tag("nubes-capa-2.png") %>
     </div><!-- /cloud-2 -->
     <div class="cookie-2" data-parallaxer="enabled" data-parallaxer-speed="0.1">
       <%= image_tag("cookie-2.png") %>
     </div><!-- /cookie-2 -->
-    <div class="cloud-3">
+    <div class="cloud-3" data-parallaxer="enabled" data-parallaxer-speed="0.2">
       <%= image_tag("nubes-capa-3.png") %>
     </div><!-- /cloud-3 -->
     <div class="cloud-4" data-parallaxer="enabled" data-parallaxer-speed="0.3">
