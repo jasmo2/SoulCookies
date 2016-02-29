@@ -15,9 +15,10 @@
       <div class="col-md-7">
         <div class="order-confirmation-container">
           <h1 class="txt-fat">1. Confirmación de orden</h1>
+          <p class="hidden-sm hidden-md hidden-lg">Desplazáte horizontalmente dentro de la tabla para ver todos los items de la orden.</p>
           <%= render 'shared/order_items', :order => @order %>
           <div class="modify-order">
-            <a href="" class="txt-link">modificar orden</a>
+            <a href="<%= root_path %>" class="txt-link">modificar orden</a>
           </div>
         </div><!-- /order-confirmation-container -->
       </div><!-- /col-md-7 -->

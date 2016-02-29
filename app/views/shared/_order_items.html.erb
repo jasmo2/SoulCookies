@@ -1,76 +1,77 @@
-<table class="orderItems table table-bordered table-striped table-hover">
-  <thead class="text-center">
-  <tr>
-    <td>Cantidad</td>
-    <td>Tipo de Galleta</td>
-    <td>Precio</td>
-    <td>
-      <%= Shoppe.settings.tax_name %>
-    </td>
-    <td>Sub-Total</td>
-  </tr>
-  </thead>
-  <tbody>
-  <% for item in order.order_items %>
-      <tr>
-        <td class="quantity">
-          <%= item.quantity %>
-          <% unless defined?(readonly) %>
-            <div class="operators">
-              <%= link_to "+", adjust_basket_item_quantity_path(item.id), :method => :post, :class => 'ajax icon-operation' %>
-              <%= link_to "-", adjust_basket_item_quantity_path(item.id), :method => :delete, :class => 'ajax icon-operation' %>
-            </div>
-          <% end %>
-        </td>
-        <td class="product">
-          <%= item.ordered_item.full_name %>
-          <% unless defined?(readonly) %>
-              <%= link_to "quitar", remove_basket_item_path(item), :method => :delete, :class => '  ajax txt-link' %>
-          <% end %>
-        </td>
-        <td class="money price txt-right">
-          <%= number_to_currency item.sub_total %>
-        </td>
-        <td class="money tax txt-right">
-          <%= number_to_currency item.tax_amount %>
-        </td>
-        <td class="money total txt-right">
-          <%= number_to_currency item.total %>
-        </td>
-      </tr>
-  <% end %>
-  </tbody>
-  <tfoot>
-  <% if order.delivery_service %>
-      <tr class="delivery">
-        <td class="method" colspan="4">
-          <%= order.delivery_service.name %>
-        </td>
-        <td class="money txt-right">
-          <%= number_to_currency order.delivery_price %>
-        </td>
-      </tr>
-  <% end %>
-  <tr class="subtotal">
-    <td colspan="4">Total (sin <%= Shoppe.settings.tax_name %>)</td>
-    <td class="money txt-right">
-      <%= number_to_currency order.total_before_tax %>
-    </td>
-  </tr>
-  <tr class="tax">
-    <td colspan="4">
-      <%= Shoppe.settings.tax_name %>
-    </td>
-    <td class="money txt-right">
-      <%= number_to_currency order.tax %>
-    </td>
-  </tr>
-  <tr class="total the-total">
-    <td colspan="4">Total</td>
-    <td class="money txt-right">
-      <%= number_to_currency order.total %>
-    </td>
-  </tr>
-  </tfoot>
-</table>
-
+<div class="table-responsive">
+  <table class="orderItems table table-bordered table-striped table-hover">
+    <thead class="text-center">
+    <tr>
+      <td>Cantidad</td>
+      <td>Tipo de Galleta</td>
+      <td>Precio</td>
+      <td>
+        <%= Shoppe.settings.tax_name %>
+      </td>
+      <td>Sub-Total</td>
+    </tr>
+    </thead>
+    <tbody>
+    <% for item in order.order_items %>
+        <tr>
+          <td class="quantity">
+            <%= item.quantity %>
+            <% unless defined?(readonly) %>
+              <div class="operators">
+                <%= link_to "+", adjust_basket_item_quantity_path(item.id), :method => :post, :class => 'ajax icon-operation' %>
+                <%= link_to "-", adjust_basket_item_quantity_path(item.id), :method => :delete, :class => 'ajax icon-operation' %>
+              </div>
+            <% end %>
+          </td>
+          <td class="product">
+            <%= item.ordered_item.full_name %>
+            <% unless defined?(readonly) %>
+                <%= link_to "quitar", remove_basket_item_path(item), :method => :delete, :class => '  ajax txt-link' %>
+            <% end %>
+          </td>
+          <td class="money price txt-right">
+            <%= number_to_currency item.sub_total %>
+          </td>
+          <td class="money tax txt-right">
+            <%= number_to_currency item.tax_amount %>
+          </td>
+          <td class="money total txt-right">
+            <%= number_to_currency item.total %>
+          </td>
+        </tr>
+    <% end %>
+    </tbody>
+    <tfoot>
+    <% if order.delivery_service %>
+        <tr class="delivery">
+          <td class="method" colspan="4">
+            <%= order.delivery_service.name %>
+          </td>
+          <td class="money txt-right">
+            <%= number_to_currency order.delivery_price %>
+          </td>
+        </tr>
+    <% end %>
+    <tr class="subtotal">
+      <td colspan="4">Total (sin <%= Shoppe.settings.tax_name %>)</td>
+      <td class="money txt-right">
+        <%= number_to_currency order.total_before_tax %>
+      </td>
+    </tr>
+    <tr class="tax">
+      <td colspan="4">
+        <%= Shoppe.settings.tax_name %>
+      </td>
+      <td class="money txt-right">
+        <%= number_to_currency order.tax %>
+      </td>
+    </tr>
+    <tr class="total the-total">
+      <td colspan="4">Total</td>
+      <td class="money txt-right">
+        <%= number_to_currency order.total %>
+      </td>
+    </tr>
+    </tfoot>
+  </table>
+</div>

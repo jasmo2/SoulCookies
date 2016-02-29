@@ -297,6 +297,9 @@ body {
   }
   .nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
     background: transparent;
+    @include breakpoint(md) { 
+      color: #fff;
+    }
     .icon {
       .st5 {
           -webkit-transition: fill .4s ease;
@@ -304,6 +307,18 @@ body {
           -o-transition: fill .4s ease;
           transition: fill .4s ease;
           fill:#f94406;
+      }
+    }
+  }
+  .navbar-nav .open .dropdown-menu > li > a {
+    @include breakpoint(md) { 
+      color: #fff;
+      display: inline-block;
+      @include effect_color;
+      &:hover, &:focus, &:active {
+        @include effect_color;
+        background: transparent;
+        color: #058baa;
       }
     }
   }
@@ -616,6 +631,11 @@ body {
       margin-bottom: 20px;
       p {
         font-size: 1.286em;
+      }
+    }
+    .col-md-7 {
+      @include breakpoint(md) { 
+        margin-bottom: 50px;
       }
     }
     .order-confirmation-container {
@@ -952,6 +972,11 @@ body {
             transform: translate3d(50px, 40px, 0px);
         }
     }
+    .col-md-5 {
+      @include breakpoint(sm) { 
+        margin-bottom: 70px;
+      }
+    }
   }
 
   // cookie tracker
@@ -993,13 +1018,13 @@ body {
       left: 100px;
       position: absolute;
       z-index: 0;
-      top: -80px !important;
+      top: -20px !important;
     }
     .cookie-2 {
       position: absolute;
       right: 180px;
       z-index: 0;
-      top: 80px !important;
+      top: 300px !important;
     }
   }
   .cookie-tracker-steps {
