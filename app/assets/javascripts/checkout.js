@@ -66,7 +66,7 @@ ready = function() {
         });
         $.getScript("//connect.facebook.net/en_US/all.js", function() {
             return FB.init({
-                appId: "197911337231782",
+                appId: "182897058733210",
                 version: "v2.5"
             });
         });
