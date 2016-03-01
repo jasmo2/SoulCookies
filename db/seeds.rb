@@ -1,5 +1,6 @@
 # encoding: UTF-8
 
+Shoppe::Order.destroy_all
 Shoppe::Product.destroy_all
 Shoppe::ProductCategory.destroy_all
 Shoppe::TaxRate.destroy_all
@@ -16,8 +17,11 @@ cat1 = Shoppe::ProductCategory.where(name: 'cookies').first_or_create
 
 
 def get_file(name, content_type = 'image/png')
+  puts ""
+  puts "path: #{Rails.root.join('db', 'seeds_data', name)}"
   file = ActionDispatch::Http::UploadedFile.new(tempfile: File.open(Rails.root.join('db', 'seeds_data', name), 'rb'))
   file.original_filename = name
+  puts "file: #{file}"
   file.content_type = content_type
   file
 end
@@ -29,7 +33,6 @@ descripcion_barry_white = 'Pedazos del mejor chocolate blanco .'
 descripcion_anita_baker = 'Galleta de avena, arándanos y nueces. Una versión recargada y deliciosa.'
 descripcion_cookie_wonder = 'Nuestra tradicional masa mezclada con chips de chocolate, nueces y nutella. Sí, nutella.'
 descripcion_roberta = 'Red Velvet. La perfecta unión entre chips de chocolate blanco y cocoa en nuestra masa roja.'
-
 
 pro = Shoppe::Product.new(name: 'Sam Cookie', sku: 'YL-SIP-T22P', description: descripcion_sam_cookie, short_description: descripcion_sam_cookie, price: 5.000, cost_price: 4.050, tax_rate: tax_rate)
 pro.product_category_ids = cat1.id
