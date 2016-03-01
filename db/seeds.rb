@@ -30,7 +30,6 @@ descripcion_anita_baker = 'Galleta de avena, arándanos y nueces. Una versión r
 descripcion_cookie_wonder = 'Nuestra tradicional masa mezclada con chips de chocolate, nueces y nutella. Sí, nutella.'
 descripcion_roberta = 'Red Velvet. La perfecta unión entre chips de chocolate blanco y cocoa en nuestra masa roja.'
 
-
 pro = Shoppe::Product.new(name: 'Sam Cookie', sku: 'YL-SIP-T22P', description: descripcion_sam_cookie, short_description: descripcion_sam_cookie, price: 5.000, cost_price: 4.050, tax_rate: tax_rate)
 pro.product_category_ids = cat1.id
 pro.default_image_file = get_file('sam-cookie.png')
