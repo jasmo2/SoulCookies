@@ -1,1 +1,2 @@
-$("#customer-user").html("<%= render partial: 'customers_users/new'%>");
+//$("#customer-user").html("<= render partial: 'customers_users/new'%>");
+<%=  render partial: 'shared/errors_instance', locals: {klass: Shoppe::Customer, instance: @customers_user} %>

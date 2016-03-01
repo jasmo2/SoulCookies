@@ -1,0 +1,9 @@
+  <% unless instance.errors.empty?
+    errors = ''
+    instance.errors.messages.each do |k,v|
+    errors += "*#{klass.human_attribute_name(k)}: #{v.first}; \\n"
+    end
+  %>
+      sweetAlert('Error','<%= errors %> ', 'warning');
+<%  end %>
+
