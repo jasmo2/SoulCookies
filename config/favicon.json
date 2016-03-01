@@ -1,0 +1,36 @@
+{
+    "master_picture": "app/assets/images/master_picture.png",
+    "favicon_design": {
+        "ios": {
+            "picture_aspect": "no_change"
+        },
+        "desktop_browser": [
+
+        ],
+        "windows": {
+            "picture_aspect": "no_change",
+            "background_color": "#da532c",
+            "on_conflict": "override"
+        },
+        "android_chrome": {
+            "picture_aspect": "no_change",
+            "theme_color": "#ffffff",
+            "manifest": {
+                "name": "Soul Cookies",
+                "display": "browser",
+                "orientation": "not_set",
+                "on_conflict": "override",
+                "declared": true
+            }
+        },
+        "safari_pinned_tab": {
+            "picture_aspect": "black_and_white",
+            "threshold": 44.53125,
+            "theme_color": "#5bbad5"
+        }
+    },
+    "settings": {
+        "scaling_algorithm": "Mitchell",
+        "error_on_image_too_small": false
+    }
+}

@@ -60,6 +60,7 @@ gem 'bxslider-rails', '~> 4.2', '>= 4.2.5.1'
 
 gem 'sidekiq', '~> 4.1.0'
 gem 'nifty-attachments'
+gem 'rails_real_favicon'
 # windows specific
-# gem 'tzinfo-data', platforms: [:mingw, :mswin]
+ gem 'tzinfo-data', platforms: [:mingw, :mswin]
 
