@@ -32,7 +32,4 @@ test:
 
 
 production:
-  <<: *default
-  database: shoppecookies_production
-  username: shoppecookies
-  password: <%= ENV['SHOPPECOOKIES_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
