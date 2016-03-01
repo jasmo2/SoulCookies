@@ -63,5 +63,5 @@ gem 'nifty-attachments'
 
 gem 'rails_real_favicon'
 # windows specific
-# gem 'tzinfo-data', platforms: [:mingw, :mswin]
+ gem 'tzinfo-data', platforms: [:mingw, :mswin]
 
