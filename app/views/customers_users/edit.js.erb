@@ -1,1 +1,2 @@
-$("#customer-user").html("<%= j render partial: 'customers_users/new', locals: {p_field: true} %>");
+//$("#customer-user").html("%= j render partial: 'customers_users/new', locals: {p_field: true} %>");
+<%=  render partial: 'shared/errors_instance', locals: {klass: CustomersUser, instance: @customers_user} %>
