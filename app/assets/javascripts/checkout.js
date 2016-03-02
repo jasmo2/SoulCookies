@@ -1,5 +1,6 @@
 var ready;
 
+
 ready = function() {
     var loginFb = $("#login-fb")
     newCustomerUser = $(".customer-user-record"),
@@ -47,7 +48,7 @@ ready = function() {
                             return window.location.reload();
                         }).fail(function(err) {
                             if (err.status === 400) {
-                                fillResponse(err.responseText, customerUser, uid);
+                                eval(err.responseText);
                             }
                             return console.log("error " + err);
                         });
@@ -64,7 +65,8 @@ ready = function() {
         $.ajaxSetup({
             cache: true
         });
-        $.getScript("//connect.facebook.net/en_US/all.js", function() {
+
+        $.getScript("//connect.facebook.net/es_LA/all.js", function() {
             return FB.init({
                 appId: "182897058733210",
                 version: "v2.5"
