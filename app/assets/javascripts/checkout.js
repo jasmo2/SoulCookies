@@ -75,8 +75,8 @@ ready = function() {
         checkLoginStatus = function(response, urlPath) {
             var accessToken, uid;
             if (response && response.status === "connected") {
-                console.log('Welcome!  Fetching your information.... ');
                 uid = response.authResponse.userID;
+                console.log('Welcome!  Fetching your information: '+uid);
                 accessToken = response.authResponse.accessToken;
                 return FB.api("/me", "GET", {
                     fields: "id,first_name,last_name,email"

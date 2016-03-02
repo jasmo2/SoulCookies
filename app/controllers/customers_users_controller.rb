@@ -63,8 +63,10 @@ class CustomersUsersController < ApplicationController
   # POST /customers_users.json
   def create
     @customers_user = CustomersUser.new(customers_user_params)
+    puts ""
     respond_to do |format|
       if @customers_user.save
+        puts "Is saveed : #{@customers_user}"
         format.js do
           redirect_to controller: 'sessions',
                       action: 'create',
@@ -75,6 +77,7 @@ class CustomersUsersController < ApplicationController
         end
         format.json { render :show, status: :created, location: @customers_user }
       else
+        puts "Denied Saved"
         format.js { render "fb", status:  :bad_request}
       end
     end

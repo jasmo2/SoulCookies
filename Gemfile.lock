@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/jasmo2/shoppe.git
-  revision: 160f9d3980a640278ec900cfc1bb248eff47d938
+  revision: 50a937a3702d02417d4eb670ade27d135728d9c2
   specs:
     shoppe (1.1.2)
       awesome_nested_set (~> 3.0.2)
@@ -98,6 +98,7 @@ GEM
     eventmachine (1.0.9.1)
     excon (0.47.0)
     execjs (2.6.0)
+    ffi (1.9.10-x86-mingw32)
     fission (0.5.0)
       CFPropertyList (~> 2.2)
     fog (1.36.0)
@@ -309,6 +310,11 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 3.0)
       netrc (~> 0.7)
+    rest-client (1.8.0-x86-mingw32)
+      ffi (~> 1.9)
+      http-cookie (>= 1.0.2, < 2.0)
+      mime-types (>= 1.16, < 3.0)
+      netrc (~> 0.7)
     roo (1.13.2)
       nokogiri
       rubyzip
@@ -357,6 +363,7 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.2)
+    unf_ext (0.0.7.2-x86-mingw32)
     web-console (2.3.0)
       activemodel (>= 4.0)
       binding_of_caller (>= 0.7.2)

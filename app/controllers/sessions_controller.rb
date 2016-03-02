@@ -10,14 +10,17 @@ class SessionsController < ApplicationController
 
   def create
     if fb_params['uid'].nil?
+      puts "Into create_customer"
       create_customer
     else
+      puts "Into create_fb"
       create_fb
     end
   end
 
   def create_fb
     @customers_user = CustomersUser.where(uid: fb_params['uid']).first
+    puts "@customers_user: #{@customers_user}"
     if @customers_user.nil?
       @customers_user = CustomersUser.new(fb_params)
       session[:user_customer_id] = @customers_user.id
