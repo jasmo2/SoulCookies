@@ -26,9 +26,9 @@ module Shoppecookies
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
 
     config.action_mailer.smtp_settings = {
-        :address              => "smtp.sendgrid.net",
+        :address              => "smtp.gmail.com",
         :port                 => 587,
-        :domain               => "soulcookies.co",
+        :domain               => "gmail.com",
         :user_name            => ENV["SOULCOOKIES_EMAIL_U"],
         :password             => ENV["SOULCOOKIES_EMAIL_P"],
         :authentication       => :plain,
