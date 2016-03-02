@@ -1,5 +1,5 @@
 <div class="products">
-  <div class="container-fluid">
+  <div class="container">
     <div class="row">
     <% for product in products %>
         <%= form_tag buy_product_path(product.product_category.permalink, product.permalink), remote: true, id: "#{product.permalink}" do %>

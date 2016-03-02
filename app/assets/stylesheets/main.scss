@@ -328,6 +328,16 @@ body {
     padding-bottom: 90px;
     position: relative;
     min-height: 950px;
+    @include breakpoint(lrg) { 
+      min-height: 0;
+      padding-bottom: 0;
+    }
+    @include breakpoint(xs) { 
+      min-height: 400px;
+    }
+    @include breakpoint(xxs) { 
+      min-height: 500px;
+    }
     .logo-container {
       top: 100px !important;
       left: 50%;
@@ -340,6 +350,9 @@ body {
       line-height: 1.6em;
       z-index: 7;
       padding-left: 20px;
+      @include breakpoint(sm) { 
+        font-size: 1.2em;
+      }
       p {
         top: 60px !important;
         width: 30%;
@@ -359,18 +372,34 @@ body {
       padding-right: 10px;
     }
   }
+  .gimmicks-responsive {
+    @include breakpoint(xs) { 
+      display: none;
+    }
+    img {
+      width: 100%;
+    }
+  }
   .gimmicks {
     .cloud-1 {
       z-index: 7;
       position: absolute;
       bottom: 0;
       left: 0;
+      width: 100%;
+      img {
+        width: 100%;
+      }
     }
     .cloud-2 {
       z-index: 5;
       position: absolute;
       top: 275px !important;
       left: 0;
+      width: 100%;
+      img {
+        width: 100%;
+      }
       @include breakpoint(sm) { 
         top: 405px !important;
       }
@@ -387,6 +416,10 @@ body {
       bottom: 0;
       left: 0;
       top: 250px !important;
+      width: 100%;
+      img {
+        width: 100%;
+      }
     }
     .cookie-2 {
       position: absolute;
@@ -405,6 +438,10 @@ body {
       position: absolute;
       left: 0;
       top: 100px !important;
+      width: 100%;
+      img {
+        width: 100%;
+      }
     }
   }
   // how to order
