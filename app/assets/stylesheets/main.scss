@@ -608,6 +608,12 @@ body {
     padding: 15px 30px;
     display: inline-block;
   }
+  .cloud-container {
+    position: absolute;
+    width: 100%;
+    overflow: hidden;
+    height: 195px;
+  }
   // gallery
   .bg-gallery {
     background: #FDFCF4;
@@ -915,6 +921,9 @@ body {
         margin-top: 10px;
         padding: 10px 20px;
         text-transform: uppercase;
+      }
+      .txt-link {
+        display: none;
       }
     }
     .account-edit-addresses {
