@@ -132,6 +132,8 @@ es:
         last_name: Apellidos
         password: Contraseña
         password_confirmation: Confirmación de contraseña
+      shoppe/address:
+        address1: Dirección
 #      customers_user:
 #        email: Correo electrónico
 #        first_name: Nombre

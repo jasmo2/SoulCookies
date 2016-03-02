@@ -19,8 +19,12 @@ class AddressController < ApplicationController
         end
       end
       f.html do
-        @address.save
-        redirect_to controller: "customers_users", action: "edit", id: current_customer
+        if @address.save
+          redirect_to controller: "customers_users", action: "edit", id: current_customer
+        else
+          @customers_user = current_customer
+          render "customers_users/edit"
+        end
       end
 
     end
