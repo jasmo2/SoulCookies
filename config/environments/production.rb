@@ -79,6 +79,6 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.action_mailer.default_url_options = { host: ENV['HOST'], port: ENV['PORT']  }
+  config.action_mailer.default_url_options = { host: 'soulcookies.co', port: 80  }
 
 end

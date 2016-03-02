@@ -1,6 +1,7 @@
 GIT
   remote: https://github.com/jasmo2/shoppe.git
-  revision: 28b9c45971f19715dd09a6199795ae3a1d10eb1d
+  revision: 59458977cfed4f4f4008eff011d1b2f96940adb0
+  branch: mailer
   specs:
     shoppe (1.1.2)
       awesome_nested_set (~> 3.0.2)
@@ -60,6 +61,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    addressable (2.4.0)
     arel (6.0.3)
     autoprefixer-rails (6.3.3.1)
       execjs
@@ -231,6 +233,10 @@ GEM
     kaminari (0.16.3)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
+    launchy (2.4.3)
+      addressable (~> 2.3)
+    letter_opener (1.4.1)
+      launchy (~> 2.2)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.3)
@@ -383,6 +389,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   jbuilder (~> 2.0)
   jquery-rails
+  letter_opener
   nifty-attachments
   pg (~> 0.15)
   puma
