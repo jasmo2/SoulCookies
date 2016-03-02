@@ -88,6 +88,7 @@ class OrdersController < ApplicationController
     begin
       @order.confirm!
       OrderMailer.delay.received_order(@order)
+      OrderMailer.delay.new_order_admin(Shoppe::User.all,@order.id)
       state = State.create(order_tracker_id: @order.id)
       redirect_to action: 'successful',
                   order_number: @order.number
