@@ -17,9 +17,9 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   config.action_mailer.delivery_method = :letter_opener
   # config.action_mailer.smtp_settings = {
-  #     :address              => "smtp.gmail.com",
+  #     :address              => "smtp.sendgrid.net",
   #     :port                 => 587,
-  #     :domain               => "gmail.com",
+  #     :domain               => "soulcookies.co",
   #     :user_name            => ENV["SOULCOOKIES_EMAIL_U"],
   #     :password             => ENV["SOULCOOKIES_EMAIL_P"],
   #     :authentication       => :plain,
