@@ -608,6 +608,12 @@ body {
     padding: 15px 30px;
     display: inline-block;
   }
+  .cloud-container {
+    position: absolute;
+    width: 100%;
+    overflow: hidden;
+    height: 130px;
+  }
   // gallery
   .bg-gallery {
     background: #FDFCF4;
