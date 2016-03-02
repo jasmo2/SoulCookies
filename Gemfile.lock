@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/jasmo2/shoppe.git
-  revision: 50a937a3702d02417d4eb670ade27d135728d9c2
+  revision: 28b9c45971f19715dd09a6199795ae3a1d10eb1d
   specs:
     shoppe (1.1.2)
       awesome_nested_set (~> 3.0.2)
