@@ -350,6 +350,9 @@ body {
       line-height: 1.6em;
       z-index: 7;
       padding-left: 20px;
+      @include breakpoint(md) { 
+        width: 100%;
+      }
       @include breakpoint(sm) { 
         font-size: 1.2em;
       }
@@ -357,11 +360,7 @@ body {
         top: 60px !important;
         width: 30%;
         @include breakpoint(md) { 
-          width: 50%;
-        }
-        @include breakpoint(sm) { 
-          right: 10%;
-          width: 80%;
+          width: 100%;
         }
       }
     }
@@ -511,6 +510,11 @@ body {
     background: #FDFCF4;
     position: relative;
     z-index: 5;
+    .container-clouds {
+      @include breakpoint(md) { 
+        display: none;
+      }
+    }
     .cloud-5 {
       z-index: 0;
       top: 900px !important;
@@ -1066,12 +1070,18 @@ body {
       position: absolute;
       z-index: 0;
       top: -20px !important;
+      @include breakpoint(md) { 
+        top: -340px !important;
+      }
     }
     .cookie-2 {
       position: absolute;
       right: 180px;
       z-index: 0;
       top: 300px !important;
+      @include breakpoint(md) { 
+        top: -175px !important;
+      }
     }
   }
   .cookie-tracker-steps {
