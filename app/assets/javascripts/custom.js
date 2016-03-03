@@ -29,9 +29,11 @@ ready = function() {
   });
 
   // PARALLAX EFFECTS
-  andrzejdus.parallaxer.Parallaxer.start();
-
-
+  enquire.register("screen and (min-width:991px)", {
+    match : function() {
+      andrzejdus.parallaxer.Parallaxer.start();
+    }
+  });
 };
 
 $(document).on('ready page:load', ready);
