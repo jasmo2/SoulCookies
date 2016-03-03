@@ -98,6 +98,7 @@ class OrdersController < ApplicationController
     rescue Shoppe::Errors::InsufficientStockToFulfil
       flash[:alert] = "We're terribly sorry but while you were checking out we ran out of stock of some of the items in your basket. Your basket has been updated with the maximum we can currently supply. If you wish to continue just use the button below."
     rescue Exception => e
+      puts "know Error: #{e}"
       puts e
     end
 
