@@ -14,5 +14,7 @@
 .idea
 /test/*
 /public/attachment/*
+/public/assets/*
+
 /node_modules
 /bower_components
