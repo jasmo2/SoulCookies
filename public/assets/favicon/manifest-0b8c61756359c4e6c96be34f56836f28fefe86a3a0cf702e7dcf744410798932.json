@@ -1,0 +1,41 @@
+{
+	"name": "soulcookies",
+	"icons": [
+		{
+			"src": "/assets/favicon/android-chrome-36x36-3464d417a49af87a8d01b3d51ac8da95b89b7e98a11f13fe0ed08fcdbe63e61a.png",
+			"sizes": "36x36",
+			"type": "image\/png",
+			"density": 0.75
+		},
+		{
+			"src": "/assets/favicon/android-chrome-48x48-e746ae27d74cd0949b2ce92881e0d00358e204bbed42d216ca35e7591bab808b.png",
+			"sizes": "48x48",
+			"type": "image\/png",
+			"density": 1
+		},
+		{
+			"src": "/assets/favicon/android-chrome-72x72-acb3fcb494f5a008f3fa049ec2a6e1aab2fca5411bebb001bffbe6865e4d4bee.png",
+			"sizes": "72x72",
+			"type": "image\/png",
+			"density": 1.5
+		},
+		{
+			"src": "/assets/favicon/android-chrome-96x96-c1ddb7187efd23ef9657d18c5665d2de103737368a8e42a3fa5024b02a3e17a6.png",
+			"sizes": "96x96",
+			"type": "image\/png",
+			"density": 2
+		},
+		{
+			"src": "/assets/favicon/android-chrome-144x144-49b0027f8d2424caa8fb714324982784e7a0d861b9fe4de2d1bd903db0564a05.png",
+			"sizes": "144x144",
+			"type": "image\/png",
+			"density": 3
+		},
+		{
+			"src": "/assets/favicon/android-chrome-192x192-b649ecc2184a40f190dd12a246daaa8e1e954b63396ceccc9ecfa478408410f2.png",
+			"sizes": "192x192",
+			"type": "image\/png",
+			"density": 4
+		}
+	]
+}
