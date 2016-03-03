@@ -13,7 +13,7 @@ ready = function() {
         customerUser.html(toTrim.children("#form-container")[0].innerHTML);
         hidden = $(document.createElement('input')).attr({
             type: 'hidden',
-            id: 'customers_user_uid',
+            uid: 'customers_user_uid',
             name: "customers_user[uid]",
             value: uid
         });
