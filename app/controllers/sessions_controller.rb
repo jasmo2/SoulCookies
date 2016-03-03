@@ -20,12 +20,16 @@ class SessionsController < ApplicationController
 
   def create_fb
     @customers_user = CustomersUser.where(uid: fb_params['uid']).first
-    puts "@customers_user: #{@customers_user}"
+    puts ""
+    puts "fb_params['uid'] #{fb_params['uid']}"
+    puts "@customers_user: id_#{@customers_user.id} uid_#{@customers_user.id}"
     if @customers_user.nil?
+      puts "create_fb; NOT nil"
       @customers_user = CustomersUser.new(fb_params)
       session[:user_customer_id] = @customers_user.id
       render "/customers_users/create_fb"
     else
+      puts "create_fb; nil"
      session_accepted (@customers_user)
      render :nothing => true, status: :accepted, :content_type => 'text/html'
     end
