@@ -30,8 +30,8 @@ class SessionsController < ApplicationController
       render "/customers_users/create_fb"
     else
       puts "create_fb; nil"
-     session_accepted (@customers_user)
-     render :nothing => true, status: :accepted, :content_type => 'text/html'
+      session_accepted (@customers_user)
+      render :nothing => true, status: :accepted, :content_type => 'text/html'
     end
   end
 
@@ -45,7 +45,7 @@ class SessionsController < ApplicationController
       end
 
     else
-       render js: " sweetAlert('Error','Credenciales invalidas', 'warning');", status:  :bad_request
+      render js: " sweetAlert('Error','Credenciales invalidas', 'warning');", status:  :bad_request
     end
   end
 
@@ -61,7 +61,7 @@ class SessionsController < ApplicationController
 
   def fb_params
     params.permit("first_name", "last_name","uid","email")
-    end
+  end
   def manual_params
     params.permit(:email, :password)
   end
