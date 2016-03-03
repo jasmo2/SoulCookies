@@ -13,7 +13,7 @@ ready = function() {
         customerUser.html(toTrim.children("#form-container")[0].innerHTML);
         hidden = $(document.createElement('input')).attr({
             type: 'hidden',
-            uid: 'customers_user_uid',
+            id: 'customers_user_uid',
             name: "customers_user[uid]",
             value: uid
         });
@@ -23,6 +23,9 @@ ready = function() {
     fetchUserInformation = function(me, urlPath, uid) {
         var customerUser;
         customerUser = $("#customer-user");
+        var meStr = JSON.stringify(me);
+        meStr = meStr.replace(/id/g, 'uid');
+        me = JSON.parse(meStr);
         return $.ajax({
             url: urlPath,
             data: me,
