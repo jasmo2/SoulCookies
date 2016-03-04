@@ -23,6 +23,9 @@ ready = function() {
     fetchUserInformation = function(me, urlPath, uid) {
         var customerUser;
         customerUser = $("#customer-user");
+        var meStr = JSON.stringify(me);
+        meStr = meStr.replace(/id/g, 'uid');
+        me = JSON.parse(meStr);
         return $.ajax({
             url: urlPath,
             data: me,
