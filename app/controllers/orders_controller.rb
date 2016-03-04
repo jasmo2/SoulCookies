@@ -25,6 +25,13 @@ class OrdersController < ApplicationController
   end
 
   def checkout
+    # minimum order
+    if current_order.nil? && current_order.order_items.count >= 3
+      render
+    else
+      flash[:alert] =  "Lo sentimos  , nuestro pedido minimo es de 3 galletas"
+      redirect_to root_path
+    end
   end
 
   def express

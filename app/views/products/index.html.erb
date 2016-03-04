@@ -1,6 +1,11 @@
 <% @full_header = true %>
 <% @page_title = 'Welcome' %>
 <div id="" class="intro">
+  <% if flash[:alert]%>
+    <%= javascript_tag 'defer' do -%>
+          sweetAlert('Pedido Minimo','<%= flash[:alert] %> ', 'warning');
+    <% end -%>
+  <% end %>
   <div class="container">
     <div class="row">
       <div class="col-md-4 col-md-offset-4 visible-md visible-lg">
