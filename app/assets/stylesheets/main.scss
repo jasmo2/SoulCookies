@@ -342,9 +342,13 @@ body {
       top: 100px !important;
       left: 50%;
       margin-left: -167px;
+      width: 335px;
+      img {
+        width: 100%;
+      }
     }
     .text-intro {
-      font-size: 1.4em;
+      font-size: 1.2em;
       width: 350px;
       color: #fff;
       line-height: 1.6em;
@@ -567,7 +571,7 @@ body {
     margin-top: 20px;
   }
   .product-info {
-    font-size: 1.286em;
+    font-size: 1.1em;
     height: 100px;
     overflow: hidden;
     @include breakpoint(sm) { 
@@ -637,12 +641,26 @@ body {
       border: 0;
       box-shadow: none;
       margin-bottom: 0;
+      .bx-prev {
+      background-image: image-url("icon-left.png");
+      background-repeat: no-repeat;
+      background-position: center;
+        &:hover {
+          background-image: image-url("icon-left-hover.png");
+        }
+      }
+      .bx-next {
+        background-image: image-url("icon-right.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        &:hover {
+          background-image: image-url("icon-right-hover.png");
+        }
+      }
     }
-    .bx-prev {
-      background-image: image-url("controls.png")
-    }
-    .bx-next {
-      background-image: image-url("controls.png")
+    .bx-wrapper .bx-controls-direction a {
+      height: 63px;
+      width: 63px;
     }
   }
   .slides {
