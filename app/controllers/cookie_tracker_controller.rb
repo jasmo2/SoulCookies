@@ -8,6 +8,7 @@ class CookieTrackerController < ApplicationController
           order = Shoppe::Order.where(id: cookies_params).first
           if order
             @order = OrderTracker.new(order)
+            puts "which sequence: #{@order.state.seq}"
             render 'steps'
           else
             render js: "sweetAlert('Número de tracker invalido', 'Escriba una orden valida', 'warning');", status: 400
