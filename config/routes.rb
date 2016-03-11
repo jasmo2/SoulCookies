@@ -41,7 +41,13 @@ Rails.application.routes.draw do
   post "cookie_tracker" => "cookie_tracker#search"
   get 'cookie_tracker/steps' => 'cookie_tracker#steps'
 
+  ## REST API
 
+  namespace :api, defaults: {format: 'json'} do
+    resources :products
+    post 'products/:category_id/:product_id/buy' => 'products#add_to_basket', :as => 'buy_product'
 
+    resources :customers_users
+  end
 
 end
