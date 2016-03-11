@@ -9,20 +9,24 @@ module Api
         @product = @product_category.products.where(:permalink => params[:product_id]).active.first!
       end
     end
+
     def index
       @ajax_current_order = current_order
       @products = ColombianProduct.active.includes(:product_categories, :variants).root
     end
 
     def add_to_basket
+      # The values that should be send are
+      # :quantity && :session
       raise ArgumentError if params[:quantity].to_i <= 0
       current_order.order_items.add_item(@product, params[:quantity].to_i)
       @ajax_current_order =  current_order.reload
       render
+
     rescue Shoppe::Errors::NotEnoughStock => e
-        render :json => {:error => 'NotEnoughStock', :available_stock => e.available_stock}
+      render :json => {:error => 'NotEnoughStock', :available_stock => e.available_stock}, status: :failed_dependency
     rescue ArgumentError => e
-       render :json => {:error => 'Al menos selecciona una galleta' }
+      render :json => {:error => 'Al menos selecciona una galleta' }, status: :bad_request
     end
   end
 end
