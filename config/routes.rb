@@ -27,7 +27,6 @@ Rails.application.routes.draw do
   get "checkout/index"=> "orders#index", as: "orders_index"
   match "checkout"=> "orders#checkout", as: "checkout", via: [:get, :patch]
   match "checkout/express"=> "orders#express", via: [:get, :post]
-  match "checkout/pay"=> "orders#payment", as: "checkout_payment", via: [:get, :post]
   match "checkout/confirm"=> "orders#confirmation", as: "checkout_confirmation", via: [:patch, :post]
 
   post 'basket/:order_item_id' => 'orders#change_item_quantity', as: 'adjust_basket_item_quantity'
@@ -45,7 +44,7 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: {format: 'json'} do
     resources :products
-    post 'products/:category_id/:product_id/buy' => 'products#add_to_basket', :as => 'buy_product'
+    post 'products/checkout/buy' => 'products#checkout_buy'
 
     resources :customers_users
   end
