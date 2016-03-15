@@ -25,6 +25,8 @@ module Shoppecookies
     #add webfonts
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
 
+    config.eager_load_paths << Rails.root.join("lib","api")
+
     config.action_mailer.smtp_settings = {
         :address              => "smtp.gmail.com",
         :port                 => 587,

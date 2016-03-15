@@ -44,7 +44,7 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: {format: 'json'} do
     resources :products
-    post 'products/checkout/buy' => 'products#checkout_buy'
+    post 'products/buy' => 'products#checkout_buy'
 
     resources :customers_users
   end
