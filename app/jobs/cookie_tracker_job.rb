@@ -2,13 +2,15 @@ class CookieTrackerJob < ActiveJob::Base
   queue_as :default
 
   def perform(state)
-    puts "CookieTrackerJob"
+    puts "Before state: #{state.seq}"
     state.increment_seq
     if state.seq < 4
-      time  = ENV['STATE_TIMER'] || 1
+      time  = ENV['STATE_TIMER'] || 3
       time = time.to_i
-      # CookieTrackerJob.perform_in(time.minutes, state)
-      CookieTrackerJob.set(wait: time.minutes).perform_later(state.increment_seq)
+      puts " Time_now: #{Time.now.to_f}"
+      puts "state: #{state.seq}"
+      # CookieTrackerJob.perform_at(time.minutes.from_now, state)
+      CookieTrackerJob.set(wait: time.minutes).perform_later(state)
     end
   end
 end
