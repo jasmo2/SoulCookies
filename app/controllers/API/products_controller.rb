@@ -1,26 +1,12 @@
 
 module Api
   class ProductsController < BaseController
-
-
     def index
       @ajax_current_order = current_order
       @products = ColombianProduct.active.includes(:product_categories, :variants).root
     end
 
     def checkout_buy
-=begin
-    recieving json:
-    {
-      products: [
-        product:{
-            product_category: "product_category_permalink",
-            product_id: "permalink"
-            quatity: "#"
-          }
-      ]
-    }
-=end
       begin
         information = request.raw_post
         data = JSON.parse(information)
@@ -33,7 +19,10 @@ module Api
           @ajax_current_order =  current_order.reload
         end
         # here initialize the order
-        order_api = OrderApi.new(@ajax_current_order, data["order_params"])
+        order_api = ::OrderApi.new({
+                                          "order": @ajax_current_order,
+                                          "order_params": data["order_params"]
+                                      })
         order_api.confirmation(data["confirmation_type"])
 
       rescue Shoppe::Errors::NotEnoughStock => e
@@ -46,10 +35,10 @@ module Api
         render :json => {:error => 'el pago ha sido denegado' }, status: :bad_request
       rescue Shoppe::Errors::InsufficientStockToFulfil => e
         render :json => {:error => "Lo sentimos no hay más #{e} en nuestro inventario" }, status: :bad_request
-      rescue Api::Exceptions::InappropriateAddress => e
-        render :json => {:error => "La dirección provista es incorrecta" }, status: :bad_request
+      # rescue Api::Exceptions::InappropriateAddress => e
+      #   render :json => {:error => "La dirección provista es incorrecta" }, status: :bad_request
       rescue Exception => e
-        puts "Error: #{e}"
+        render :json => {:error => "#{e}" }, status: :bad_request
       end
     end
 
