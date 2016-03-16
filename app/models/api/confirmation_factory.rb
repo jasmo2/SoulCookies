@@ -2,9 +2,9 @@ module Api
   class ConfirmationFactory
     include ActiveModel::Serialization
 
-    def TypeC.factory vt
+    def ConfirmationFactory.factory vt
       { "express" => ConfirmationExpress,
-        "customer_user" => ConfirmationCustomerUser }[vt].new
+        "customer_user" => ConfirmationCustomer }[vt].new
     end
   end
   class ConfirmationExpress < ConfirmationFactory
@@ -22,10 +22,8 @@ module Api
       }
       order.ip_address = request.ip
       unless order.proceed_to_confirm
-        render json: { "error": il18n_attributes(Shoppe::Order, order) }
-        return false
+        raise Api::Errors::InappropriateAddress il18n_attributes(Shoppe::Order, order)
       end
-      true
     end
   end
 

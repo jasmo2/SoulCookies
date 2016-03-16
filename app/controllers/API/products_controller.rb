@@ -19,7 +19,7 @@ module Api
           @ajax_current_order =  current_order.reload
         end
         # here initialize the order
-        order_api = ::OrderApi.new({
+        order_api = Api::OrderApi.new({
                                           "order": @ajax_current_order,
                                           "order_params": data["order_params"]
                                       })
