@@ -21,7 +21,8 @@ module Api
         # here initialize the order
         order_api = Api::OrderApi.new({
                                           "order": @ajax_current_order,
-                                          "order_params": data["order_params"]
+                                          "order_params": data["order_params"],
+                                          "request_ip": request.ip
                                       })
         order_api.confirmation(data["confirmation_type"])
 
