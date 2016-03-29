@@ -1,14 +1,18 @@
 module Api
   class ConfirmationFactory
     include ActiveModel::Serialization
-
+    # include Api::Exceptions::InappropriateAddress
+    # include Api::I18n_m
     def ConfirmationFactory.factory vt
       { "express" => ConfirmationExpress,
         "customer_user" => ConfirmationCustomer }[vt].new
     end
   end
   class ConfirmationExpress < ConfirmationFactory
-    def confirmation(current_order)
+    def confirmation(agrs)
+      current_order = agrs[:current_order]
+      order_params = agrs[:order_params]
+      request_ip = agrs[:request_ip]
       order = Shoppe::Order.find(current_order.id)
       order.separate_delivery_address = "0"
       order.attributes = order_params
@@ -20,9 +24,9 @@ module Api
           billing_postcode: "4-72",
           last_name: "."
       }
-      order.ip_address = request.ip
+      order.ip_address = request_ip
       unless order.proceed_to_confirm
-        raise Api::Errors::InappropriateAddress il18n_attributes(Shoppe::Order, order)
+        raise Api::Exceptions::InappropriateAddress ,  Api::Exceptions::I18n_m.new(Shoppe::Order, order).i18n_attributes
       end
     end
   end
