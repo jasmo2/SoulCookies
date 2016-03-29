@@ -21,9 +21,14 @@ module Api
                                     })
       begin
         @order.confirm!
-        OrderMailer.delay.received_order(@order)
-        OrderMailer.delay.new_order_admin(Shoppe::User.all,@order.id)
-        state = State.create(order_tracker_id: @order.id)
+        # OrderMailer.delay.received_order(@order)
+        # OrderMailer.delay.new_order_admin(Shoppe::User.all,@order.id)
+        state =  State.new(order_tracker_id: @order.id)
+        if state.save
+          CookieTrackerJob.perform_now(state)
+        else
+          raise Exception, "State not save"
+        end
         @order.number
       rescue Exception => e
         raise Exception, e
