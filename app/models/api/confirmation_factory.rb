@@ -28,6 +28,7 @@ module Api
       unless order.proceed_to_confirm
         raise Api::Exceptions::InappropriateAddress ,  Api::Exceptions::I18n_m.new(Shoppe::Order, order).i18n_attributes
       end
+      order
     end
   end
 

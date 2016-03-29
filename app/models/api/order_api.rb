@@ -10,22 +10,24 @@ module Api
       @request_ip = args[:request_ip]
     end
 
-    def self.successful(order_number)
 
-    end
 
     def confirmation(confirmation_type)
       confirmation_obj = Api::ConfirmationFactory.factory confirmation_type
-      confirmation_obj.confirmation({
+      @order = confirmation_obj.confirmation({
                                         current_order: @order,
                                         order_params: @order_params,
                                         request_ip: @request_ip
                                     })
-      @order.confirm!
-      OrderMailer.delay.received_order(@order)
-      OrderMailer.delay.new_order_admin(Shoppe::User.all,@order.id)
-      state = State.create(order_tracker_id: @order.id)
-      successful( @order.number)
+      begin
+        @order.confirm!
+        OrderMailer.delay.received_order(@order)
+        OrderMailer.delay.new_order_admin(Shoppe::User.all,@order.id)
+        state = State.create(order_tracker_id: @order.id)
+        @order.number
+      rescue Exception => e
+        raise Exception, e
+      end
     end
   end
 end
