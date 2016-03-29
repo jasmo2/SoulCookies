@@ -24,7 +24,7 @@ module Api
                                           "order_params": data["order_params"],
                                           "request_ip": request.ip
                                       })
-        order_api.confirmation(data["confirmation_type"])
+        render json: { "order_id": order_api.confirmation(data["confirmation_type"])}, status: :accepted
 
       rescue Shoppe::Errors::NotEnoughStock => e
         render :json => {:error => 'NotEnoughStock', :available_stock => e.available_stock}, status: :failed_dependency
