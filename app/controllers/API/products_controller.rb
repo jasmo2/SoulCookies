@@ -36,8 +36,8 @@ module Api
         render :json => {:error => 'el pago ha sido denegado' }, status: :bad_request
       rescue Shoppe::Errors::InsufficientStockToFulfil => e
         render :json => {:error => "Lo sentimos no hay más #{e} en nuestro inventario" }, status: :bad_request
-      # rescue Api::Exceptions::InappropriateAddress => e
-      #   render :json => {:error => "La dirección provista es incorrecta" }, status: :bad_request
+      rescue Api::Exceptions::InappropriateAddress => e
+        render :json => {:error => JSON.parse(eval(e.message).to_json) }, status: :bad_request
       rescue Exception => e
         render :json => {:error => "#{e}" }, status: :bad_request
       end
