@@ -46,6 +46,7 @@ Rails.application.routes.draw do
     resources :products, only: :index
     post 'products/buy' => 'products#checkout_buy'
     resources :customers_users, except: [:index,:new]
+    resources :sessions, except: [:index,:new]
   end
 
 end
