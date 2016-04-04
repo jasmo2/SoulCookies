@@ -43,10 +43,9 @@ Rails.application.routes.draw do
   ## REST API
 
   namespace :api, defaults: {format: 'json'} do
-    resources :products
+    resources :products, only: :index
     post 'products/buy' => 'products#checkout_buy'
-
-    resources :customers_users
+    resources :customers_users, except: [:index,:new]
   end
 
 end
