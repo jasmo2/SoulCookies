@@ -57,13 +57,21 @@ class CustomersUser < Shoppe::Customer
     CustomerUserMailer.password_reset(self).deliver_now
   end
 
+  def get_or_create_token
+    if self.oauth_token
+      self.oauth_token = SecureRandom.urlsafe_base64
+    else
+      generate_token(:oauth_token)
+    end
+    save!(:validate => false)
+  end
+
+  private
   def generate_token(column)
     begin
       self[column] = SecureRandom.urlsafe_base64
     end while CustomersUser.exists?(column => self[column])
   end
-
-  private
 
 
   def password_or_uid
