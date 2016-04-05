@@ -58,12 +58,11 @@ class CustomersUser < Shoppe::Customer
   end
 
   def get_or_create_token
-    if self.oauth_token
-      self.oauth_token = SecureRandom.urlsafe_base64
-    else
+    unless oauth_token
       generate_token(:oauth_token)
+      save!(:validate => false)
     end
-    save!(:validate => false)
+    oauth_token
   end
 
   private
