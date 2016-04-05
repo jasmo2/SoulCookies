@@ -45,7 +45,9 @@ Rails.application.routes.draw do
   namespace :api, defaults: {format: 'json'} do
     resources :products, only: :index
     post 'products/buy' => 'products#checkout_buy'
-    resources :customers_users, except: [:index,:new]
+    resources :customers_users, only: :create
+    match "customers_user" => "customers_users#update", via: [:patch, :put]
+    delete "customers_user" => "customers_users#destroy"
     resources :sessions, except: [:index,:new]
   end
 
