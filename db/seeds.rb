@@ -36,49 +36,49 @@ descripcion_roberta = 'Red Velvet. La perfecta unión entre chips de chocolate b
 
 pro = Shoppe::Product.new(name: 'Sam Cookie', sku: 'YL-SIP-T22P', description: descripcion_sam_cookie, short_description: descripcion_sam_cookie, price: 5.000, cost_price: 4.050, tax_rate: tax_rate)
 pro.product_category_ids = cat1.id
-pro.default_image_file = get_file('sam-cookie')
+# pro.default_image_file = get_file('sam-cookie')
 if pro.save
   pro.stock_level_adjustments.create(description: 'Stock inicial', adjustment: 50)
 end
 
 pro = Shoppe::Product.new(name: 'James Brown', sku: 'YL-SIP-T23P', description: descripcion_james_brown, short_description: descripcion_james_brown, price: 5.000, cost_price: 4.050, tax_rate: tax_rate)
 pro.product_category_ids = cat1.id
-pro.default_image_file = get_file('james-brown')
+# pro.default_image_file = get_file('james-brown')
 if pro.save
   pro.stock_level_adjustments.create(description: 'Stock inicial', adjustment: 50)
 end
 
 pro = Shoppe::Product.new(name: 'Erykah Badu', sku: 'YL-SIP-T24P', description: descripcion_erykah_badu, short_description: descripcion_erykah_badu, price: 5.000, cost_price: 4.050, tax_rate: tax_rate)
 pro.product_category_ids = cat1.id
-pro.default_image_file = get_file('erykah-badu')
+# pro.default_image_file = get_file('erykah-badu')
 if pro.save
   pro.stock_level_adjustments.create(description: 'Stock inicial', adjustment: 50)
 end
 
 pro = Shoppe::Product.new(name: 'Barry White', sku: 'YL-SIP-T25P', description: descripcion_barry_white, short_description: descripcion_barry_white, price: 5.000, cost_price: 4.050, tax_rate: tax_rate)
 pro.product_category_ids = cat1.id
-pro.default_image_file = get_file('barry-white')
+# pro.default_image_file = get_file('barry-white')
 if pro.save
   pro.stock_level_adjustments.create(description: 'Stock inicial', adjustment: 50)
 end
 
 pro = Shoppe::Product.new(name: 'Anita Baker', sku: 'YL-SIP-T26P', description: descripcion_anita_baker, short_description: descripcion_anita_baker, price: 5.000, cost_price: 4.050, tax_rate: tax_rate)
 pro.product_category_ids = cat1.id
-pro.default_image_file = get_file('anita-baker')
+# pro.default_image_file = get_file('anita-baker')
 if pro.save
   pro.stock_level_adjustments.create(description: 'Stock inicial', adjustment: 50)
 end
 
 pro = Shoppe::Product.new(name: 'Cookie Wonder', sku: 'YL-SIP-T27P', description: descripcion_cookie_wonder, short_description: descripcion_cookie_wonder, price: 5.000, cost_price: 4.050, tax_rate: tax_rate)
 pro.product_category_ids = cat1.id
-pro.default_image_file = get_file('cookie-wonder')
+# pro.default_image_file = get_file('cookie-wonder')
 if pro.save
   pro.stock_level_adjustments.create(description: 'Stock inicial', adjustment: 50)
 end
 
 pro = Shoppe::Product.new(name: 'Roberta', sku: 'YL-SIP-T28P', description: descripcion_roberta, short_description: descripcion_roberta, price: 5.000, cost_price: 4.050, tax_rate: tax_rate)
 pro.product_category_ids = cat1.id
-pro.default_image_file = get_file('roberta')
+# pro.default_image_file = get_file('roberta')
 if pro.save
   pro.stock_level_adjustments.create(description: 'Stock inicial', adjustment: 50)
 end
