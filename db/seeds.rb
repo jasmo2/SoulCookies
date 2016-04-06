@@ -50,7 +50,7 @@ end
 
 pro = Shoppe::Product.new(name: 'Erykah Badu', sku: 'YL-SIP-T24P', description: descripcion_erykah_badu, short_description: descripcion_erykah_badu, price: 5.000, cost_price: 4.050, tax_rate: tax_rate)
 pro.product_category_ids = cat1.id
-# pro.default_image_file = get_file('erykah-badu')
+pro.default_image_file = get_file('erykah-badu')
 if pro.save
   pro.stock_level_adjustments.create(description: 'Stock inicial', adjustment: 50)
 end

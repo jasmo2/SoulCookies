@@ -39,17 +39,10 @@ module Shoppecookies
         :enable_starttls_auto => true
     }
 
-    config.middleware.insert_before 0, "Rack::Cors", :debug => true, :logger => (-> { Rails.logger }) do
-      allow do
-        origins '*'
-
-        resource '/api',
-                 :headers => :any,
-                 :methods => :any,
-                 :credentials => true,
-                 :max_age => 0
-
-      end
-    end
+    config.action_dispatch.default_headers = {
+        'Access-Control-Allow-Origin' => '*',
+        'Access-Control-Request-Method' => 'GET, PATCH, PUT, POST, OPTIONS, DELETE',
+        'Access-Control-Allow-Headers:' => 'Origin, X-Requested-With, Content-Type, Accept'
+    }
   end
 end

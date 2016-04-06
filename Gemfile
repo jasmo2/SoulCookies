@@ -59,7 +59,7 @@ gem 'rails_real_favicon'
 
 #api gems
 gem 'rabl'
-gem 'rack-cors', :require => 'rack/cors'
+# gem 'rack-cors', :require => 'rack/cors'
 
 
 # windows specific
