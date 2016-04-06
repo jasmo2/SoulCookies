@@ -38,5 +38,18 @@ module Shoppecookies
         :authentication       => :plain,
         :enable_starttls_auto => true
     }
+
+    config.middleware.insert_before 0, "Rack::Cors", :debug => true, :logger => (-> { Rails.logger }) do
+      allow do
+        origins '*'
+
+        resource '/api',
+                 :headers => :any,
+                 :methods => :any,
+                 :credentials => true,
+                 :max_age => 0
+
+      end
+    end
   end
 end

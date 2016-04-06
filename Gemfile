@@ -59,6 +59,8 @@ gem 'rails_real_favicon'
 
 #api gems
 gem 'rabl'
+gem 'rack-cors', :require => 'rack/cors'
+
 
 # windows specific
 # gem 'tzinfo-data', platforms: [:mingw, :mswin]
