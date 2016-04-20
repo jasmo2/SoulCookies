@@ -56,6 +56,6 @@ class AddressController < ApplicationController
   end
   def delete_address
     @customers_user = current_customer
-    @address = Shoppe::Address.find(params[:id])
+    @address = Shoppe::Address.find_by_id(params[:id])
   end
 end
