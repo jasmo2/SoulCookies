@@ -115,7 +115,7 @@ class OrdersController < ApplicationController
   end
 
   def confirmation_express
-    @order = Shoppe::Order.find(current_order.id)
+    @order = Shoppe::Order.find_by_id(current_order.id)
     @order.separate_delivery_address = "0"
     @order.attributes = params[:order].permit(:first_name, :last_name, :email_address, :phone_number,:billing_address1, )
     @order.attributes = {
@@ -135,7 +135,7 @@ class OrdersController < ApplicationController
   end
 
   def confirmation_customer_user
-    @order = Shoppe::Order.find(current_order.id)
+    @order = Shoppe::Order.find_by_id(current_order.id)
     @order.delivery_service = Shoppe::DeliveryService.first
     @order.save
     address = Address.new(current_customer, params_confirmation_customer["direction"])
@@ -166,7 +166,7 @@ class OrdersController < ApplicationController
     @addresses = @addresses.addresses
   end
   def get_order
-    @order = Shoppe::Order.find(current_order.id)
+    @order = Shoppe::Order.find_by_id(current_order.id)
     end
   def params_confirmation_customer
     params.require("confirmation").permit("direction","customer")

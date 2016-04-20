@@ -13,7 +13,7 @@ module Api
       current_order = agrs[:current_order]
       order_params = agrs[:order_params]
       request_ip = agrs[:request_ip]
-      order = Shoppe::Order.find(current_order.id)
+      order = Shoppe::Order.find_by_id(current_order.id)
       order.separate_delivery_address = "0"
       order.attributes = order_params
       order.attributes = {
@@ -33,7 +33,7 @@ module Api
   end
 
   class ConfirmationCustomer < ConfirmationFactory
-    def confirmation
+    def confirmation(args)
 
     end
   end

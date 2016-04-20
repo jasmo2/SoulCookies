@@ -52,7 +52,7 @@ class AddressController < ApplicationController
     params.require("address").permit("address1","address2","address3","address4",:"postcode")
   end
   def get_country
-    Shoppe::Country.find(params.require("address").permit("country_id")["country_id"].to_i)
+    Shoppe::Country.find_by_id(params.require("address").permit("country_id")["country_id"].to_i)
   end
   def delete_address
     @customers_user = current_customer
