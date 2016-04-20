@@ -10,7 +10,7 @@ class CookieTrackerJob < ActiveJob::Base
       puts " Time_now: #{Time.now.to_f}"
       puts "state: #{state.seq}"
       # CookieTrackerJob.perform_at(time.minutes.from_now, state)
-      CookieTrackerJob.set(wait: time.minutes).perform_later(state)
+      CookieTrackerJob.set(wait: time.seconds).perform_later(state)
     end
   end
 end

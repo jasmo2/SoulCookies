@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   resources :customers_users
   mount Shoppe::Engine => "/shoppe"
   root 'products#index'
@@ -48,7 +47,10 @@ Rails.application.routes.draw do
     resources :customers_users, only: :create
     match "customers_user" => "customers_users#update", via: [:patch, :put]
     delete "customers_user" => "customers_users#destroy"
+
     resources :sessions, except: [:index,:new]
+    resources :address, only: [:index,:create,:destroy]
+
   end
 
 end
