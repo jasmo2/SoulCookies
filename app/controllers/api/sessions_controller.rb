@@ -28,7 +28,7 @@ module Api
       customers_user = CustomersUser.authenticate(manual_params)
       if customers_user
         customers_user.get_or_create_token
-        render json: { customer_user: customers_user }
+        render json: { customer_user: customers_user,  addresses: customers_user.addresses }
       else
         render json: {error: "Credendiales invalidas"}, status:  :forbidden
       end
