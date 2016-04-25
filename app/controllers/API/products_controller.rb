@@ -1,6 +1,10 @@
 
 module Api
   class ProductsController < BaseController
+    before_filter :access_private , if: Proc.new{ |c|
+      JSON.parse(c.request.raw_post)["confirmation_type"] == "customer_user"
+    },  only: :checkout_buy
+
     def index
       @ajax_current_order = current_order
       @products = ColombianProduct.active.includes(:product_categories, :variants).root
@@ -18,10 +22,10 @@ module Api
           current_order.order_items.add_item(@product, product["quantity"].to_i)
           @ajax_current_order =  current_order.reload
         end
-        # here initialize the order
         order_api = Api::OrderApi.new({
                                           "order": @ajax_current_order,
                                           "order_params": data["order_params"],
+                                          "current_customer": current_customer,
                                           "request_ip": request.ip
                                       })
         render json: { "order_id": order_api.confirmation(data["confirmation_type"])}, status: :accepted
