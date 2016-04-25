@@ -33,8 +33,19 @@ module Api
   end
 
   class ConfirmationCustomer < ConfirmationFactory
-    def confirmation(args)
+    def confirmation(agrs)
+      current_order = agrs[:current_order]
+      order_params = agrs[:order_params]
+      request_ip = agrs[:request_ip]
+      order = Shoppe::Order.find_by_id(current_order.id)
+      order.delivery_service = Shoppe::DeliveryService.first
+      order.save
+      address = Address.new(agrs[:current_customer], order_params["direction"])
+      order.attributes = address.set_shoppe_address
+      order.ip_address = request_ip
 
+      order.proceed_to_confirm
+      order
     end
   end
 end
