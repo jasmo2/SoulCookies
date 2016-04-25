@@ -7,6 +7,7 @@ module Api
     def initialize(args = {}) #, order_params
       @order = args[:order]
       @order_params = args[:order_params]
+      @current_customer = args[:current_customer]
       @request_ip = args[:request_ip]
     end
 
@@ -17,6 +18,7 @@ module Api
       @order = confirmation_obj.confirmation({
                                         current_order: @order,
                                         order_params: @order_params,
+                                        current_customer: @current_customer,
                                         request_ip: @request_ip
                                     })
       begin
