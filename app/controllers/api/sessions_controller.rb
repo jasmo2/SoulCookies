@@ -12,15 +12,14 @@ module Api
     end
 
     def create_fb
-      @customers_user = CustomersUser.where(uid: fb_params['uid']).first
-      if @customers_user.nil?
-        @customers_user = CustomersUser.new(fb_params)
-        session[:user_customer_id] = @customers_user.id
-        render "/customers_users/create_fb"
-      else
-        session_accepted (@customers_user)
-        render :nothing => true, status: :accepted, :content_type => 'text/html'
+      customers_user = CustomersUser.where(uid: fb_params['uid']).first
+      if customers_user.nil?
+        customers_user = CustomersUser.new(fb_params)
+        if customers_user.save
+          customers_user.get_or_create_token
+        end
       end
+      render json: { customer_user: customers_user,  addresses: customers_user.addresses }
     end
 
 
@@ -43,7 +42,7 @@ module Api
 
 
     def fb_params
-      params[:customers_user].permit("first_name", "last_name","uid","email")
+      params[:customers_user].permit("first_name", "last_name","uid","email","phone")
     end
     def manual_params
       params[:customers_user].permit(:email, :password)
