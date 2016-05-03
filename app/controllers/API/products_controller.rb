@@ -30,20 +30,20 @@ module Api
                                       })
         render json: { "order_id": order_api.confirmation(data["confirmation_type"])}, status: :accepted
 
-      rescue Shoppe::Errors::NotEnoughStock => e
-        render :json => {:error => 'NotEnoughStock', :available_stock => e.available_stock}, status: :failed_dependency
-      rescue JSON::ParserError => e
-        render :json => {:error => 'Bad json format' }, status: :bad_request
-      rescue ArgumentError => e
-        render :json => {:error => 'Al menos selecciona una galleta' }, status: :bad_request
-      rescue Shoppe::Errors::PaymentDeclined => e
-        render :json => {:error => 'el pago ha sido denegado' }, status: :bad_request
-      rescue Shoppe::Errors::InsufficientStockToFulfil => e
-        render :json => {:error => "Lo sentimos no hay más #{e} en nuestro inventario" }, status: :bad_request
-      rescue Api::Exceptions::InappropriateAddress => e
-        render :json => {:error => JSON.parse(eval(e.message).to_json) }, status: :bad_request
-      rescue Exception => e
-        render :json => {:error => "#{e}" }, status: :bad_request
+      # rescue Shoppe::Errors::NotEnoughStock => e
+      #   render :json => {:error => 'NotEnoughStock', :available_stock => e.available_stock}, status: :failed_dependency
+      # rescue JSON::ParserError => e
+      #   render :json => {:error => 'Bad json format' }, status: :bad_request
+      # rescue ArgumentError => e
+      #   render :json => {:error => 'Al menos selecciona una galleta' }, status: :bad_request
+      # rescue Shoppe::Errors::PaymentDeclined => e
+      #   render :json => {:error => 'el pago ha sido denegado' }, status: :bad_request
+      # rescue Shoppe::Errors::InsufficientStockToFulfil => e
+      #   render :json => {:error => "Lo sentimos no hay más #{e} en nuestro inventario" }, status: :bad_request
+      # rescue Api::Exceptions::InappropriateAddress => e
+      #   render :json => {:error => JSON.parse(eval(e.message).to_json) }, status: :bad_request
+      # rescue Exception => e
+      #   render :json => {:error => "#{e}" }, status: :bad_request
       end
     end
 
