@@ -14,7 +14,7 @@ module Api
             default: false
         }
         @address.save!
-        render nothing: true, status: :accepted
+        render :json => {id: @address.id}, status: :ok
       rescue ActiveRecord::RecordInvalid => e
         render :json => {:error => 'Dirección no guardada'}, status: :bad_request
       rescue ActiveRecord::RecordNotSaved => e
