@@ -23,4 +23,5 @@ class CookieTrackerController < ApplicationController
   def cookies_params
     params.permit("cookie-number")['cookie-number'].to_s
   end
-end=end
+end
+=end
