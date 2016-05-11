@@ -35,9 +35,9 @@ Rails.application.routes.draw do
   get 'compra_exitosa/:order_number' => 'orders#successful'
 
   # Cookie Tracker
-  get "cookie_tracker" => "cookie_tracker#index"
-  post "cookie_tracker" => "cookie_tracker#search"
-  get 'cookie_tracker/steps' => 'cookie_tracker#steps'
+  # get "cookie_tracker" => "cookie_tracker#index"
+  # post "cookie_tracker" => "cookie_tracker#search"
+  # get 'cookie_tracker/steps' => 'cookie_tracker#steps'
 
   ## REST API
 

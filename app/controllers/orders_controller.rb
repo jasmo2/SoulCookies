@@ -96,10 +96,10 @@ class OrdersController < ApplicationController
       @order.confirm!
       OrderMailer.delay.received_order(@order)
       OrderMailer.delay.new_order_admin(Shoppe::User.all,@order.id)
-      state =  State.new(order_tracker_id: @order.id)
-      if state.save
-        CookieTrackerJob.perform_now(state)
-      end
+      # state =  State.new(order_tracker_id: @order.id)
+      # if state.save
+      #   CookieTrackerJob.perform_now(state)
+      # end
       redirect_to action: 'successful',
                   order_number: @order.number
 
