@@ -14,7 +14,7 @@ class Address
   end
 
   def set_shoppe_address
-    address = Shoppe::Address.find(@address_id)
+    address = Shoppe::Address.find_by_id(@address_id)
     return {
         first_name: @current_customer.first_name,
         last_name:@current_customer.last_name,

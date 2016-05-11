@@ -1,3 +1,4 @@
+=begin
 class CookieTrackerJob < ActiveJob::Base
   queue_as :default
 
@@ -14,3 +15,4 @@ class CookieTrackerJob < ActiveJob::Base
     end
   end
 end
+=end

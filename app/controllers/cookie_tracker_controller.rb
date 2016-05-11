@@ -1,3 +1,4 @@
+=begin
 class CookieTrackerController < ApplicationController
   def index
   end
@@ -23,3 +24,4 @@ class CookieTrackerController < ApplicationController
     params.permit("cookie-number")['cookie-number'].to_s
   end
 end
+=end

@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   resources :customers_users
   mount Shoppe::Engine => "/shoppe"
   root 'products#index'
@@ -36,19 +35,22 @@ Rails.application.routes.draw do
   get 'compra_exitosa/:order_number' => 'orders#successful'
 
   # Cookie Tracker
-  get "cookie_tracker" => "cookie_tracker#index"
-  post "cookie_tracker" => "cookie_tracker#search"
-  get 'cookie_tracker/steps' => 'cookie_tracker#steps'
+  # get "cookie_tracker" => "cookie_tracker#index"
+  # post "cookie_tracker" => "cookie_tracker#search"
+  # get 'cookie_tracker/steps' => 'cookie_tracker#steps'
 
   ## REST API
 
   namespace :api, defaults: {format: 'json'} do
     resources :products, only: :index
     post 'products/buy' => 'products#checkout_buy'
-    resources :customers_users, only: :create
+    post "customers_user" => "customers_users#create"
     match "customers_user" => "customers_users#update", via: [:patch, :put]
     delete "customers_user" => "customers_users#destroy"
+
     resources :sessions, except: [:index,:new]
+    resources :address, only: [:index,:create,:destroy]
+
   end
 
 end

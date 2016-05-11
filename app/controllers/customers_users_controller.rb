@@ -52,7 +52,7 @@ class CustomersUsersController < ApplicationController
   # GET /customers_users/1/edit
   def edit
     if access_private
-      @customers_user = CustomersUser.find(params[:id])
+      @customers_user = CustomersUser.find_by(params[:id])
       render :edit
     else
       redirect_to_root_unauthorized
@@ -130,7 +130,7 @@ class CustomersUsersController < ApplicationController
     end
     def set_customers_user
       begin
-        @customers_user = CustomersUser.find(params[:id])
+        @customers_user = CustomersUser.find_by_id(params[:id])
       rescue ActiveRecord::RecordNotFound
         redirect_to_root_unauthorized
       end
