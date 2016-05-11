@@ -1,25 +1,23 @@
 // -------------------------------  WEBFONTS
 @font-face {
-    font-family: 'modeliaheavy';
-    src: font-url('modelia-heavy-webfont.eot');
-    src: font-url('modelia-heavy-webfont.eot?#iefix') format('embedded-opentype'),
-         font-url('modelia-heavy-webfont.woff2') format('woff2'),
-         font-url('modelia-heavy-webfont.woff') format('woff'),
-         font-url('modelia-heavy-webfont.ttf') format('truetype'),
-         font-url('modelia-heavy-webfont.svg#modeliaheavy') format('svg');
+    font-family: 'lumberjackrough';
+    src: url('lumberjack_rough-webfont.woff2') format('woff2'),
+         url('lumberjack_rough-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
 }
+
+
+
+
 @font-face {
-    font-family: 'lane_-_narrowregular';
-    src: font-url('LANENAR_-webfont.eot');
-    src: font-url('LANENAR_-webfont.eot?#iefix') format('embedded-opentype'),
-         font-url('LANENAR_-webfont.woff') format('woff'),
-         font-url('LANENAR_-webfont.ttf') format('truetype'),
-         font-url('LANENAR_-webfont.svg#lane_-_narrowregular') format('svg');
+    font-family: 'lumberjackregular';
+    src: url('lumberjack-webfont.woff2') format('woff2'),
+         url('lumberjack-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
+
 }
 
 
@@ -77,13 +75,13 @@ body {
 }
 .custom {
   background: #27b1e2;
-  font-family: 'lane_-_narrowregular', sans-serif;
+  font-family: 'lumberjackregular', sans-serif;
   letter-spacing: 3px;
   .nav > li > a:hover, .nav > li > a:focus {
     background: transparent;
   }
   .txt-fat {
-    font-family: 'modeliaheavy', sans-serif;
+    font-family: 'lumberjackrough', sans-serif;
     letter-spacing: 0;
   }
   .txt-orange {
@@ -577,6 +575,9 @@ body {
     @include breakpoint(sm) { 
       height: 70px;
     }
+    @include breakpoint(xs) { 
+      height: 85px;
+    }
   }
   .product-quantity {
     text-transform: uppercase;
@@ -641,6 +642,9 @@ body {
       border: 0;
       box-shadow: none;
       margin-bottom: 0;
+      img {
+        width: 100%;
+      }
       .bx-prev {
       background-image: image-url("icon-left.png");
       background-repeat: no-repeat;
