@@ -23,12 +23,18 @@ module Api
           @ajax_current_order =  current_order.reload
         end
         order_api = Api::OrderApi.new({
+<<<<<<< HEAD
+                                          "order"=> @ajax_current_order,
+                                          "order_params"=> data["order_params"],
+                                          "request_ip"=> request.ip
+=======
                                           "order": @ajax_current_order,
                                           "order_params": data["order_params"],
                                           "current_customer": current_customer,
                                           "request_ip": request.ip
+>>>>>>> master
                                       })
-        render json: { "order_id": order_api.confirmation(data["confirmation_type"])}, status: :accepted
+        render json: { "order_id"=> order_api.confirmation(data["confirmation_type"])}, status: :accepted
 
       rescue Shoppe::Errors::NotEnoughStock => e
         render :json => {:error => 'NotEnoughStock', :available_stock => e.available_stock}, status: :failed_dependency

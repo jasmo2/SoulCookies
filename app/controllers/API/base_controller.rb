@@ -22,7 +22,7 @@ module  Api
 
     def render_unauthorized
       self.headers['WWW-Authenticate'] = 'Token realm="Application"'
-      render json: {"error": "credenciales invalidas"}, status: :unauthorized
+      render json: {"error"=> "credenciales invalidas"}, status: :unauthorized
     end
   end
 end
