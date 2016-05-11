@@ -14,7 +14,7 @@
                       <%= truncate product.short_description, :length => 105 %>
                     </p>
                     <p class="product-price">
-                      <%= number_to_currency product.price_with_tax %>
+                      $ <%= product.price_with_tax %>
                     </p>
                     <div class="product-buttons">
                       <div class="product-quantity-container">

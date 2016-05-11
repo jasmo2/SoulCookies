@@ -24,7 +24,7 @@
 
 class ColombianProduct <  Shoppe::Product
   def price_with_tax
-    self.price * tax_display
+    (self.price * tax_display).floor
   end
   private
   def tax_display
@@ -34,6 +34,6 @@ class ColombianProduct <  Shoppe::Product
     else
       tax_display = self.tax_rate.rate
     end
-    (1 + (tax_display)/100)
+    (1 + (tax_display.to_i)/100)
   end
 end
