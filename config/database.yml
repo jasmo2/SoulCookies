@@ -32,4 +32,4 @@ test:
 
 
 production:
-  url: <%= ENV['DATABASE_URL'] %>
+  url: <%= ENV['DOKKU_POSTGRES_AQUA_URL'] %>
