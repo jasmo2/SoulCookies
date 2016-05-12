@@ -1,11 +1,17 @@
 class OrderMailer < ApplicationMailer
-  def new_order_admin(users,order_id)
-    @order_id = order_id
-    mail :from => Shoppe.settings.outbound_email_address, :to => 'rafael.matadero@gmail.com', :subject => 'Nueva Cookie pedida! '
-    mail :from => Shoppe.settings.outbound_email_address, :to => 'hola@heyjoe.com.co', :subject => 'Nueva Cookie pedida! '
 
+
+  def  send_new_order_admin(user, order_id)
+    @order_id = order_id
+    puts "email: #{user.email_address}"
+    mail :from => Shoppe.settings.outbound_email_address, :to => user.email_address, :subject => 'Nueva Cookie pedida! '
+  end
+  def new_order_admin(users,order_id)
+    # mail :from => Shoppe.settings.outbound_email_address, :to => 'rafael.matadero@gmail.com', :subject => 'Nueva Cookie pedida! '
+    # mail :from => Shoppe.settings.outbound_email_address, :to => 'hola@heyjoe.com.co', :subject => 'Nueva Cookie pedida! '
+    puts ""
     users.each do |user|
-      mail :from => Shoppe.settings.outbound_email_address, :to => user.email_address, :subject => 'Nueva Cookie pedida! '
+      send_new_order_admin(user,order_id).deliver
     end
 
   end
