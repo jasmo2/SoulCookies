@@ -2,7 +2,7 @@
   <%= form_for @customer_user, :url => password_reset_path(params[:id]), html:{class: "form-signin"} do |f| %>
       <% if @customer_user.errors.any? %>
           <div class="error_messages">
-            <h2>Formulario invalido</h2>
+            <h2>Formulario inválido</h2>
             <ul>
               <% for message in @customer_user.errors.full_messages %>
                   <li><%= message %></li>

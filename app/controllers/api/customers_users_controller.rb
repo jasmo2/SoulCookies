@@ -53,7 +53,7 @@ module Api
     def destroy
         begin Shoppe::Address.where(customer_id: current_customer.id).destroy_all
            current_customer.destroy
-           render json: { notice: 'El usuario fué eleminado correctamente'},status: :ok
+           render json: { notice: 'El usuario fue eleminado correctamente'},status: :ok
         rescue Exception => e
            render :json => {:error => "#{e}" }, status: :bad_request
         end

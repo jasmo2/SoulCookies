@@ -29,7 +29,7 @@ class OrdersController < ApplicationController
     if !current_order.nil? && current_order.total_items >= 3
       render
     else
-      flash[:alert] =  "Lo sentimos  , nuestro pedido minimo es de 3 galletas"
+      flash[:alert] =  "Lo sentimos, nuestro pedido mínimo es de 3 galletas."
       redirect_to root_path
     end
   end

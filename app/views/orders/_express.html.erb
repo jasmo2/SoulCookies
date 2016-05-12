@@ -8,18 +8,18 @@
         </div>
 
         <div class="form-group">
-          <%= f.label :email_address, 'Tu Correo Electronico', :class => 'req' %>
+          <%= f.label :email_address, 'Tu Correo electrónico', :class => 'req' %>
           <%= f.text_field :email_address, :placeholder => 'ejemplo@mail.com', :class => 'form-control'  %>
         </div>
 
         <div class="form-group">
-          <%= f.label :phone_number, 'Tu numero telefonico o celular', :class => 'req' %>
+          <%= f.label :phone_number, 'Tu número telefónico o celular', :class => 'req' %>
           <%= f.text_field :phone_number, :placeholder => '3103124528', :class => 'form-control'  %>
         </div>
       <% end %>
       <%= field_set_tag do %>
           <div class="form-group">
-            <%= f.label :billing_address1, "Dirección (solamente en bogotá)", :class => 'req' %>
+            <%= f.label :billing_address1, "Dirección (solamente en Bogotá)", :class => 'req' %>
             <%= f.text_field :billing_address1, :placeholder => "Calle", :class => "form-control"  %>
           </div>
       <% end %>

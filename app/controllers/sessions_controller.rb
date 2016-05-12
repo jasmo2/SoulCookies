@@ -40,7 +40,7 @@ class SessionsController < ApplicationController
       end
 
     else
-      render js: " sweetAlert('Error','Credenciales invalidas', 'warning');", status:  :bad_request
+      render js: " sweetAlert('Error','Credenciales inválidas', 'warning');", status:  :bad_request
     end
   end
 
