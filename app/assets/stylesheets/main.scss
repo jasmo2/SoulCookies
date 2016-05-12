@@ -80,6 +80,15 @@ body {
   .nav > li > a:hover, .nav > li > a:focus {
     background: transparent;
   }
+  .sweet-alert {
+    font-family: 'lumberjackregular', sans-serif;
+    h1 {
+      font-family: 'lumberjackrough', sans-serif;
+    }
+    h2 {
+      font-family: 'lumberjackrough', sans-serif;
+    }
+  }
   .txt-fat {
     font-family: 'lumberjackrough', sans-serif;
     letter-spacing: 0;

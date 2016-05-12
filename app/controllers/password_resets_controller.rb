@@ -5,7 +5,7 @@ class PasswordResetsController < ApplicationController
   def create
     customer_user = CustomersUser.where(email_params).first
     customer_user.send_password_reset if customer_user
-    redirect_to root_url, :notice => "Se ha enviado correo con instrucciones"
+    redirect_to root_url, :notice => "Se ha enviado un correo con instrucciones."
   end
 
   def edit

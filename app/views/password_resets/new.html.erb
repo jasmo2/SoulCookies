@@ -1,10 +1,10 @@
 <div class="container intro">
   </form>
   <%= form_tag password_resets_path, method: :post, html:{ class: "form-signin"} do %>
-      <h2 class="form-signin-heading">Por favor ingrese su correo electronico para enviarle la información</h2>
+      <h2 class="form-signin-heading">Por favor ingresa tu correo electrónico para enviarte la información.</h2>
       <div class="field">
         <%= label_tag :email, nil, class: "sr-only" %>
-        <%= email_field_tag :email, nil, class: "form-control", placeholder: "Correo electronico" %>
+        <%= email_field_tag :email, nil, class: "form-control", placeholder: "Correo electrónico" %>
       </div>
       <%= submit_tag "Restablecer la contraseña", class: "btn btn-lg btn-primary btn-block" %>
   <% end %>

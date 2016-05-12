@@ -15,7 +15,7 @@ class AddressController < ApplicationController
         if @address.save
           render "address/new"
         else
-          render js: "sweetAlert('Dirección Faltante', 'Escriba una dirección por favor', 'warning');", status: 400
+          render js: "sweetAlert('Falta una dirección', 'Por favor escribe una dirección.', 'warning');", status: 400
         end
       end
       f.html do
@@ -36,7 +36,7 @@ class AddressController < ApplicationController
   def destroy
     @address.destroy
     respond_to do |format|
-      format.html { redirect_to controller: "customers_users", action: "edit", id: current_customer ,notice: 'Post was successfully destroyed.' }
+      format.html { redirect_to controller: "customers_users", action: "edit", id: current_customer ,notice: 'La dirección fue eliminada.' }
       format.json { head :no_content }
     end
   end

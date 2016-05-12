@@ -29,7 +29,7 @@ module Api
         customers_user.get_or_create_token
         render json: { customer_user: customers_user,  addresses: customers_user.addresses }
       else
-        render json: {error: "Credendiales invalidas"}, status:  :forbidden
+        render json: {error: "Credenciales inválidas"}, status:  :forbidden
       end
     end
 
