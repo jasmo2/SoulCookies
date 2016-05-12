@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<browserconfig>
+  <msapplication>
+    <tile>
+      <square70x70logo src="/assets/favicon/mstile-70x70-b9e65bf952965190353c4d8656c683dcb910470f8f586113acd337bd998a896c.png"/>
+      <square150x150logo src="/assets/favicon/mstile-150x150-b92320aa7854bc751c5c689d8e43237a61a1f704b13fbf0fc5c5c702b786314a.png"/>
+      <square310x310logo src="/assets/favicon/mstile-310x310-061d365ae43a132419302dcd5655ba4e3ae24dc79ee1deec99407e0db72119c6.png"/>
+      <wide310x150logo src="/assets/favicon/mstile-310x150-fa5d5b1802697090d3576485c2e95a4a243f09fb5d526980f16d2814a8593445.png"/>
+      <TileColor>#da532c</TileColor>
+    </tile>
+  </msapplication>
+</browserconfig>

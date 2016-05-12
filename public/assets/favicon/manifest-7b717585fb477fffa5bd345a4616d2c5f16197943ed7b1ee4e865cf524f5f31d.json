@@ -1,0 +1,41 @@
+{
+	"name": "Soul Cookies",
+	"icons": [
+		{
+			"src": "/assets/favicon/android-chrome-36x36-97f42a0a4aea7f106ff85454e017fc4ec5c953495ab706a05ff517b5fe1f8b0d.png",
+			"sizes": "36x36",
+			"type": "image\/png",
+			"density": 0.75
+		},
+		{
+			"src": "/assets/favicon/android-chrome-48x48-5ffb9492d0926af6efb0dfcf1540ed5eee11a5d39340a55271f4512726040289.png",
+			"sizes": "48x48",
+			"type": "image\/png",
+			"density": 1
+		},
+		{
+			"src": "/assets/favicon/android-chrome-72x72-6ec0c6394def6c42dbba326849c7d12e1dc97962f8501fdff13f4c3f1d64c7d7.png",
+			"sizes": "72x72",
+			"type": "image\/png",
+			"density": 1.5
+		},
+		{
+			"src": "/assets/favicon/android-chrome-96x96-8d73240b665fbd848a059a9985f173f8d0690ff7f8ed14f798cd5a23dacb3319.png",
+			"sizes": "96x96",
+			"type": "image\/png",
+			"density": 2
+		},
+		{
+			"src": "/assets/favicon/android-chrome-144x144-73d0ad1e39b455d98af51618aec3dbccb33c34421a55310ac6f16ccc50af9652.png",
+			"sizes": "144x144",
+			"type": "image\/png",
+			"density": 3
+		},
+		{
+			"src": "/assets/favicon/android-chrome-192x192-8074c81f07315db157f8d67f5bb7129f61dc9a14705468018a4f505598254200.png",
+			"sizes": "192x192",
+			"type": "image\/png",
+			"density": 4
+		}
+	]
+}
