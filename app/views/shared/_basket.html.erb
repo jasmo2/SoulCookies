@@ -12,14 +12,14 @@
 			</div><!-- /basket-item-info -->
 
 			<div class="basket-item-total">
-				<%= number_to_currency item.total %>
+				<%= item.total.floor %> $
 			</div><!-- /basket-item-total -->
 		</div><!-- /basket-item -->
 	<% end %>
 </div><!-- /basket-items-info -->
 <div class="basket-checkout">
 	<div class="basket-total-value">
-		Total: <%= number_to_currency @ajax_current_order.total %> COP.
+		Total: <%= @ajax_current_order.total.to_i %> $ COP.
     </div><!-- /basket-total-value -->
 
     <div class="basket-order">
