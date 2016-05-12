@@ -36,7 +36,7 @@
             <%= number_to_currency item.tax_amount %>
           </td>
           <td class="money total txt-right">
-            <%= number_to_currency item.total %>
+            <%=  item.total %> $
           </td>
         </tr>
     <% end %>
@@ -69,7 +69,7 @@
     <tr class="total the-total">
       <td colspan="4">Total</td>
       <td class="money txt-right">
-        <%= number_to_currency order.total %>
+        <%=  order.total %> $
       </td>
     </tr>
     </tfoot>
