@@ -30,13 +30,13 @@
             <% end %>
           </td>
           <td class="money price txt-right">
-            <%= number_to_currency item.sub_total %>
+            <%= number_to_currency item.sub_total.floor %>
           </td>
           <td class="money tax txt-right">
             <%= number_to_currency item.tax_amount %>
           </td>
           <td class="money total txt-right">
-            <%=  item.total %> $
+            <%= number_to_currency item.total.to_f.floor %>
           </td>
         </tr>
     <% end %>
@@ -69,7 +69,7 @@
     <tr class="total the-total">
       <td colspan="4">Total</td>
       <td class="money txt-right">
-        <%=  order.total %> $
+        <%=  order.total.floor %> $
       </td>
     </tr>
     </tfoot>
