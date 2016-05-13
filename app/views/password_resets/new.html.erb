@@ -8,7 +8,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-8 col-md-offset-2 text-center account-welcome">
-        <h1 class="txt-fat">Hola <%= @customers_user.first_name %></h1>
+        <h1 class="txt-fat">Hola</h1>
         <p class="txt-orange">Acá puedes ingresar tu nueva contraseña.</p>
       </div><!-- /account-welcome -->
 
@@ -16,11 +16,11 @@
         <div class="account-edit-info password-reset">
           <%= form_tag password_resets_path, method: :post, html:{ class: "form-signin"} do %>
 		      <h2 class="form-signin-heading">Por favor ingresa tu correo electrónico para enviarte la información.</h2>
-		      <div class="field">
+		      <div class="field form-group">
 		        <%= label_tag :email, nil, class: "sr-only" %>
 		        <%= email_field_tag :email, nil, class: "form-control", placeholder: "Correo electrónico" %>
 		      </div>
-		      <%= submit_tag "Restablecer la contraseña", class: "btn btn-lg btn-primary btn-block" %>
+		      <%= submit_tag "Restablecer la contraseña", class: "btn-default" %>
 		  <% end %>
         </div><!-- /account-edit-info -->
       </div><!-- /col-md-4 -->

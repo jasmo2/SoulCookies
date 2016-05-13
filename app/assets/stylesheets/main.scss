@@ -874,6 +874,9 @@ body {
   }
   .checkout-successful {
     background: #fff;
+    .cloud-container {
+      height: 300px;
+    }
     .success-info {
       padding-top: 150px;
       padding-bottom: 100px;
@@ -935,6 +938,9 @@ body {
     background: #fff none repeat scroll 0 0;
     padding-bottom: 100px;
     padding-top: 150px;
+    .cloud-container {
+      height: 300px;
+    }
     .account-welcome {
       margin-bottom: 30px;
       p {

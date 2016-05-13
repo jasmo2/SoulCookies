@@ -8,7 +8,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-8 col-md-offset-2 text-center account-welcome">
-        <h1 class="txt-fat">Hola <%= @customers_user.first_name %></h1>
+        <h1 class="txt-fat">Hola</h1>
         <p class="txt-orange">Acá puedes ingresar tu nueva contraseña.</p>
       </div><!-- /account-welcome -->
 
@@ -25,15 +25,15 @@
                   </ul>
                 </div>
             <% end %>
-            <div class="field">
+            <div class="field form-group">
               <%= f.label :password, nil, class: "sr-only" %>
               <%= f.password_field :password, class: "form-control", placeholder: "contraseña" %>
             </div>
-            <div class="field">
+            <div class="field form-group">
               <%= f.label :password_confirmation, nil ,class: "sr-only" %>
               <%= f.password_field :password_confirmation,class: "form-control", placeholder: "Confirmación contraseña" %>
             </div>
-            <div class="actions"><%= f.submit "Actualizar contraseña", class: "btn btn-lg btn-warning btn-block"  %></div>
+            <div class="actions"><%= f.submit "Actualizar contraseña", class: "btn-default"  %></div>
           <% end %>
         </div><!-- /account-edit-info -->
       </div><!-- /col-md-4 -->
