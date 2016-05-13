@@ -6,9 +6,6 @@
 		<div class="basket-item">
 			<div class="basket-item-info">
 				<%= item.ordered_item.full_name %>(x<%= item.quantity %>)
-	            <% unless defined?(readonly) %>
-	              <%= link_to "quitar", remove_basket_item_path(item), :method => :delete, :class => 'ajax txt-link' %>
-	            <% end %>
 			</div><!-- /basket-item-info -->
 
 			<div class="basket-item-total">
