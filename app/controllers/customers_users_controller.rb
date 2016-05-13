@@ -111,8 +111,7 @@ class CustomersUsersController < ApplicationController
       if Shoppe::Address.where(customer_id: @customers_user.id).destroy_all
         @customers_user.destroy
         respond_to do |format|
-          format.html { redirect_to root_url, notice: 'Customers user was successfully destroyed.' }
-          format.json { head :no_content }
+          format.html { render json: {"url": "#{request.base_url}"},status: 200}
         end
       else
         redirect_to :edit, :id => @customers_user

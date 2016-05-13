@@ -36,11 +36,39 @@
 
       <div class="col-sm-12 col-sm-offset-0 col-md-6 col-md-offset-3 text-center">
         <div class="account-delete">
-          <%= button_to "Eliminar cuenta", @customers_user,  method: :delete,  data: { confirm: " ¿Estás seguro que quieres eliminar tu cuenta?" }, class: "btn-default" %>
+          <%= button_tag "Eliminar cuenta", id: "destroy-user", class: "btn-default" %>
         </div><!-- /account-delete -->
       </div><!-- /col-md-12 -->
 
     </div><!-- /row -->
   </div><!-- /container -->
 </div><!-- /account-edit -->
+<script>
+  $("#destroy-user").click(function () {
+    sweetAlert({
+    title: "¿ Estas Seguro?",
+    text: "No será capas de recuperar esta cuenta",
+    type: "warning",   showCancelButton: true,
+    confirmButtonColor: "#DD6B55",
+    confirmButtonText: "Si, Borrar Cuenta.",
+    closeOnConfirm: false
+    },
+    function(){
+      $.ajax({
+          url: "/customers_users/"+<%= @customers_user.id %>,
+          type: "DELETE",
+          success: function(resp){
+            sweetAlert("Borrada!", "Se ha borrado Tu cuenta", "success");
+            setTimeout(function () {
+              window.location.href = JSON.parse(resp).url;
+            }, 650)
+          },
+          error: function (err) {
+            console.log("error: "+ error)
+          }
+      });
+    });
+  });
+
+</script>
 <%= render "layouts/footer" %>
