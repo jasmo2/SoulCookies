@@ -1,23 +1,46 @@
-<div class="container intro">
-  <%= form_for @customer_user, :url => password_reset_path(params[:id]), html:{class: "form-signin"} do |f| %>
-      <% if @customer_user.errors.any? %>
-          <div class="error_messages">
-            <h2>Formulario inválido</h2>
-            <ul>
-              <% for message in @customer_user.errors.full_messages %>
-                  <li><%= message %></li>
-              <% end %>
-            </ul>
-          </div>
-      <% end %>
-      <div class="field">
-        <%= f.label :password, nil, class: "sr-only" %>
-        <%= f.password_field :password, class: "form-control", placeholder: "contraseña" %>
-      </div>
-      <div class="field">
-        <%= f.label :password_confirmation, nil ,class: "sr-only" %>
-        <%= f.password_field :password_confirmation,class: "form-control", placeholder: "Confirmación contraseña" %>
-      </div>
-      <div class="actions"><%= f.submit "Actualizar contraseña", class: "btn btn-lg btn-warning btn-block"  %></div>
-  <% end %>
-</div>
+<div id="customer-user" class="account-edit">
+  <div class="cloud-container">
+    <%= image_tag("nube-3.png", class:'bigcloud-1') %>
+    <%= image_tag("nube-4.png", class:'smallcloud-1') %>
+    <%= image_tag("nube-3.png", class:'bigcloud-2') %>
+    <%= image_tag("nube-4.png", class:'smallcloud-2') %>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2 text-center account-welcome">
+        <h1 class="txt-fat">Hola <%= @customers_user.first_name %></h1>
+        <p class="txt-orange">Acá puedes ingresar tu nueva contraseña.</p>
+      </div><!-- /account-welcome -->
+
+      <div class="col-md-6 col-md-offset-3">
+        <div class="account-edit-info password-reset">
+          <%= form_for @customer_user, :url => password_reset_path(params[:id]), html:{class: "form-signin"} do |f| %>
+            <% if @customer_user.errors.any? %>
+                <div class="error_messages">
+                  <h2>Formulario inválido</h2>
+                  <ul>
+                    <% for message in @customer_user.errors.full_messages %>
+                        <li><%= message %></li>
+                    <% end %>
+                  </ul>
+                </div>
+            <% end %>
+            <div class="field">
+              <%= f.label :password, nil, class: "sr-only" %>
+              <%= f.password_field :password, class: "form-control", placeholder: "contraseña" %>
+            </div>
+            <div class="field">
+              <%= f.label :password_confirmation, nil ,class: "sr-only" %>
+              <%= f.password_field :password_confirmation,class: "form-control", placeholder: "Confirmación contraseña" %>
+            </div>
+            <div class="actions"><%= f.submit "Actualizar contraseña", class: "btn btn-lg btn-warning btn-block"  %></div>
+          <% end %>
+        </div><!-- /account-edit-info -->
+      </div><!-- /col-md-4 -->
+
+ 
+
+    </div><!-- /row -->
+  </div><!-- /container -->
+</div><!-- /account-edit -->
+<%= render "layouts/footer" %>
