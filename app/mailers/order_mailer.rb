@@ -16,7 +16,7 @@ class OrderMailer < ApplicationMailer
     attachments.inline['logoemail.png'] = File.read("#{Rails.root}/public/email/images/logo-email.png")
 
     @order = order
-    mail :from => Shoppe.settings.email_address, :to => order.email_address, :subject => I18n.t('shoppe.order_mailer.received.subject', :default => "Confirmación de  Orden")
+    mail :from => "hola@soulcookies.co", :to => order.email_address, :subject => I18n.t('shoppe.order_mailer.received.subject', :default => "Confirmación de  Orden")
   end
 
 end
