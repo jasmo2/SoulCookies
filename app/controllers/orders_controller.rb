@@ -94,7 +94,7 @@ class OrdersController < ApplicationController
     end
     begin
       @order.confirm!
-      OrderMailer.delay.received_order(@order)
+      OrderMailer.delay.customer_order(@order)
       OrderMailer.delay.new_order_admin(Shoppe::User.all,@order.id)
       # state =  State.new(order_tracker_id: @order.id)
       # if state.save

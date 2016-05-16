@@ -16,7 +16,7 @@ class OrderMailer < ApplicationMailer
 
   end
 
-  def received_order(order)
+  def customer_order(order)
     # image_url('/email/images/image-ae4e44a8be29773b3d3bc518489f6ce3c25bb269.png', :style => "border: 0; display: block; height: 159px; line-height: 0px; max-height: 159px; max-width: 160px; min-height: 159px; min-width: 160px; width: 160px")
     #
     # image_url('image-ae4e44a8be29773b3d3bc518489f6ce3c25bb269.png')
