@@ -24,7 +24,7 @@ module Api
       begin
         @order.confirm!
         OrderMailer.delay.customer_order(@order)
-        OrderMailer.delay.new_order_admin(Shoppe::User.all,@order.id)
+        Shoppe::User.all.each { |user|  OrderMailer.delay.new_order_admin(user,@order.id) }
         # state =  State.new(order_tracker_id: @order.id)
         # if state.save
         #   CookieTrackerJob.perform_now(state)
