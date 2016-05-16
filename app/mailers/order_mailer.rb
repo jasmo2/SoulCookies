@@ -1,5 +1,5 @@
 class OrderMailer < ApplicationMailer
-
+  default from: Shoppe.settings.email_address
   def new_order_admin(user,order_id)
     # mail :from => Shoppe.settings.outbound_email_address, :to => 'rafael.matadero@gmail.com', :subject => 'Nueva Cookie pedida! '
     # mail :from => Shoppe.settings.outbound_email_address, :to => 'hola@heyjoe.com.co', :subject => 'Nueva Cookie pedida! '
@@ -16,7 +16,7 @@ class OrderMailer < ApplicationMailer
     attachments.inline['logoemail.png'] = File.read("#{Rails.root}/public/email/images/logo-email.png")
 
     @order = order
-    mail :from => "hola@soulcookies.co", :to => order.email_address, :subject => I18n.t('shoppe.order_mailer.received.subject', :default => "Confirmación de  Orden")
+    mail :from => Shoppe.settings.email_address, :to => order.email_address, :subject => I18n.t('shoppe.order_mailer.received.subject', :default => "Confirmación de  Orden")
   end
 
 end
