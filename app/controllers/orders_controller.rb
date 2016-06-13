@@ -51,6 +51,8 @@ class OrdersController < ApplicationController
         current_order.reload
         if current_order.empty?
           destroy
+        elsif current_order.total_items < 3
+          render :json => {:status => 'reload' }
         else
           render :json => {:status => 'complete', :items => render_to_string(:partial => 'shared/order_items.html', :locals => {:order => current_order})}
         end
