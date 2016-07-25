@@ -15,6 +15,7 @@ class OrdersController < ApplicationController
 
   def successful
     @order_number = params[:order_number]
+    puts " Controller Web - successful"
     respond_to do |f|
       f.js {
         @order = nil
