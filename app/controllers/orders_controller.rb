@@ -96,6 +96,7 @@ class OrdersController < ApplicationController
     end
     begin
       @order.confirm!
+      puts " Controller Web"
       OrderMailer.delay.email_customer_order(@order)
       Shoppe::User.all.each { |user|  OrderMailer.delay.new_order_admin(user,@order.id) }
 
