@@ -14,18 +14,7 @@ class OrdersController < ApplicationController
   end
 
   def successful
-    @order_number = params[:order_number]
-    puts " Controller Web - successful"
-    OrderMailer.delay.email_customer_order(@order)
-    Shoppe::User.all.each { |user|  OrderMailer.delay.new_order_admin(user,@order.id) }
 
-    respond_to do |f|
-      f.js {
-        @order = nil
-        session[:order_id] = nil
-        render 'successful'
-      }
-    end
   end
 
   def checkout
@@ -106,10 +95,11 @@ class OrdersController < ApplicationController
       # if state.save
       #   CookieTrackerJob.perform_now(state)
       # end
-      redirect_to controller: 'orders',
-                  action: 'successful',
-                  order_number: @order.number
+      # redirect_to controller: 'orders',
+      #             action: 'successful',
+      #             order_number: @order.number
 
+      successfull_confirmation(@order)
     rescue Shoppe::Errors::PaymentDeclined => e
       flash[:alert] = "Payment was declined by the bank. #{e.message}"
     rescue Shoppe::Errors::InsufficientStockToFulfil
@@ -135,7 +125,6 @@ class OrdersController < ApplicationController
     }
     @order.ip_address = request.ip
     unless @order.proceed_to_confirm
-      puts "@order.proceed_to_confirm: false"
       render 'express'
       return false
     end
@@ -169,6 +158,20 @@ class OrdersController < ApplicationController
 
   private
 
+  def successfull_confirmation(order)
+    puts "successfull_confirmation"
+
+    OrderMailer.delay.email_customer_order(order)
+    Shoppe::User.all.each { |user|  OrderMailer.delay.new_order_admin(user,order.id) }
+
+    respond_to do |f|
+      f.js {
+        @order = nil
+        session[:order_id] = nil
+        render 'successful'
+      }
+    end
+  end
   def address_all
     @addresses = Address.new(current_customer)
     @addresses = @addresses.addresses
