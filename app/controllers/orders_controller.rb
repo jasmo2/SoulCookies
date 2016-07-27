@@ -159,8 +159,8 @@ class OrdersController < ApplicationController
   private
 
   def successfull_confirmation(order)
-    puts "successfull_confirmation"
-
+    puts " successfull_confirmation"
+    @order_number = order.number
     OrderMailer.delay.email_customer_order(order)
     Shoppe::User.all.each { |user|  OrderMailer.delay.new_order_admin(user,order.id) }
 
