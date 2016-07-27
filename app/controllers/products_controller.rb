@@ -20,16 +20,8 @@ class ProductsController < ApplicationController
 
   def add_to_basket
     product_to_order = params[:variant] ? @product.variants.find(params[:variant].to_i) : @product
-    puts "Time.now.hour:#{ Time.now.hour } ; Time.now.hour < 12 #{ Time.now.hour < 12 }; Time.now.hour >= 19 #{Time.now.hour >= 19}"
-    if Time.now.hour < 12 || Time.now.hour >= 19
-      respond_to do |wants|
-        wants.js { render js: %Q[
-        sweetAlert('Tienda cerrada',
-                   'Recuerda que nuestro horario es de 12pm a 7pm',
-                   'warning');
-       ] }
-      end
-    else
+
+    if params[:actualHour].to_i >= 12  && params[:actualHour].to_i < 19 && params[:actualDay].to_i != 6 && params[:actualDay].to_i != 0
       raise ArgumentError if params[:quantity].to_i <= 0
       current_order.order_items.add_item(product_to_order, params[:quantity].to_i)
       @ajax_current_order =  current_order.reload
@@ -37,6 +29,14 @@ class ProductsController < ApplicationController
         # wants.html { redirect_to request.referer }
         wants.js { render 'products/add_to_basket'}
         wants.json { render :json => {:added => true} }
+      end
+    else
+      respond_to do |wants|
+        wants.js { render js: %Q[
+        sweetAlert('Tienda cerrada',
+                   'Recuerda que nuestro horario es de 12pm a 7pm',
+                   'warning');
+       ] }
       end
     end
   rescue Shoppe::Errors::NotEnoughStock => e
