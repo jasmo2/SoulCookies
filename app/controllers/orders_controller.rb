@@ -106,7 +106,8 @@ class OrdersController < ApplicationController
       # if state.save
       #   CookieTrackerJob.perform_now(state)
       # end
-      redirect_to action: 'successful',
+      redirect_to controller: 'orders',
+                  action: 'successful',
                   order_number: @order.number
 
     rescue Shoppe::Errors::PaymentDeclined => e
@@ -134,6 +135,7 @@ class OrdersController < ApplicationController
     }
     @order.ip_address = request.ip
     unless @order.proceed_to_confirm
+      puts "@order.proceed_to_confirm: false"
       render 'express'
       return false
     end
