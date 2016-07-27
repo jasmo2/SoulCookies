@@ -16,6 +16,9 @@ class OrdersController < ApplicationController
   def successful
     @order_number = params[:order_number]
     puts " Controller Web - successful"
+    OrderMailer.delay.email_customer_order(@order)
+    Shoppe::User.all.each { |user|  OrderMailer.delay.new_order_admin(user,@order.id) }
+
     respond_to do |f|
       f.js {
         @order = nil
@@ -98,8 +101,6 @@ class OrdersController < ApplicationController
     begin
       @order.confirm!
       puts " Controller Web"
-      OrderMailer.delay.email_customer_order(@order)
-      Shoppe::User.all.each { |user|  OrderMailer.delay.new_order_admin(user,@order.id) }
 
       # state =  State.new(order_tracker_id: @order.id)
       # if state.save
