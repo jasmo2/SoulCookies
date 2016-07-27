@@ -20,7 +20,7 @@ class ProductsController < ApplicationController
 
   def add_to_basket
     product_to_order = params[:variant] ? @product.variants.find(params[:variant].to_i) : @product
-    puts "Time.now.hour < 12 #{ Time.now.hour < 12 } Time.now.hour >= 19 #{Time.now.hour >= 19}"
+    puts "Time.now.hour:#{ Time.now.hour } ; Time.now.hour < 12 #{ Time.now.hour < 12 }; Time.now.hour >= 19 #{Time.now.hour >= 19}"
     if Time.now.hour < 12 || Time.now.hour >= 19
       respond_to do |wants|
         wants.js { render js: %Q[
