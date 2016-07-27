@@ -32,5 +32,4 @@ test:
 
 
 production:
-  <<: *default
-  database: shoppecookies_development
+  url: <%= ENV['DOKKU_POSTGRES_AQUA_URL'] %>
