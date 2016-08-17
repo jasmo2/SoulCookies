@@ -19,10 +19,10 @@ class OrdersController < ApplicationController
 
   def checkout
     # minimum order
-    if !current_order.nil? && current_order.total_items >= 3
+    if !current_order.nil? && current_order.total.to_i  >= 18000
       render
     else
-      flash[:alert] =  "Lo sentimos, nuestro pedido mínimo es de 3 galletas."
+      flash[:alert] =  "Lo sentimos, nuestro pedido mínimo es de   18 000   Pesos"
       redirect_to root_path
     end
   end
@@ -44,7 +44,7 @@ class OrdersController < ApplicationController
         current_order.reload
         if current_order.empty?
           destroy
-        elsif current_order.total_items < 3
+        elsif current_order.total.to_i  < 18000
           render :json => {:status => 'reload' }
         else
           render :json => {:status => 'complete', :items => render_to_string(:partial => 'shared/order_items.html', :locals => {:order => current_order})}
