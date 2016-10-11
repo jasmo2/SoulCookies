@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
       <div class="how-to-order">
-        <div class="col-xs-6 col-sm-6 col-md-3 text-center">
+        <div class="col-xs-6 col-sm-6 col-md-2 text-center how">
           <div class="img-container img-online">
             <%= image_tag("icon-online@2x.png", alt: "online") %>
           </div>
@@ -10,31 +10,39 @@
             <%= image_tag("icon-arrow-down@2x.png", alt: "ordene aquí") %>
           </div>
         </div>
-        <div class="col-xs-6 col-sm-6 col-md-3 text-center">
+        <div class="col-xs-6 col-sm-6 col-md-2 text-center how">
           <div class="img-container img-phone">
             <%= image_tag("icon-phone@2x.png", alt: "por teléfono") %>
           </div>
           <span class="txt-fat">7551981</span>
         </div>
-        <div class="col-xs-6 col-sm-6 col-md-3 text-center">
+        <div class="col-xs-6 col-sm-6 col-md-4 text-center how wp">
           <div class="img-container img-app">
             <%= image_tag("icon-app@2x.png", alt: "por nuestra app") %>
           </div>
-          <span class="txt-fat">App</span>
-          <div class="os">
-            <div class="img-container img-ios">
-              <a href="https://itunes.apple.com/us/app/soul-cookies/id1114921321?ls=1&mt=8" target="_blank" class="icon">
-                <%= image_tag("icon-apple@2x.png", alt: "apple appstore") %>
-              </a>
+          <div class="row">
+            <div class="col-md-6">
+              <span class="txt-fat">App</span>
+              <div class="os">
+                <div class="img-container img-ios">
+                  <a href="https://itunes.apple.com/us/app/soul-cookies/id1114921321?ls=1&mt=8" target="_blank" class="icon">
+                    <%= image_tag("icon-apple@2x.png", alt: "apple appstore") %>
+                  </a>
+                </div>
+                <div class="img-container img-android">
+                  <a href="https://play.google.com/store/apps/details?id=com.jasmo2.soulcookie" target="_blank" class="icon">
+                    <%= image_tag("icon-android@2x.png", alt: "android store") %>
+                  </a>
+                </div>
+              </div>
             </div>
-            <div class="img-container img-android">
-              <a href="https://play.google.com/store/apps/details?id=com.jasmo2.soulcookie" target="_blank" class="icon">
-                <%= image_tag("icon-android@2x.png", alt: "android store") %>
-              </a>
+            <div class="col-md-6">
+              <span class="txt-fat">WhatsApp</span>
+              <span class="txt-fat txt-small">320 848 0794</span>
             </div>
           </div>
         </div>
-        <div class="col-xs-6 col-sm-6 col-md-3 text-center">
+        <div class="col-xs-6 col-sm-6 col-md-4 text-center how">
           <div class="img-container img-requests">
             <%= image_tag("icon-requests@2x.png", alt: "pedidos especiales") %>
           </div>

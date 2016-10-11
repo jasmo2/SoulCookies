@@ -456,6 +456,20 @@ body {
   }
   // how to order
   .how-to-order {
+    .how {
+      border-right: solid 1px #F94406;
+      height: 200px;
+      @include breakpoint(md) { 
+        border: 0;
+      }
+      @include breakpoint(xxs) { 
+        width: 100%;
+        float: none;
+      }
+      &:last-child {
+        border: 0;
+      }
+    }
     .col-md-3 {
       border-right: solid 1px #F94406;
       height: 200px;
@@ -510,10 +524,21 @@ body {
     .img-ios {
       width: 30px;
       display: inline-block;
+      @include breakpoint(md) { 
+        height: auto;
+      }
     }
     .img-android {
       width: 30px;
       display: inline-block;
+      @include breakpoint(md) { 
+        height: auto;
+      }
+    }
+    .wp {
+      @include breakpoint(xs) { 
+        margin-bottom: 50px;
+      }
     }
     .icon {
       @include effect_opacity;
