@@ -32,18 +32,32 @@ module Api
         render json: { "order_id"=> order_api.confirmation(data["confirmation_type"])}, status: :accepted
 
       rescue Shoppe::Errors::NotEnoughStock => e
+        puts "Error: NotEnoughStock"
+        puts e
         render :json => {:error => 'NotEnoughStock', :available_stock => e.available_stock}, status: :failed_dependency
       rescue JSON::ParserError => e
+        puts "Error: ParserError"
+        puts e
         render :json => {:error => 'Bad json format' }, status: :bad_request
       rescue ArgumentError => e
+        puts "Error: ArgumentError"
+        puts e
         render :json => {:error => 'Al menos selecciona una galleta' }, status: :bad_request
       rescue Shoppe::Errors::PaymentDeclined => e
+        puts "Error: PaymentDeclined"
+        puts e
         render :json => {:error => 'el pago ha sido denegado' }, status: :bad_request
       rescue Shoppe::Errors::InsufficientStockToFulfil => e
+        puts "Error: InsufficientStockToFulfil"
+        puts e
         render :json => {:error => "Lo sentimos no hay más #{e} en nuestro inventario" }, status: :bad_request
       rescue Api::Exceptions::InappropriateAddress => e
+        puts "Error: InappropriateAddress"
+        puts e
         render :json => {:error => JSON.parse(eval(e.message).to_json) }, status: :bad_request
       rescue Exception => e
+        puts "Error: General"
+        puts e
         render :json => {:error => "#{e}" }, status: :bad_request
       end
     end

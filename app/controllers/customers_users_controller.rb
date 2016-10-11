@@ -63,7 +63,6 @@ class CustomersUsersController < ApplicationController
   # POST /customers_users.json
   def create
     @customers_user = CustomersUser.new(customers_user_params)
-    puts ""
     respond_to do |format|
       if @customers_user.save
         puts "Is saveed : #{@customers_user}"

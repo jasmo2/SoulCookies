@@ -1,43 +1,52 @@
 <div class="products">
   <div class="container">
     <div class="row">
-    <% for product in products %>
-        <%= form_tag buy_product_path(product.product_category.permalink, product.permalink), remote: true, id: "#{product.permalink}" do %>
+      <% for product in products %>
+          <%= form_tag buy_product_path(product.product_category.permalink, product.permalink), remote: true, id: "#{product.permalink}" do %>
               <div class="col-sm-6 col-md-4">
-                  <div class="product-item">
-                    <div class="product-image" style=<%= product.default_image ? "background-image:url(#{product.default_image.path})" : ''%>>
+                <div class="product-item">
+                  <div class="product-image" style=<%= product.default_image ? "background-image:url(#{product.default_image.path})" : ''%>>
+                  </div>
+                  <h4 class="product-name txt-fat">
+                    <%= product.name %>
+                  </h4>
+                  <p class="product-info">
+                    <%= truncate product.short_description, :length => 105 %>
+                  </p>
+                  <p class="product-price">
+                    $ <%= product.price_with_tax %>
+                  </p>
+                  <div class="product-buttons">
+                    <div class="product-quantity-container">
+                      <span class="product-quantity">Cantidad: </span>
+                      <%= number_field_tag 'quantity', '0', min: '0' ,class: 'special_input' %>
                     </div>
-                    <h4 class="product-name txt-fat">
-                      <%= product.name %>
-                    </h4>
-                    <p class="product-info">
-                      <%= truncate product.short_description, :length => 105 %>
-                    </p>
-                    <p class="product-price">
-                      $ <%= product.price_with_tax %>
-                    </p>
-                    <div class="product-buttons">
-                      <div class="product-quantity-container">
-                        <span class="product-quantity">Cantidad: </span>
-                        <%= number_field_tag 'quantity', '0', min: '0' ,class: 'special_input' %>
-                      </div>
 
-                      <button class="product-add" alt="agregar" title="agregar">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36.8 36.8" enable-background="new 0 0 36.8 36.8"><style type="text/css">.st6{fill:#f94406;}</style><path class="st6" d="M18.4 0c-10.2 0-18.4 8.2-18.4 18.4s8.2 18.4 18.4 18.4 18.4-8.2 18.4-18.4-8.3-18.4-18.4-18.4zm7.4 21.6h-4.2v4.2c0 1.8-1.4 3.2-3.2 3.2-1.8 0-3.2-1.4-3.2-3.2v-4.2h-4.2c-1.8 0-3.2-1.4-3.2-3.2 0-1.8 1.4-3.2 3.2-3.2h4.2v-4.2c0-1.8 1.4-3.2 3.2-3.2 1.8 0 3.2 1.4 3.2 3.2v4.2h4.2c1.8 0 3.2 1.4 3.2 3.2 0 1.7-1.4 3.2-3.2 3.2zm0 0"/></svg>
-                      </button>
-                    </div>
+
+                    <button class="product-add" alt="agregar" title="agregar">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36.8 36.8" enable-background="new 0 0 36.8 36.8"><style type="text/css">.st6{fill:#f94406;}</style><path class="st6" d="M18.4 0c-10.2 0-18.4 8.2-18.4 18.4s8.2 18.4 18.4 18.4 18.4-8.2 18.4-18.4-8.3-18.4-18.4-18.4zm7.4 21.6h-4.2v4.2c0 1.8-1.4 3.2-3.2 3.2-1.8 0-3.2-1.4-3.2-3.2v-4.2h-4.2c-1.8 0-3.2-1.4-3.2-3.2 0-1.8 1.4-3.2 3.2-3.2h4.2v-4.2c0-1.8 1.4-3.2 3.2-3.2 1.8 0 3.2 1.4 3.2 3.2v4.2h4.2c1.8 0 3.2 1.4 3.2 3.2 0 1.7-1.4 3.2-3.2 3.2zm0 0"/></svg>
+                    </button>
+                  </div>
 
 
                 </div>
               </div>
+              <script >
+                var actualHour = new Date().getHours();
+                var actualDay = new Date().getDay();
+                $("#<%=product.permalink%>").append('<input id="actualHour" name="actualHour" type="hidden" value="'+actualHour+'" />')
+                $("#<%=product.permalink%>").append('<input id="actualDay" name="actualDay" type="hidden" value="'+actualDay+'" />')
+
+              </script>
           <% end %>
-        <% end %>
-        <div class="col-sm-12 col-md-12 product-order txt-fat">
-          <%= link_to "Ordenar", checkout_path, class: "btn-default btn-order" %>
-        </div>
+      <% end %>
+      <div class="col-sm-12 col-md-12 product-order txt-fat">
+        <%= link_to "Ordenar", checkout_path, class: "btn-default btn-order" %>
+      </div>
     </div>
-
-
   </div>
+
+
 </div>
+
 

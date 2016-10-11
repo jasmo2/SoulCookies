@@ -14,22 +14,15 @@ class OrdersController < ApplicationController
   end
 
   def successful
-    @order_number = params[:order_number]
-    respond_to do |f|
-      f.js {
-        @order = nil
-        session[:order_id] = nil
-        render 'successful'
-      }
-    end
+
   end
 
   def checkout
     # minimum order
-    if !current_order.nil? && current_order.total_items >= 3
+    if !current_order.nil? && current_order.total.to_i  >= 18000
       render
     else
-      flash[:alert] =  "Lo sentimos, nuestro pedido mínimo es de 3 galletas."
+      flash[:alert] =  "Lo sentimos, nuestro pedido mínimo es de   18 000   Pesos"
       redirect_to root_path
     end
   end
@@ -51,6 +44,8 @@ class OrdersController < ApplicationController
         current_order.reload
         if current_order.empty?
           destroy
+        elsif current_order.total.to_i  < 18000
+          render :json => {:status => 'reload' }
         else
           render :json => {:status => 'complete', :items => render_to_string(:partial => 'shared/order_items.html', :locals => {:order => current_order})}
         end
@@ -94,16 +89,17 @@ class OrdersController < ApplicationController
     end
     begin
       @order.confirm!
-      OrderMailer.delay.email_customer_order(@order)
-      Shoppe::User.all.each { |user|  OrderMailer.delay.new_order_admin(user,@order.id) }
+      puts " Controller Web"
 
       # state =  State.new(order_tracker_id: @order.id)
       # if state.save
       #   CookieTrackerJob.perform_now(state)
       # end
-      redirect_to action: 'successful',
-                  order_number: @order.number
+      # redirect_to controller: 'orders',
+      #             action: 'successful',
+      #             order_number: @order.number
 
+      successfull_confirmation(@order)
     rescue Shoppe::Errors::PaymentDeclined => e
       flash[:alert] = "Payment was declined by the bank. #{e.message}"
     rescue Shoppe::Errors::InsufficientStockToFulfil
@@ -162,6 +158,20 @@ class OrdersController < ApplicationController
 
   private
 
+  def successfull_confirmation(order)
+    puts " successfull_confirmation"
+    @order_number = order.number
+    OrderMailer.delay.email_customer_order(order)
+    Shoppe::User.all.each { |user|  OrderMailer.delay.new_order_admin(user,order.id) }
+
+    respond_to do |f|
+      f.js {
+        @order = nil
+        session[:order_id] = nil
+        render 'successful'
+      }
+    end
+  end
   def address_all
     @addresses = Address.new(current_customer)
     @addresses = @addresses.addresses

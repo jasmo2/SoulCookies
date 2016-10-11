@@ -23,6 +23,7 @@ module Api
                                     })
       begin
         @order.confirm!
+        puts " Controller API"
         OrderMailer.delay.email_customer_order(@order)
         Shoppe::User.all.each { |user|  OrderMailer.delay.new_order_admin(user,@order.id) }
         # state =  State.new(order_tracker_id: @order.id)

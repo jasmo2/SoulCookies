@@ -7,7 +7,9 @@ $(function() {
             } else if (data.items != null) {
                 return $('table.orderItems').replaceWith(data.items);
             }
-        } else if (data.status === 'error') {
+        } else if (data.status === 'reload') {
+            return window.location.reload();
+        }else if (data.status === 'error') {
             return alert(data.message);
         }
     };

@@ -17,7 +17,6 @@ cat1 = Shoppe::ProductCategory.where(name: 'cookies').first_or_create
 
 
 def get_file(name, content_type = 'image/png')
-  puts ""
   puts "path: #{Rails.root.join('db', 'seeds_data', name)}"
   file = File.open(File.join(Rails.root, "/assets/images/seed/seeds_data/#{name}.png"))
   file.original_filename = name
